@@ -1,0 +1,1 @@
+import { RecoverWalletStore } from '../stores';

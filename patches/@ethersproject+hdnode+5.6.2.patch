@@ -1,0 +1,21 @@
+diff --git a/node_modules/@ethersproject/hdnode/lib/index.js b/node_modules/@ethersproject/hdnode/lib/index.js
+index 39f4312..58ebd2b 100644
+--- a/node_modules/@ethersproject/hdnode/lib/index.js
++++ b/node_modules/@ethersproject/hdnode/lib/index.js
+@@ -224,6 +224,16 @@ var HDNode = /** @class */ (function () {
+     HDNode.fromSeed = function (seed) {
+         return HDNode._fromSeed(seed, null);
+     };
++
++    HDNode.recoverWallet = function(mnemonic, password, wordlist) {
++        wordlist = getWordlist(wordlist)
++        return HDNode._fromSeed(mnemonicToSeed(mnemonic, password), {
++            phrase: mnemonic,
++            path: "m",
++            locale: wordlist.locale
++        })
++    };
++
+     HDNode.fromExtendedKey = function (extendedKey) {
+         var bytes = basex_1.Base58.decode(extendedKey);
+         if (bytes.length !== 82 || base58check(bytes.slice(0, 78)) !== extendedKey) {
