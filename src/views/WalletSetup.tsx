@@ -47,16 +47,14 @@ export const WalletSetup = ({ navigation }: ILandingNavProps) => {
           marginRight='4/6'
           marginBottom='1/5'
         />
-        {/* <Text color='black'>{` ===> ${LoadingStore.loading}`}</Text> */}
-        {/* <Spinner /> */}
         {loading && (
           <>
             <Spinner />
           </>
-        )}{' '}
+        )}
         {!loading && (
           <>
-            <Text fontSize='3xl' marginBottom='2/4' fontWeight='semibold'>
+            <Text fontSize='3xl' marginBottom='1/4' fontWeight='semibold'>
               Wallet Setup
             </Text>
             <OutlinedButton

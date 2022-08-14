@@ -4,6 +4,7 @@ import { walletSetupActions } from '../logic/actions';
 import { ILandingNavProps } from '../logic/models/int_models';
 import { ContainedButton } from '../components/ContainedButton';
 import { MnemonicGenStore } from '../logic/stores';
+import { KeyboardAvoidingView } from 'native-base';
 
 export const LandingView = ({ navigation }: ILandingNavProps) => {
   const getStartedPayload = () => {
@@ -14,7 +15,7 @@ export const LandingView = ({ navigation }: ILandingNavProps) => {
     <View>
       <Center height='full' bgColor='#FFF5DA'>
         <Text
-          fontSize='3xl'
+          fontSize='lg'
           padding='3'
           textAlign='center'
           fontWeight='bold'

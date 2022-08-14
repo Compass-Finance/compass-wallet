@@ -1,6 +1,7 @@
 import { arrayEntry } from '../models/int_models';
 import { MnemonicGenStore } from '../stores';
 import { Wallet } from 'ethers';
+// import { Wallet } from 'zksync';
 
 const generateMnemonic = (length: number = 13): [arrayEntry[], string] => {
   const newWallet = Wallet.createRandom();

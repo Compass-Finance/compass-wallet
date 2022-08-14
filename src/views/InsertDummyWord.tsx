@@ -44,13 +44,17 @@ export const InsertDummyWord = ({ navigation }: ILandingNavProps) => {
     <View>
       <Center height='full' bgColor='#FFF5Da'>
         <BackButton onPress={backButtonPayload} />
-        <Text>
-          Hi Welcome to Insert Dummy Word: {MnemonicGenStore.selectedWord}
+        <Text
+          marginTop='1/5'
+          marginBottom='1/5'
+          fontSize='xl'
+          fontWeight='bold'
+        >
+          Now Choose Your Dummy Word
         </Text>
-
-        <Text>Now choose the your dummy word</Text>
         <ButtonList array={MnemonicGenStore.replacementMnemonicFragment} />
         <ContainedButton
+          marginTop='3/5'
           text='Confirm Mnemonic'
           onPress={nextButtonPayload}
           disabled={!MnemonicGenStore.replacementWordIsSelected}

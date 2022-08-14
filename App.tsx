@@ -4,6 +4,7 @@ import '@ethersproject/shims';
 import { MasterStackRouter } from './src/routers/MasterRouter';
 import { extendTheme, NativeBaseProvider } from 'native-base';
 import { ethers } from 'ethers';
+import 'react-native-wasm';
 
 const config = {
   useSystemColorMode: false,
@@ -30,8 +31,6 @@ declare module 'native-base' {
 }
 
 export default function App() {
-  const wallet = ethers.Wallet.createRandom();
-
   return (
     <NativeBaseProvider theme={theme}>
       <StatusBar style='dark' />

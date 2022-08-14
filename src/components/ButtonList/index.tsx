@@ -1,6 +1,7 @@
 import { Button, Center, Flex, Text } from 'native-base';
 import { useEffect, useState } from 'react';
-import { MnemonicGenStore } from '../../logic/stores';
+import { recoverWalletActions } from '../../logic/actions';
+import { MnemonicGenStore, RecoverWalletStore } from '../../logic/stores';
 import { arrayEntry } from '../../logic/models/int_models';
 import { useRoute } from '@react-navigation/native';
 
@@ -30,11 +31,12 @@ export const ButtonList = ({ array }: any) => {
                   justifyContent: 'center',
                   alignItems: 'center',
                   padding: 4,
-                  margin: 5,
+                  margin: 10,
+                  // marginRight: 5,
                 }}
                 size='lg'
-                paddingRight='25'
-                paddingLeft='25'
+                paddingRight='15'
+                paddingLeft='15'
                 borderRadius='3xl'
                 backgroundColor='primary.100'
                 borderStyle='solid'
@@ -56,10 +58,9 @@ export const ButtonList = ({ array }: any) => {
                   } else if (route.name === 'ConfirmDummyWord') {
                     setSelectedButton(v.word);
                     MnemonicGenStore.unvalidatedFakeWordInput = v.word;
-                    // ok so now that this is stored what happens next
-                    // well now you have to do the second half
-                    // of the text input field and then saving
-                    // that to another class state variable
+                  } else if (route.name === 'ConfirmRecovery') {
+                    setSelectedButton(v.word);
+                    recoverWalletActions.setDummyWord(v.word);
                   }
                 }}
               >

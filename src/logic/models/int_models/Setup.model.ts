@@ -7,6 +7,7 @@ enum WalletCreation {
 
 enum WalletRecovery {
   'A' = 'LandingFlow.WalletSetup.WalletRecovery.RecoverWallet',
+  'B' = 'LandingFlow.WalletSetup.WalletRecovery.ConfirmRecovery',
 }
 
 enum Undecided {

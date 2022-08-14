@@ -8,6 +8,8 @@ import { ConfirmDummyWord } from '../views/ConfirmDummyWord';
 import { FinishSetup } from '../views/FinishSetup';
 import { HomeStackRouter } from '../routers/HomeRouter';
 import { RecoverWallet } from '../views/RecoverWallet';
+import { ConfirmRecovery } from '../views/ConfirmRecovery';
+import { FinishRecovery } from '../views/FinishRecovery';
 
 interface StackNavigatorProps {
   route: 'HomeView' | 'LandingView' | 'RecoverWallet';
@@ -29,12 +31,15 @@ export const QueenRouter = ({ route }: StackNavigatorProps) => {
         component={GenerateMnemonic}
       />
       <MasterStack.Screen name='RecoverWallet' component={RecoverWallet} />
+      <MasterStack.Screen name='ConfirmRecovery' component={ConfirmRecovery} />
+
       <MasterStack.Screen name='InsertDummyWord' component={InsertDummyWord} />
       <MasterStack.Screen name='BackupMnemonic' component={BackupMnemonic} />
       <MasterStack.Screen
         name='ConfirmDummyWord'
         component={ConfirmDummyWord}
       />
+      <MasterStack.Screen name='FinishRecovery' component={FinishRecovery} />
       <MasterStack.Screen name='FinishSetup' component={FinishSetup} />
       <MasterStack.Screen name='HomeView' component={HomeStackRouter} />
     </MasterStack.Navigator>

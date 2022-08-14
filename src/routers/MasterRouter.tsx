@@ -17,7 +17,6 @@ export const MasterStackRouter = () => {
   // ^^ You might want to use this as the primary logic
   useEffect(() => {
     const checkStore = async () => {
-      const result = await getValueFor('pk');
       try {
         const result = await getValueFor('pk');
         if (result.length !== 0) {
@@ -34,7 +33,7 @@ export const MasterStackRouter = () => {
 
   return (
     <NavigationContainer>
-      {arbBool === true && <QueenRouter route='RecoverWallet' />}
+      {arbBool === true && <QueenRouter route='HomeView' />}
       {arbBool === false && <QueenRouter route='LandingView' />}
     </NavigationContainer>
   );

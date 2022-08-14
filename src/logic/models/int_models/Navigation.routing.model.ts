@@ -4,10 +4,12 @@ type WalletSetupViews = {
   LandingView: any;
   WalletSetup: any;
   RecoverWallet: any;
+  ConfirmRecovery: any;
   GenerateMnemonic: any;
   BackupMnemonic: any;
   InsertDummyWord: any;
   ConfirmDummyWord: any;
+  FinishRecovery: any;
   UploadToCloudProvider: any;
   FinishSetup: any;
 };
