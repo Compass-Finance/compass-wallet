@@ -7,11 +7,6 @@ import { reaction } from 'mobx';
 import { getValueFor } from '../logic/utils';
 import { QueenRouter } from './QueenRouter';
 
-interface setStateProps {
-  arbBool: boolean;
-  setArbBool: any;
-}
-
 export const MasterStackRouter = () => {
   const [arbBool, setArbBool]: any = useState(null);
   // ^^ You might want to use this as the primary logic
@@ -33,7 +28,7 @@ export const MasterStackRouter = () => {
 
   return (
     <NavigationContainer>
-      {arbBool === true && <QueenRouter route='HomeView' />}
+      {arbBool === true && <QueenRouter route='HomeTabView' />}
       {arbBool === false && <QueenRouter route='LandingView' />}
     </NavigationContainer>
   );

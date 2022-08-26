@@ -15,7 +15,7 @@ type WalletSetupViews = {
 };
 
 type HomeViews = {
-  HomeView: any;
+  HomeTabView: any;
 };
 
 export interface ILandingNavProps {

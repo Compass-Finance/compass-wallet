@@ -10,6 +10,7 @@ npm-debug.*
 web-build/
 mnemonic_test.md
 scribble.md
+.env
 # macOS
 .DS_Store
 

@@ -12,7 +12,7 @@ import { ConfirmRecovery } from '../views/ConfirmRecovery';
 import { FinishRecovery } from '../views/FinishRecovery';
 
 interface StackNavigatorProps {
-  route: 'HomeView' | 'LandingView' | 'RecoverWallet';
+  route: 'HomeTabView' | 'LandingView' | 'RecoverWallet';
 }
 
 const MasterStack = createNativeStackNavigator();
@@ -41,7 +41,7 @@ export const QueenRouter = ({ route }: StackNavigatorProps) => {
       />
       <MasterStack.Screen name='FinishRecovery' component={FinishRecovery} />
       <MasterStack.Screen name='FinishSetup' component={FinishSetup} />
-      <MasterStack.Screen name='HomeView' component={HomeStackRouter} />
+      <MasterStack.Screen name='HomeTabView' component={HomeStackRouter} />
     </MasterStack.Navigator>
   );
 };

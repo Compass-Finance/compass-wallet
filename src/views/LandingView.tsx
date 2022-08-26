@@ -3,10 +3,17 @@ import { images } from '../../assets';
 import { walletSetupActions } from '../logic/actions';
 import { ILandingNavProps } from '../logic/models/int_models';
 import { ContainedButton } from '../components/ContainedButton';
-import { MnemonicGenStore } from '../logic/stores';
-import { KeyboardAvoidingView } from 'native-base';
+import { useEffect } from 'react';
+import { getValueFor } from '../logic/utils';
 
 export const LandingView = ({ navigation }: ILandingNavProps) => {
+  // useEffect(() => {
+  //   const getPk = async () => {
+  //     const pk = await getValueFor('pk');
+  //     alert(pk);
+  //   };
+  //   getPk();
+  // });
   const getStartedPayload = () => {
     walletSetupActions.moveForwardToSecondUndecidedStage();
     navigation.navigate('WalletSetup');

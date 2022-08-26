@@ -10,7 +10,7 @@ import { IHomeNavProps } from '../logic/models/int_models';
 export const FinishSetup = ({ navigation }: IHomeNavProps) => {
   const doneButtonPayload = () => {
     WalletSetupStore.setFinished(true);
-    navigation.navigate('HomeView');
+    navigation.navigate('HomeTabView');
   };
   const setDailyReminderPayload = () => {};
 

@@ -47,6 +47,7 @@ export const GenerateMnemonic = ({ navigation }: ILandingNavProps) => {
           fontSize='2xl'
           fontWeight='semibold'
           marginTop='8'
+          marginBottom='1/6'
           textAlign='center'
         >
           Select A Word From Your Mnemonic & write it down on Paper
@@ -54,7 +55,7 @@ export const GenerateMnemonic = ({ navigation }: ILandingNavProps) => {
 
         <ButtonList array={MnemonicGenStore.currentMnemonic} />
         <ContainedButton
-          marginTop='19'
+          marginTop='1/6'
           text='Next Step'
           onPress={nextButtonPayload}
           disabled={!wordState}

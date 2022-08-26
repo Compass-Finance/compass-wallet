@@ -10,7 +10,7 @@ import { IHomeNavProps } from '../logic/models/int_models';
 export const FinishRecovery = ({ navigation }: IHomeNavProps) => {
   const doneButtonPayload = () => {
     //
-    navigation.navigate('HomeView');
+    navigation.navigate('HomeTabView');
   };
 
   return (

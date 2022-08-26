@@ -3,8 +3,6 @@ import 'react-native-get-random-values';
 import '@ethersproject/shims';
 import { MasterStackRouter } from './src/routers/MasterRouter';
 import { extendTheme, NativeBaseProvider } from 'native-base';
-import { ethers } from 'ethers';
-import 'react-native-wasm';
 
 const config = {
   useSystemColorMode: false,
