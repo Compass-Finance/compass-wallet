@@ -5,9 +5,7 @@ import { txnHistoryActions } from '../logic/actions';
 import { TransactionHistoryStore } from '../logic/stores';
 import { LoadedWalletStore } from '../logic/stores';
 import { reaction } from 'mobx';
-import { Observer } from 'mobx-react';
 import { observer } from 'mobx-react-lite';
-// import {Observer} from 'mobx-react'
 
 export const TransactionView = observer(() => {
   const [pastTxnStatus, setPastTxnStatus] = useState('');
@@ -43,8 +41,6 @@ export const TransactionView = observer(() => {
     <View>
       <Center height='full' bgColor='background.100'>
         <Text>Transaction View</Text>
-        <Text>{TransactionHistoryStore.pastTransactionStatus} === Store </Text>
-        <Text>{pastTxnStatus} === State </Text>
         {TransactionHistoryStore.pastTransactionStatus === 'success' && (
           <TxnChipList
             txnArray={TransactionHistoryStore.pastTransactionArray}
