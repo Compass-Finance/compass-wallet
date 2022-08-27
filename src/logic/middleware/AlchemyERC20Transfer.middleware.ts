@@ -1,4 +1,4 @@
-import { erc20HistoryResponse } from '../models/ext_models';
+import { transferEntry } from '../models/ext_models';
 import { BigNumber } from 'ethers';
 import { CleanedAlchemyERC20TransferHistoryEntry } from '../models/int_models';
 
@@ -7,14 +7,15 @@ import { CleanedAlchemyERC20TransferHistoryEntry } from '../models/int_models';
 // *       so it will be handled without throwing an error and if the response fails for whatever reason.
 // *       without throwing errors, so make sure to add that
 export const txnCleaner = (
-  alchemyAPIResponse: erc20HistoryResponse
+  alchemyAPIResponse: transferEntry
 ): CleanedAlchemyERC20TransferHistoryEntry[] => {
   // logic
-  const transfersArr = alchemyAPIResponse.transfers;
+  // console.log(`HERE IS WHAT'S ENTERING THE CLEANER ==> ${alchemyAPIResponse}`);
+  const transfersArr: any = alchemyAPIResponse;
   let tempArr: CleanedAlchemyERC20TransferHistoryEntry[] = [];
-
-  transfersArr.map((x) => {
+  transfersArr.map((x: transferEntry) => {
     tempArr.push({
+      hash: x.hash,
       from: x.from,
       to: x.to,
       tokenName: x.asset,
@@ -28,7 +29,5 @@ export const txnCleaner = (
       ).toString(),
     });
   });
-  console.log(BigNumber.from(5).div(2).toString());
-  console.log(tempArr);
   return tempArr;
 };

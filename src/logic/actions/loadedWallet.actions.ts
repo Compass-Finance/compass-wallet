@@ -1,9 +1,6 @@
 import { LoadedWalletStore } from '../stores';
 import { Alchemy, Network, Wallet } from 'alchemy-sdk'; //AlchemyProvider
-import {
-  JsonRpcBatchProvider,
-  AlchemyProvider,
-} from '@ethersproject/providers';
+import { JsonRpcBatchProvider } from '@ethersproject/providers';
 import { HDNode } from 'ethers/lib/utils';
 import { getValueFor } from '../utils';
 
@@ -14,7 +11,8 @@ export const loadWallet = async (network: 'local' | 'mumbai') => {
     } else if (network === 'mumbai') {
       // @ts-ignore
       LoadedWalletStore.setAlchemyConfig({
-        network: Network.MATIC_MUMBAI,
+        network: Network.ETH_MAINNET,
+        // Todo change ^^ later
         apiKey: LoadedWalletStore.rpcUrlOrApiKey,
       });
       LoadedWalletStore.setAlchemyProvider(

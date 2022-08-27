@@ -17,6 +17,7 @@ export const HomeView = () => {
   useEffect(() => {
     const loadWallet = async () => {
       await loadedWalletActions.loadWallet('mumbai');
+      // alert(LoadedWalletStore.rpcUrlOrApiKey);
       setAddress(LoadedWalletStore.wallet.address);
       setBalance((await LoadedWalletStore.wallet.getBalance()).toString());
     };

@@ -3,4 +3,5 @@ export interface CleanedAlchemyERC20TransferHistoryEntry {
   to: string;
   tokenName: string;
   realTokenAmount: string;
+  hash: string;
 }

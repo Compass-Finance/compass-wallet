@@ -7,8 +7,9 @@ import { ButtonList } from '../components/ButtonList';
 import { ContainedButton } from '../components/ContainedButton';
 import { reaction } from 'mobx';
 import { useEffect, useState } from 'react';
+import { observer } from 'mobx-react-lite';
 
-export const InsertDummyWord = ({ navigation }: ILandingNavProps) => {
+export const InsertDummyWord = observer(({ navigation }: ILandingNavProps) => {
   const backButtonPayload = () => {
     walletSetupActions.moveBackwardToFirstWalletCreationStage();
     navigation.navigate('GenerateMnemonic');
@@ -62,4 +63,4 @@ export const InsertDummyWord = ({ navigation }: ILandingNavProps) => {
       </Center>
     </View>
   );
-};
+});

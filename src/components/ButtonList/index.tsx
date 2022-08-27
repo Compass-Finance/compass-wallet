@@ -1,5 +1,5 @@
 import { Button, Center, Flex, Text } from 'native-base';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { recoverWalletActions } from '../../logic/actions';
 import { MnemonicGenStore, RecoverWalletStore } from '../../logic/stores';
 import { arrayEntry } from '../../logic/models/int_models';

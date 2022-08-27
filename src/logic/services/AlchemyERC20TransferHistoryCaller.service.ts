@@ -1,28 +1,36 @@
-import { AssetTransfersWithMetadataResponse } from 'alchemy-sdk';
-import { erc20HistoryResponse } from '../models/ext_models';
+import { Alchemy, AssetTransfersWithMetadataResponse } from 'alchemy-sdk';
+import { TransactionHistoryStore } from '../stores';
 import { LoadedWalletStore } from '../stores';
 
 // * @dev: Modify later
 export const AlchemyERC20TransferHistoryCaller = async (
   addressToQuery: string,
   startingBlock: string = '0x0'
-): Promise<'empty' | AssetTransfersWithMetadataResponse | ''> => {
+) => {
   try {
-    // @ts-ignore
-    const response =
-      await LoadedWalletStore.alchemyProvider.core.getAssetTransfers({
+    const alchemy = new Alchemy(LoadedWalletStore.alchemyConfig);
+    const response: any = await alchemy.core
+      .getAssetTransfers({
         fromBlock: startingBlock,
         fromAddress: addressToQuery,
         // @ts-ignore
         category: ['erc20'],
+      })
+      .then((value: AssetTransfersWithMetadataResponse) => {
+        console.log(JSON.parse(JSON.stringify(value)), '<=== service');
+        const stringifiedValue = JSON.stringify(value.transfers);
+        // @ts-ignore
+        if (stringifiedValue === '[]') {
+          TransactionHistoryStore.setPastTransactionStatus('empty');
+        } else {
+          TransactionHistoryStore.setPastTransactionStatus('success');
+          return value.transfers;
+        }
       });
-    // @ts-ignore
-    if (response === []) {
-      return 'empty';
-    } else {
-      return response;
-    }
+    return response;
   } catch (e) {
+    TransactionHistoryStore.setPastTransactionStatus('error');
+    // console.log(`error: ${e}`);
     alert(e);
     return '';
   }

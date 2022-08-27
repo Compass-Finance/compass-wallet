@@ -7,9 +7,10 @@ import { walletSetupActions } from '../logic/actions';
 import { mnemonicGenActions } from '../logic/actions';
 import { LoadingStore } from '../logic/stores';
 import { reaction } from 'mobx';
+import { observer } from 'mobx-react-lite';
 import { useEffect, useState } from 'react';
 
-export const WalletSetup = ({ navigation }: ILandingNavProps) => {
+export const WalletSetup = observer(({ navigation }: ILandingNavProps) => {
   let [loading, setLoading] = useState(false);
 
   const loadingLogic = reaction(
@@ -73,4 +74,4 @@ export const WalletSetup = ({ navigation }: ILandingNavProps) => {
       </Center>
     </View>
   );
-};
+});

@@ -1,9 +1,5 @@
-import { MnemonicGenStore, WalletSetupStore } from '../logic/stores';
 import { NavigationContainer } from '@react-navigation/native';
-import { HomeStackRouter } from './HomeRouter';
-
 import { useState, useEffect } from 'react';
-import { reaction } from 'mobx';
 import { getValueFor } from '../logic/utils';
 import { QueenRouter } from './QueenRouter';
 
