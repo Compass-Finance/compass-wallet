@@ -19,14 +19,19 @@ export const txnCleaner = (
       from: x.from,
       to: x.to,
       tokenName: x.asset,
-      realTokenAmount: (
-        BigNumber.from(x.rawContract.value)
-          .div(
-            BigNumber.from(10).pow(BigNumber.from(x.rawContract.decimal).sub(2))
-          )
-          .toNumber() /
-        10 ** 2
-      ).toString(),
+      realTokenAmount: x.value.toString() || '0',
+      // 10 ^ 18 === 1 of the token
+      // 10 ^ 19 ==== 10 of the token given 18 decimals
+      // (
+      //   BigNumber.from(x.rawContract.value)
+      //     .div(
+      //       BigNumber.from(10).pow(
+      //         BigNumber.from(x.rawContract.decimal).sub(2)
+      //       )
+      //     )
+      //     .toNumber() /
+      //   10 ** 2
+      // ).toString(),
     });
   });
   return tempArr;

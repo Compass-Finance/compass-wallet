@@ -26,6 +26,7 @@
     "@unimodules/core": "~7.2.0",
     "@unimodules/react-native-adapter": "~6.5.0",
     "alchemy-sdk": "^2.0.3",
+    "axios": "^0.27.2",
     "buffer": "^6.0.3",
     "dotenv": "^16.0.1",
     "ethers": "^5.6.9",

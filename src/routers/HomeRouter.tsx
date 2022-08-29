@@ -1,5 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native';
 import { HomeView } from '../views/HomeView';
+import { AssetsView } from '../views/AssetsView';
 import { TransactionView } from '../views/TransactionView';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
@@ -21,6 +22,8 @@ export const HomeStackRouter = () => {
             iconName = focused ? 'ios-home' : 'ios-home-outline';
           } else if (route.name === 'TransactionView') {
             iconName = focused ? 'ios-list' : 'ios-list-outline';
+          } else if (route.name === 'AssetsView') {
+            iconName = focused ? 'cash' : 'cash-outline';
           }
 
           // @ts-ignore
@@ -32,6 +35,7 @@ export const HomeStackRouter = () => {
     >
       <HomeTabNav.Screen name='HomeView' component={HomeView} />
       <HomeTabNav.Screen name='TransactionView' component={TransactionView} />
+      <HomeTabNav.Screen name='AssetsView' component={AssetsView} />
     </HomeTabNav.Navigator>
   );
 };

@@ -1,6 +1,5 @@
 import {
   Center,
-  View,
   Button,
   Text,
   Box,
@@ -16,7 +15,8 @@ import { MnemonicGenStore } from '../logic/stores';
 import { useState } from 'react';
 import { ContainedButton } from '../components/ContainedButton';
 import { OutlinedButton } from '../components/OutlinedButton';
-import * as Clipboard from 'expo-clipboard';
+import { setString } from 'expo-clipboard';
+import { wait } from '../logic/utils';
 import Toast from 'react-native-root-toast';
 
 export const BackupMnemonic = ({ navigation }: ILandingNavProps) => {
@@ -41,7 +41,7 @@ export const BackupMnemonic = ({ navigation }: ILandingNavProps) => {
     for (let i = 0; i < mnemonic.length; i++) {
       mnemonicStr += `${mnemonic[i]} \n `;
     }
-    Clipboard.setString(
+    setString(
       `DO NOT DELETE Compass-Fi Mnemonic \n \n \n \n DO NOT SHARE THIS NOTE WITH ANYBODY \n \n \n ${
         MnemonicGenStore.hint === ''
           ? ''
@@ -49,11 +49,8 @@ export const BackupMnemonic = ({ navigation }: ILandingNavProps) => {
       } Dummy Mnemonic: \n ${mnemonicStr}`
     );
     setSnackBool(true);
-    setTimeout(() => {
-      setSnackBool(false);
-    }, 2000);
+    wait(2000).then(() => setSnackBool(false));
   };
-
   const backwardButtonPayload = () => {
     navigation.navigate('InsertDummyWord');
   };

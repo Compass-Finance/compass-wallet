@@ -11,7 +11,7 @@ export const loadWallet = async (network: 'local' | 'mumbai') => {
     } else if (network === 'mumbai') {
       // @ts-ignore
       LoadedWalletStore.setAlchemyConfig({
-        network: Network.ETH_MAINNET,
+        network: Network.MATIC_MUMBAI,
         // Todo change ^^ later
         apiKey: LoadedWalletStore.rpcUrlOrApiKey,
       });

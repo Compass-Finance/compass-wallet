@@ -8,16 +8,23 @@ export const AlchemyERC20TransferHistoryCaller = async (
   startingBlock: string = '0x0'
 ) => {
   try {
+    // this is pain, I get it now though
+    // the thing is it is only tracking the one's we received
+    // so
     const alchemy = new Alchemy(LoadedWalletStore.alchemyConfig);
+
+    // alchemy.core.getTokenBalances('')
+
     const response: any = await alchemy.core
       .getAssetTransfers({
         fromBlock: startingBlock,
-        fromAddress: addressToQuery,
+        // fromAddress: addressToQuery,
+        toAddress: addressToQuery,
         // @ts-ignore
         category: ['erc20'],
       })
       .then((value: AssetTransfersWithMetadataResponse) => {
-        console.log(JSON.parse(JSON.stringify(value)), '<=== service');
+        // console.log(JSON.parse(JSON.stringify(value.transfers)), '<=== service');
         const stringifiedValue = JSON.stringify(value.transfers);
         // @ts-ignore
         if (stringifiedValue === '[]') {

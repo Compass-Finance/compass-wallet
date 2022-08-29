@@ -1,0 +1,13 @@
+import {
+  TOKEN_CONTRACT_ADDRESSES_LIST,
+  TOKEN_DECIMALS_LIST,
+  TOKEN_NAMES_LIST,
+  starterTempObj,
+} from './TokenList';
+
+export {
+  starterTempObj,
+  TOKEN_CONTRACT_ADDRESSES_LIST,
+  TOKEN_DECIMALS_LIST,
+  TOKEN_NAMES_LIST,
+};

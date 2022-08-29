@@ -1,6 +1,5 @@
 import { action, observable } from 'mobx';
 import { Alchemy, AlchemyConfig, Wallet } from 'alchemy-sdk';
-import { getValueFor } from '../utils';
 import Constants from 'expo-constants';
 
 export class LoadedWalletStore {

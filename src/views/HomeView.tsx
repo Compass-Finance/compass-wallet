@@ -2,7 +2,7 @@ import { Center, View, Text, Button } from 'native-base';
 import { useState, useEffect, Dispatch, SetStateAction } from 'react';
 import { Wallet, utils, Contract, BigNumber } from 'ethers';
 import { ERC20Abi, ERC20Types } from '../../assets/abis';
-import { deleteItemAsync } from 'expo-secure-store';
+import { deleteItemAsync, getItemAsync } from 'expo-secure-store';
 import { loadedWalletActions } from '../logic/actions';
 import { LoadedWalletStore } from '../logic/stores';
 
@@ -76,12 +76,13 @@ export const HomeView = () => {
         <Text>MATIC BALANCE : {balance}</Text>
         <Text>TOKEN BALANCE: {tokenBalance}</Text>
         {/* <Text>{signer.getrBalance}</Text> */}
+
         <Button
           onPress={() => {
-            deleteItemAsync('pk');
+            console.log(LoadedWalletStore.wallet.privateKey);
           }}
         >
-          Delete The PK
+          Log the Pk
         </Button>
         <Button onPress={sendMaticPayload}>Send a Transaction</Button>
         <Button marginTop='5' onPress={sendTokenPayload}>

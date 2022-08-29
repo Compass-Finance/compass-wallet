@@ -1,15 +1,32 @@
 // you'll map and pass certain props to the txn chips
 import { Box, Center, Flex, ScrollView, Text } from 'native-base';
+import { useCallback, useState } from 'react';
+import { RefreshControl } from 'react-native';
 import { TxnChip } from '../TxnChip';
+import { wait } from '../../logic/utils';
 import { CleanedAlchemyERC20TransferHistoryEntry } from '../../logic/models/int_models';
+import { txnHistoryActions } from '../../logic/actions';
+import { LoadedWalletStore } from '../../logic/stores';
 
 interface txnChipProps {
   txnArray: CleanedAlchemyERC20TransferHistoryEntry[];
 }
 
 export const TxnChipList = ({ txnArray }: txnChipProps) => {
+  const [refreshing, setRefreshing] = useState(false);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    txnHistoryActions.setPastTransactionArray(LoadedWalletStore.wallet.address);
+    wait(2000).then(() => setRefreshing(false));
+  }, []);
+
   return (
-    <ScrollView>
+    <ScrollView
+      refreshControl={
+        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+      }
+    >
       <Center>
         <Flex
           flexDir='row'
