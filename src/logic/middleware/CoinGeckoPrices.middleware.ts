@@ -12,9 +12,16 @@ export const coinGeckoPriceCleaner = (
     const simplifiedPricesArr = Object.values(coinGeckoResponse);
     pricesArr.push(simplifiedPricesArr[i].usd);
   }
+  console.log('Prices Arr =======>', pricesArr);
+
   for (let i = 0; i < Object.keys(tempObj).length; i++) {
-    tempObj[TOKEN_NAMES_LIST[i]].price = pricesArr[i];
+    console.log(pricesArr[i].toFixed(2), '<===== math thing');
+    Number(pricesArr[i].toFixed(2));
   }
-  console.log(tempObj);
+
+  for (let i = 0; i < Object.keys(tempObj).length; i++) {
+    tempObj[TOKEN_NAMES_LIST[i]].price = Number(pricesArr[i].toFixed(2));
+  }
+  console.log(tempObj, 'COIN GECO RESPONSE');
   return tempObj as CleanedCoinGeckoPrices;
 };

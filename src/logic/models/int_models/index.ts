@@ -9,11 +9,15 @@ import { ILandingNavProps, IHomeNavProps } from './Navigation.routing.model';
 import * as SetupEnum from './Setup.model';
 import { ButtonProps } from './ButtonProps.model';
 import { arrayEntry } from './MnemonicEntry.model';
-import { CombinedTokenData } from './combinedTokenData.model';
+import {
+  CombinedTokenData,
+  CombinedTokenDataEntry,
+} from './combinedTokenData.model';
 import { CleanedAlchemyTokenBalances } from './AlchemyTokenBalances.cleaned.model';
 import { CleanedCoinGeckoPrices } from './CoingeckoPrices.cleaned.model';
 
 export {
+  CombinedTokenDataEntry,
   CombinedTokenData,
   CleanedCoinGeckoPrices,
   CleanedAlchemyTokenBalances,

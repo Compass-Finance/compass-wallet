@@ -18,10 +18,10 @@ export const alchemyTokenBalancesCleaner = (
   for (let i = 0; i < Object.keys(tempObj).length; i++) {
     tokenContractsArr.push(tokenData[i].contractAddress);
 
-    tokenBalancesHexArr.push(
-      tokenData[i].tokenBalance ||
-        '0x0000000000000000000000000000000000000000000000000000000000000000'
-    );
+    const balanceToPush =
+      tokenData[i].tokenBalance === '0x' ? '0x0' : tokenData[i].tokenBalance;
+
+    tokenBalancesHexArr.push(balanceToPush as string);
   }
 
   for (let i = 0; i < Object.keys(tempObj).length; i++) {

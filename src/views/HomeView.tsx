@@ -4,6 +4,7 @@ import { Wallet, utils, Contract, BigNumber } from 'ethers';
 import { ERC20Abi, ERC20Types } from '../../assets/abis';
 import { deleteItemAsync, getItemAsync } from 'expo-secure-store';
 import { loadedWalletActions } from '../logic/actions';
+import { setString } from 'expo-clipboard';
 import { LoadedWalletStore } from '../logic/stores';
 
 // Cool that's how you update balances
@@ -78,11 +79,11 @@ export const HomeView = () => {
         {/* <Text>{signer.getrBalance}</Text> */}
 
         <Button
-          onPress={() => {
-            console.log(LoadedWalletStore.wallet.privateKey);
+          onPress={async () => {
+            deleteItemAsync('pk');
           }}
         >
-          Log the Pk
+          Delete the pk
         </Button>
         <Button onPress={sendMaticPayload}>Send a Transaction</Button>
         <Button marginTop='5' onPress={sendTokenPayload}>

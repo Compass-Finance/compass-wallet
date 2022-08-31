@@ -1,10 +1,16 @@
-import { action, observable } from 'mobx';
-import { CombinedTokenData } from '../models/int_models';
+import { action, observable, makeAutoObservable } from 'mobx';
+import {
+  CombinedTokenData,
+  CombinedTokenDataEntry,
+} from '../models/int_models';
 
 export class AssetsStore {
-  @observable tokenDataArr: CombinedTokenData[] = [];
+  constructor() {
+    makeAutoObservable(this);
+  }
+  @observable tokenDataArr: CombinedTokenDataEntry[] = [];
 
-  @action setTokenDataArr(input: CombinedTokenData[]) {
+  @action setTokenDataArr(input: CombinedTokenDataEntry[]) {
     this.tokenDataArr = input;
   }
 }
