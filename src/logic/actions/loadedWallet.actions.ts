@@ -11,7 +11,7 @@ export const loadWallet = async (network: 'local' | 'mumbai') => {
     } else if (network === 'mumbai') {
       // @ts-ignore
       LoadedWalletStore.setAlchemyConfig({
-        network: Network.MATIC_MUMBAI,
+        network: Network.MATIC_MAINNET,
         // Todo change ^^ later
         apiKey: LoadedWalletStore.rpcUrlOrApiKey,
       });
@@ -24,6 +24,7 @@ export const loadWallet = async (network: 'local' | 'mumbai') => {
       const provider = new JsonRpcBatchProvider(url);
       // @ts-ignore
       LoadedWalletStore.setWallet(new Wallet(mnemonic.privateKey, provider));
+    } else if (network === '') {
     }
   } catch (e) {
     alert(e);

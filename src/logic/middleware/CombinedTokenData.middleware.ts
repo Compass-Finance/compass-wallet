@@ -6,7 +6,7 @@ import {
   CombinedTokenData,
   CombinedTokenDataEntry,
 } from '../models/int_models';
-import { svgArr, TOKEN_NAMES_LIST } from '../constants';
+import { mainTokenSvgArr, TOKEN_NAMES_LIST } from '../constants';
 
 export const CombinedTokenDataCleaner = (
   coinGeckoResponse: CoinGeckoTokenPriceList,
@@ -23,12 +23,12 @@ export const CombinedTokenDataCleaner = (
   });
   // alert(svgArr);
   for (let i = 0; i < Object.keys(coinGeckoResponse).length; i++) {
-    tempObj[TOKEN_NAMES_LIST[i]].icon = svgArr[i];
+    tempObj[TOKEN_NAMES_LIST[i]].icon = mainTokenSvgArr[i];
     tempObj[TOKEN_NAMES_LIST[i]].price = pricesArr[i].toFixed(2);
     tempObj[TOKEN_NAMES_LIST[i]].name = TOKEN_NAMES_LIST[i];
   }
-  console.log(tempObj, '<===== Combined Temp Obj');
+  // console.log(tempObj, '<===== Combined Temp Obj');
   const tempArr = Object.values(tempObj);
-  console.log(tempArr, '<===== Combined Temp Arr');
+  // console.log(tempArr, '<===== Combined Temp Arr');
   return tempArr as CombinedTokenDataEntry[];
 };

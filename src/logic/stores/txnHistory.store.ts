@@ -17,7 +17,7 @@ export class TransactionHistoryStore {
     this.pastTransactionArray = txnList;
   }
 
-  @action setPastTransactionStatus(input: 'empty' | 'error' | 'success') {
+  @action setPastTransactionStatus(input: 'empty' | 'error' | 'success' | '') {
     this.pastTransactionStatus = input;
   }
 

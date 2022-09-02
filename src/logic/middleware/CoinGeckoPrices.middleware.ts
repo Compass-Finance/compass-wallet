@@ -12,10 +12,10 @@ export const coinGeckoPriceCleaner = (
     const simplifiedPricesArr = Object.values(coinGeckoResponse);
     pricesArr.push(simplifiedPricesArr[i].usd);
   }
-  console.log('Prices Arr =======>', pricesArr);
+  // console.log('Prices Arr =======>', pricesArr);
 
   for (let i = 0; i < Object.keys(tempObj).length; i++) {
-    console.log(pricesArr[i].toFixed(2), '<===== math thing');
+    // console.log(pricesArr[i].toFixed(2), '<===== math thing');
     Number(pricesArr[i].toFixed(2));
   }
 

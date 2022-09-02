@@ -5,6 +5,7 @@ import { CleanedAlchemyERC20TransferHistoryEntry } from '../models/int_models';
 export const txnCleaner = (
   alchemyAPIResponse: transferEntry
 ): CleanedAlchemyERC20TransferHistoryEntry[] => {
+  // alert(`THE NODE ENV ==> ${process.env.NODE_ENV}`);
   const transfersArr: any = alchemyAPIResponse;
   let tempArr: CleanedAlchemyERC20TransferHistoryEntry[] = [];
   transfersArr.map((x: transferEntry) => {

@@ -3,11 +3,14 @@ import {
   TOKEN_DECIMALS_LIST,
   TOKEN_NAMES_LIST,
   starterTempObj,
+  COIN_GECKO_API_QUERY_STRING,
 } from './TokenList';
-import { svgArr } from './svgArr';
+import { mainTokenSvgArr, depositsAndWithdrawlsTokenSvgObj } from './svgArr';
 
 export {
-  svgArr,
+  depositsAndWithdrawlsTokenSvgObj,
+  COIN_GECKO_API_QUERY_STRING,
+  mainTokenSvgArr,
   starterTempObj,
   TOKEN_CONTRACT_ADDRESSES_LIST,
   TOKEN_DECIMALS_LIST,

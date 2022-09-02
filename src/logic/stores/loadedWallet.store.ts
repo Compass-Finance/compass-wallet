@@ -17,7 +17,7 @@ export class LoadedWalletStore {
 
   @observable wallet: Wallet = {} as Wallet;
 
-  @action loadWallet(network: 'local' | 'mumbai') {
+  @action loadWallet(network: 'local' | 'mumbai' | 'maticMainnet') {
     if (network === 'local') {
       this.pk = Constants.manifest?.extra?.GANACHE_ACCT_1_PK || '';
       this.rpcUrlOrApiKey = Constants.manifest?.extra?.GANACHE_RPC_URL || '';

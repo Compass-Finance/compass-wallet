@@ -5,8 +5,10 @@ import {
 import { wait } from './wait';
 import { TokenBalanceFormatter } from './tokenBalance.utils';
 import { save, getValueFor } from './secureStore.utils';
+import { getDepositOrWithdrawlSvg } from './tokenWithdrawlAndDepositSvgSelector.utils';
 
 export {
+  getDepositOrWithdrawlSvg,
   TokenBalanceFormatter,
   wait,
   generateNewMnemonic,

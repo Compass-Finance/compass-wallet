@@ -3,8 +3,6 @@ import { Box, Flex, Text, Spacer } from 'native-base';
 
 import { CombinedTokenDataEntry } from '../../logic/models/int_models';
 import { TokenBalanceFormatter } from '../../logic/utils';
-// What's the input for this?
-// The input would be the ch
 export const AssetChip = ({
   price,
   decimals,
@@ -13,13 +11,10 @@ export const AssetChip = ({
   icon,
 }: CombinedTokenDataEntry) => {
   const Coin = icon;
-  // so you'll probably want to do some presentational logic
-  // on the value so
   const theBalance = TokenBalanceFormatter(
     BigNumber.from(balance).toString(),
     decimals
   );
-  // well if the price is 1 of something per 1 US Dollar then
 
   return (
     <Box bgColor='#FDABAB' borderRadius={10} margin={15}>

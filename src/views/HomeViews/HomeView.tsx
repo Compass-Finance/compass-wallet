@@ -79,11 +79,12 @@ export const HomeView = () => {
         {/* <Text>{signer.getrBalance}</Text> */}
 
         <Button
-          onPress={async () => {
-            deleteItemAsync('pk');
+          onPress={() => {
+            setString(LoadedWalletStore.wallet.address);
+            console.log(LoadedWalletStore.wallet.address);
           }}
         >
-          Delete the pk
+          Get Address
         </Button>
         <Button onPress={sendMaticPayload}>Send a Transaction</Button>
         <Button marginTop='5' onPress={sendTokenPayload}>
