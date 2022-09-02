@@ -1,10 +1,10 @@
 import { Center, View, Text } from 'native-base';
 import { useEffect } from 'react';
-import { Renbtc, Usdc, Weth, Dai } from '../../assets/token_icons';
-import { AssetChip } from '../components/AssetChip';
-import { AssetChipList } from '../components/AssetChipList';
-import { assetsActions } from '../logic/actions';
-import { AssetsStore } from '../logic/stores';
+import { Renbtc, Usdc, Weth, Dai } from '../../../assets/token_icons';
+import { AssetChip } from '../../components/AssetChip';
+import { AssetChipList } from '../../components/AssetChipList';
+import { assetsActions } from '../../logic/actions';
+import { AssetsStore } from '../../logic/stores';
 
 export const AssetsView = () => {
   const svgHeight = '50px';

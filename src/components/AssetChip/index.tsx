@@ -22,7 +22,7 @@ export const AssetChip = ({
   // well if the price is 1 of something per 1 US Dollar then
 
   return (
-    <Box bgColor='primary.100' borderRadius={10} margin={15}>
+    <Box bgColor='#FDABAB' borderRadius={10} margin={15}>
       <Flex>
         <Box
           // bgColor='secondary.100'

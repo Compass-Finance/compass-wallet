@@ -5,15 +5,15 @@ import {
   TextArea,
   KeyboardAvoidingView,
 } from 'native-base';
-import { walletSetupActions } from '../logic/actions';
-import { arrayEntry, ILandingNavProps } from '../logic/models/int_models';
-import { MnemonicGenStore } from '../logic/stores';
-import { BackButton } from '../components/BackButton';
+import { walletSetupActions } from '../../logic/actions';
+import { arrayEntry, ILandingNavProps } from '../../logic/models/int_models';
+import { MnemonicGenStore } from '../../logic/stores';
+import { BackButton } from '../../components/BackButton';
 import { Keyboard, TouchableWithoutFeedback, Platform } from 'react-native';
-import { ButtonList } from '../components/ButtonList';
+import { ButtonList } from '../../components/ButtonList';
 import { useState } from 'react';
-import { ContainedButton } from '../components/ContainedButton';
-import { getValueFor, save } from '../logic/utils';
+import { ContainedButton } from '../../components/ContainedButton';
+import { getValueFor, save } from '../../logic/utils';
 
 export const ConfirmDummyWord = ({ navigation }: ILandingNavProps) => {
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0;

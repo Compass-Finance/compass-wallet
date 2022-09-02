@@ -10,8 +10,8 @@ const ETH_DEV_PK = process.env.ETH_DEV_PK;
 
 export default {
   expo: {
-    name: 'wallet-v6',
-    slug: 'wallet-v6',
+    name: 'compass-fi-v1',
+    slug: 'compass-fi-v1',
     version: '1.0.0',
     orientation: 'portrait',
     icon: './assets/icon.png',

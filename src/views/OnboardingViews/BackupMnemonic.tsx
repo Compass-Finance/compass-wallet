@@ -4,19 +4,18 @@ import {
   Text,
   Box,
   Modal,
-  TextArea,
   Checkbox,
   KeyboardAvoidingView,
 } from 'native-base';
-import { Keyboard, TouchableWithoutFeedback, Platform } from 'react-native';
-import { ILandingNavProps, arrayEntry } from '../logic/models/int_models';
-import { BackButton } from '../components/BackButton';
-import { MnemonicGenStore } from '../logic/stores';
+import { Platform } from 'react-native';
+import { ILandingNavProps, arrayEntry } from '../../logic/models/int_models';
+import { BackButton } from '../../components/BackButton';
+import { MnemonicGenStore } from '../../logic/stores';
 import { useState } from 'react';
-import { ContainedButton } from '../components/ContainedButton';
-import { OutlinedButton } from '../components/OutlinedButton';
+import { ContainedButton } from '../../components/ContainedButton';
+import { OutlinedButton } from '../../components/OutlinedButton';
 import { setString } from 'expo-clipboard';
-import { wait } from '../logic/utils';
+import { wait } from '../../logic/utils';
 import Toast from 'react-native-root-toast';
 
 export const BackupMnemonic = ({ navigation }: ILandingNavProps) => {
@@ -42,7 +41,7 @@ export const BackupMnemonic = ({ navigation }: ILandingNavProps) => {
       mnemonicStr += `${mnemonic[i]} \n `;
     }
     setString(
-      `DO NOT DELETE Compass-Fi Mnemonic \n \n \n \n DO NOT SHARE THIS NOTE WITH ANYBODY \n \n \n ${
+      `COMPASS-FI DO NOT DELETE \n \n  Mnemonic: \n \n \n \n DO NOT SHARE THIS NOTE WITH ANYBODY \n \n \n ${
         MnemonicGenStore.hint === ''
           ? ''
           : `Hint: ${MnemonicGenStore.hint} \n \n`
@@ -56,34 +55,40 @@ export const BackupMnemonic = ({ navigation }: ILandingNavProps) => {
   };
 
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss}>
+    <Box safeArea backgroundColor='background.100'>
       <Center height='full' bgColor='background.100'>
         <KeyboardAvoidingView
           behavior='position'
           keyboardVerticalOffset={keyboardVerticalOffset}
         >
-          <BackButton onPress={backwardButtonPayload} />
+          <BackButton marginTop='25' onPress={backwardButtonPayload} />
           <Text fontSize='3xl' marginTop='7' textAlign='center'>
             Backup your Mnemonic
           </Text>
-          <Text fontSize='lg' marginTop='5' marginBottom='3' textAlign='center'>
+          {/* <Text
+            fontSize='xl'
+            bold={true}
+            marginTop='5'
+            marginBottom='3'
+            textAlign='center'
+          >
             Steps
-          </Text>
+          </Text> */}
           <Box
+            marginTop={5}
+            marginBottom={5}
             borderColor='secondary.100'
             borderWidth='7'
-            padding='2'
-            margin='2'
+            padding='4'
           >
-            <Text>1. Copy Your Phrase with the Button Below</Text>
-            <Text>2. Create a locked Note in your phone & Paste it there.</Text>
+            <Text>1. Copy your phrase with the button below</Text>
+            <Text>2. Go to your notes app and paste it a new note.</Text>
+            <Text>3. Lock the note.</Text>
             <Text>
-              3. Think of a mental image that links your fake and real word
-              together. The more absurd, the better.
+              4. Think of a ridiculous sentence with your fake and real word.
             </Text>
-            <Text>
-              4. [Optional] Write down a hint for yourself to remind you of the
-              mental image in Step 3.
+            <Text fontSize='sm' textAlign={'center'}>
+              NOTE: If it's not ridiculous you won't remember it.
             </Text>
           </Box>
           <Modal
@@ -91,14 +96,14 @@ export const BackupMnemonic = ({ navigation }: ILandingNavProps) => {
             onClose={() => setShowModal(false)}
             size='lg'
           >
-            <Modal.Content bgColor='secondary.100'>
+            <Modal.Content bgColor='background.100'>
               <Modal.CloseButton
                 onPress={() => {
                   setShowModal(false);
                 }}
               />
               <Modal.Header
-                bgColor='secondary.100'
+                bgColor='background.100'
                 borderBottomColor='primary.100'
                 borderBottomWidth='2'
               >
@@ -106,71 +111,67 @@ export const BackupMnemonic = ({ navigation }: ILandingNavProps) => {
               </Modal.Header>
               <Modal.Body padding='3'>
                 <Text fontSize='md'>{`Fake Word: Deer \n \nReal Word: Defense`}</Text>
-                <Text fontSize='md'>{`\n Mental Image: \n \n Imagine a Deer in the Pentagon giving a presentaiton on Defense Spending.`}</Text>
-                <Text fontSize='md'>{`\n Pretty absurd & hard to forget, right? Think of something like that.`}</Text>
+                <Text fontSize='md'>{`\n Sentence: \n \n The Deer talked about defense spending in the Pentagon.`}</Text>
+                {/* <Text fontSize='md'>{`\n Pretty hard to forget, right? Think of something like that.`}</Text> */}
               </Modal.Body>
             </Modal.Content>
           </Modal>
           <Button
-            marginLeft='255'
-            marginRight='15'
+            maxWidth='2/4'
+            marginLeft='185'
+            marginRight='5'
             bgColor='primary.100'
             onPress={() => {
               setShowModal(true);
             }}
           >
-            <Text fontSize='md' bold={true}>
-              Example
+            <Text fontSize='sm' bold={true}>
+              Example Sentence
             </Text>
           </Button>
-          <TextArea
-            selectTextOnFocus={true}
-            onChangeText={(text: string) => {
-              MnemonicGenStore.setHint(text);
-            }}
-            autoCorrect={true}
-            bgColor='primary.100'
-            color='black'
-            placeholderTextColor='white'
-            multiline={false}
-            marginTop='15'
-            paddingLeft='4'
-            placeholder='Your Hint Goes Here'
-            maxHeight='10'
-            borderWidth='2'
-            borderColor='black'
-            maxWidth='90%'
-            fontSize='sm'
-            marginBottom='5'
-            autoCompleteType={undefined}
-          />
         </KeyboardAvoidingView>
-        <OutlinedButton
-          text='Copy Mnemonic & Hint'
+        {/* <OutlinedButton
+          marginTop='25'
+          text='Copy Mnemonic'
           // marginBottom=''
           onPress={copyButtonPayload}
-        />
-        {/* @ts-ignore */}
+        /> */}
+
         <Checkbox
           value={''}
           isChecked={isChecked}
           onChange={() => setIsChecked(!isChecked)}
           colorScheme='green'
           marginLeft='5'
-          marginRight='5'
-          marginTop='3'
-          marginBottom='3'
+          marginRight='10'
+          marginTop='35'
+          // marginBottom='35'
         >
-          I Understand that if I don't remember my real word all funds will be
-          lost
+          <Text bold={true} fontSize='md'>
+            I have backed up my dummy mnemonic to the cloud and I understand
+            that if I don't remember my real word, all funds will be lost.
+          </Text>
         </Checkbox>
+        <Toast
+          backgroundColor='black'
+          // opacity={10}
+          // textColor='green'
+          position={630}
+          visible={snackBool}
+        >
+          Mnemonic Copied!
+        </Toast>
         <ContainedButton
-          disabled={!isChecked}
-          text='Proceed to next step'
-          onPress={forwardButtonPayload}
+          marginTop='1/5'
+          // marginBottom='55'
+          // disabled={!isChecked}
+          text={isChecked ? 'Next Step' : 'Copy Mnemonic'}
+          onPress={isChecked ? forwardButtonPayload : copyButtonPayload}
         />
-        <Toast visible={snackBool}>Copied</Toast>
+        <Box marginBottom='15' />
       </Center>
-    </TouchableWithoutFeedback>
+    </Box>
   );
 };
+
+// bruh I need to do something about th

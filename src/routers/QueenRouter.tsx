@@ -1,15 +1,15 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { LandingView } from '../views/LandingView';
-import { WalletSetup } from '../views/WalletSetup';
-import { GenerateMnemonic } from '../views/GenerateMnemonic';
-import { InsertDummyWord } from '../views/InsertDummyWord';
-import { BackupMnemonic } from '../views/BackupMnemonic';
-import { ConfirmDummyWord } from '../views/ConfirmDummyWord';
-import { FinishSetup } from '../views/FinishSetup';
+import { LandingView } from '../views/OnboardingViews/LandingView';
+import { WalletSetup } from '../views/OnboardingViews/WalletSetup';
+import { GenerateMnemonic } from '../views/OnboardingViews/GenerateMnemonic';
+import { InsertDummyWord } from '../views/OnboardingViews/InsertDummyWord';
+import { BackupMnemonic } from '../views/OnboardingViews/BackupMnemonic';
+import { ConfirmDummyWord } from '../views/OnboardingViews/ConfirmDummyWord';
+import { FinishSetup } from '../views/OnboardingViews/FinishSetup';
 import { HomeStackRouter } from '../routers/HomeRouter';
-import { RecoverWallet } from '../views/RecoverWallet';
-import { ConfirmRecovery } from '../views/ConfirmRecovery';
-import { FinishRecovery } from '../views/FinishRecovery';
+import { RecoverWallet } from '../views/OnboardingViews/RecoverWallet';
+import { ConfirmRecovery } from '../views/OnboardingViews/ConfirmRecovery';
+import { FinishRecovery } from '../views/OnboardingViews/FinishRecovery';
 
 interface StackNavigatorProps {
   route: 'HomeTabView' | 'LandingView' | 'RecoverWallet';

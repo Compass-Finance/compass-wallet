@@ -1,25 +1,18 @@
-import { Text, View, Center, Image } from 'native-base';
-import { images } from '../../assets';
-import { walletSetupActions } from '../logic/actions';
-import { ILandingNavProps } from '../logic/models/int_models';
-import { ContainedButton } from '../components/ContainedButton';
+import { Text, View, Center, Image, Box } from 'native-base';
+import { images } from '../../../assets';
+import { walletSetupActions } from '../../logic/actions';
+import { ILandingNavProps } from '../../logic/models/int_models';
+import { ContainedButton } from '../../components/ContainedButton';
 import { useEffect } from 'react';
-import { getValueFor } from '../logic/utils';
+import { getValueFor } from '../../logic/utils';
 
 export const LandingView = ({ navigation }: ILandingNavProps) => {
-  // useEffect(() => {
-  //   const getPk = async () => {
-  //     const pk = await getValueFor('pk');
-  //     alert(pk);
-  //   };
-  //   getPk();
-  // });
   const getStartedPayload = () => {
     walletSetupActions.moveForwardToSecondUndecidedStage();
     navigation.navigate('WalletSetup');
   };
   return (
-    <View>
+    <Box safeArea rounded='xl' bgColor='background.100'>
       <Center height='full' bgColor='#FFF5DA'>
         <Text
           fontSize='lg'
@@ -42,10 +35,11 @@ export const LandingView = ({ navigation }: ILandingNavProps) => {
         </Text>
         <ContainedButton
           onPress={getStartedPayload}
-          marginTop='1/4'
+          // marginTop='1/4'
           text='Get Started'
+          marginBottom='1/4'
         />
       </Center>
-    </View>
+    </Box>
   );
 };

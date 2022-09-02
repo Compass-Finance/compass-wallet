@@ -1,5 +1,5 @@
 import { View, Center, Spinner, Text, Progress, Box } from 'native-base';
-import { ILandingNavProps } from '../logic/models/int_models';
+import { ILandingNavProps } from '../../logic/models/int_models';
 export const CreateWalletLoading = ({ navigation }: ILandingNavProps) => {
   return (
     <View>

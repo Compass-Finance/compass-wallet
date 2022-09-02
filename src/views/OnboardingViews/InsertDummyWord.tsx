@@ -1,10 +1,10 @@
-import { arrayEntry, ILandingNavProps } from '../logic/models/int_models';
-import { Text, View, Center } from 'native-base';
-import { walletSetupActions } from '../logic/actions';
-import { BackButton } from '../components/BackButton';
-import { MnemonicGenStore } from '../logic/stores';
-import { ButtonList } from '../components/ButtonList';
-import { ContainedButton } from '../components/ContainedButton';
+import { arrayEntry, ILandingNavProps } from '../../logic/models/int_models';
+import { Box, Text, View, Center } from 'native-base';
+import { walletSetupActions } from '../../logic/actions';
+import { BackButton } from '../../components/BackButton';
+import { MnemonicGenStore } from '../../logic/stores';
+import { ButtonList } from '../../components/ButtonList';
+import { ContainedButton } from '../../components/ContainedButton';
 import { reaction } from 'mobx';
 import { useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
@@ -40,18 +40,19 @@ export const InsertDummyWord = observer(({ navigation }: ILandingNavProps) => {
     navigation.navigate('BackupMnemonic');
     MnemonicGenStore.generateFakeCompositeMnemonic();
   };
-
+  // I think there's a lot of wasted space here we could implement a simple check here
+  // so that a person does the memorization
   return (
-    <View>
+    <Box safeArea bgColor='background.100'>
       <Center height='full' bgColor='#FFF5Da'>
         <BackButton onPress={backButtonPayload} />
         <Text
+          fontSize='3xl'
           marginTop='1/5'
-          marginBottom='1/5'
-          fontSize='xl'
-          fontWeight='bold'
+          paddingBottom='15'
+          textAlign='center'
         >
-          Now Choose Your Dummy Word
+          Choose Your Dummy Word
         </Text>
         <ButtonList array={MnemonicGenStore.replacementMnemonicFragment} />
         <ContainedButton
@@ -60,7 +61,8 @@ export const InsertDummyWord = observer(({ navigation }: ILandingNavProps) => {
           onPress={nextButtonPayload}
           disabled={!MnemonicGenStore.replacementWordIsSelected}
         />
+        <Box marginBottom='55' />
       </Center>
-    </View>
+    </Box>
   );
 });

@@ -6,17 +6,16 @@ import {
   KeyboardAvoidingView,
 } from 'native-base';
 import { Keyboard, TouchableWithoutFeedback, Platform } from 'react-native';
-import { BackButton } from '../components/BackButton';
-import { ButtonList } from '../components/ButtonList';
-import { ContainedButton } from '../components/ContainedButton';
-import { ILandingNavProps } from '../logic/models/int_models';
-import { RecoverWalletStore } from '../logic/stores';
+import { BackButton } from '../../components/BackButton';
+import { ButtonList } from '../../components/ButtonList';
+import { ContainedButton } from '../../components/ContainedButton';
+import { ILandingNavProps } from '../../logic/models/int_models';
+import { RecoverWalletStore } from '../../logic/stores';
 import { HDNode } from 'ethers/lib/utils';
 import { utils } from 'ethers';
-import { save } from '../logic/utils';
-import { Wallet } from 'zksync';
+import { save } from '../../logic/utils';
 import { useState } from 'react';
-import recoverWalletStore from '../logic/stores/recoverWallet.store';
+import recoverWalletStore from '../../logic/stores/recoverWallet.store';
 
 export const ConfirmRecovery = ({ navigation }: ILandingNavProps) => {
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0;

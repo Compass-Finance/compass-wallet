@@ -5,12 +5,12 @@ import {
   TextArea,
   View,
 } from 'native-base';
-import { recoverWalletActions, walletSetupActions } from '../logic/actions';
-import { RecoverWalletStore } from '../logic/stores';
+import { recoverWalletActions, walletSetupActions } from '../../logic/actions';
+import { RecoverWalletStore } from '../../logic/stores';
 import { useState } from 'react';
-import { ContainedButton } from '../components/ContainedButton';
-import { BackButton } from '../components/BackButton';
-import { ILandingNavProps } from '../logic/models/int_models';
+import { ContainedButton } from '../../components/ContainedButton';
+import { BackButton } from '../../components/BackButton';
+import { ILandingNavProps } from '../../logic/models/int_models';
 import { TouchableWithoutFeedback, Keyboard, Platform } from 'react-native';
 export const RecoverWallet = ({ navigation }: ILandingNavProps) => {
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 20 : 0;

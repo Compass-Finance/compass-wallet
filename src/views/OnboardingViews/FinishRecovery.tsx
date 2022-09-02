@@ -1,20 +1,18 @@
 import { Center, View, Text } from 'native-base';
-import { BackButton } from '../components/BackButton';
-import { ContainedButton } from '../components/ContainedButton';
-import { OutlinedButton } from '../components/OutlinedButton';
+import { BackButton } from '../../components/BackButton';
+import { ContainedButton } from '../../components/ContainedButton';
+import { OutlinedButton } from '../../components/OutlinedButton';
 import ConfettiCannon from 'react-native-confetti-cannon';
 import { useEffect, useState } from 'react';
-import { WalletSetupStore } from '../logic/stores';
-import { IHomeNavProps } from '../logic/models/int_models';
+import { WalletSetupStore } from '../../logic/stores';
+import { IHomeNavProps } from '../../logic/models/int_models';
 
-export const FinishSetup = ({ navigation }: IHomeNavProps) => {
+export const FinishRecovery = ({ navigation }: IHomeNavProps) => {
   const doneButtonPayload = () => {
-    WalletSetupStore.setFinished(true);
+    //
     navigation.navigate('HomeTabView');
   };
-  const setDailyReminderPayload = () => {};
 
-  const learnMorePayload = () => {};
   return (
     <View>
       <Center height='full' bgColor='background.100'>
@@ -30,9 +28,8 @@ export const FinishSetup = ({ navigation }: IHomeNavProps) => {
         <Text>{WalletSetupStore.finished}</Text>
         <Text fontSize='3xl'>Congratulations</Text>
         <Text fontSize='lg' padding='3' textAlign='center'>
-          You've successfully backed up & protected your wallet. Don’t forget
-          your real word or lose your list. If so your funds will be permanently
-          lost.
+          You've successfully Recovered your wallet. Don’t forget your real word
+          or lose your list. If so your funds will be permanently lost.
         </Text>
         <OutlinedButton
           marginTop='4'

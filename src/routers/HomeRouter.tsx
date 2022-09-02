@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { HomeView } from '../views/HomeView';
-import { AssetsView } from '../views/AssetsView';
-import { TransactionView } from '../views/TransactionView';
+import { HomeView } from '../views/HomeViews/HomeView';
+import { AssetsView } from '../views/HomeViews/AssetsView';
+import { TransactionView } from '../views/HomeViews/TransactionView';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -18,11 +18,11 @@ export const HomeStackRouter = () => {
         tabBarIcon: ({ focused, color, size }) => {
           let iconName;
 
-          if (route.name === 'HomeView') {
+          if (route.name === 'Home') {
             iconName = focused ? 'ios-home' : 'ios-home-outline';
-          } else if (route.name === 'TransactionView') {
+          } else if (route.name === 'Transactions') {
             iconName = focused ? 'ios-list' : 'ios-list-outline';
-          } else if (route.name === 'AssetsView') {
+          } else if (route.name === 'Assets') {
             iconName = focused ? 'cash' : 'cash-outline';
           }
 
@@ -33,9 +33,9 @@ export const HomeStackRouter = () => {
         tabBarInactiveTintColor: 'gray',
       })}
     >
-      <HomeTabNav.Screen name='HomeView' component={HomeView} />
-      <HomeTabNav.Screen name='TransactionView' component={TransactionView} />
-      <HomeTabNav.Screen name='AssetsView' component={AssetsView} />
+      <HomeTabNav.Screen name='Home' component={HomeView} />
+      <HomeTabNav.Screen name='Transactions' component={TransactionView} />
+      <HomeTabNav.Screen name='Assets' component={AssetsView} />
     </HomeTabNav.Navigator>
   );
 };

@@ -21,5 +21,5 @@ export const generateNewMnemonic = (): [arrayEntry[], string] => {
 };
 
 export const generateMnemonicFragment = (): [arrayEntry[], string] => {
-  return generateMnemonic(4);
+  return generateMnemonic(7);
 };
