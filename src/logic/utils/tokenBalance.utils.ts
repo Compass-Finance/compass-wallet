@@ -1,14 +1,16 @@
-import { BigNumber } from 'ethers';
-
 export const TokenBalanceFormatter = (balance: string, decimal: number) => {
-  const decimals = balance.slice(
-    balance.length - decimal,
-    balance.length + decimal
-  );
-  const value = BigNumber.from(balance)
-    .div(BigNumber.from(10).pow(decimal))
-    .toString();
-  const combinedVal = `${value}.${decimals}`;
-  console.log(combinedVal);
-  return combinedVal;
+  console.log(balance.length, decimal);
+  let formattedValue;
+  if (balance.length < decimal) {
+    const difference = decimal - balance.length;
+    const leadingZeros = '0'.repeat(difference);
+    console.log(leadingZeros);
+    formattedValue = '.' + balance;
+    formattedValue = Number(formattedValue) / (10 ** difference + 1);
+  } else {
+    const balanceArr = balance.split('');
+    balanceArr.splice(balanceArr.length - decimal, 0, '.');
+    formattedValue = balanceArr.join('');
+  }
+  return formattedValue;
 };

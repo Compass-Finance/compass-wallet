@@ -1,6 +1,5 @@
-import { NavigationContainer } from '@react-navigation/native';
 import { HomeView } from '../views/HomeViews/HomeView';
-import { AssetsView } from '../views/HomeViews/AssetsView';
+import { AssetsStackRouter } from './AssetsRouter';
 import { TransactionView } from '../views/HomeViews/TransactionView';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Ionicons } from '@expo/vector-icons';
@@ -36,7 +35,8 @@ export const HomeStackRouter = () => {
     >
       <HomeTabNav.Screen name='Home' component={HomeView} />
       <HomeTabNav.Screen name='Transactions' component={TransactionView} />
-      <HomeTabNav.Screen name='Assets' component={AssetsView} />
+      <HomeTabNav.Screen name='Assets' component={AssetsStackRouter} />
     </HomeTabNav.Navigator>
   );
 };
+// So here's what you do,

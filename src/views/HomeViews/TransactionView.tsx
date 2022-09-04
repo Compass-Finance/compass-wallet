@@ -5,7 +5,6 @@ import { useEffect, useState, useCallback } from 'react';
 import { txnHistoryActions } from '../../logic/actions';
 import { TransactionHistoryStore } from '../../logic/stores';
 import { LoadedWalletStore } from '../../logic/stores';
-// import { Raleway_400Regular } from '@expo-google-fonts/raleway';
 import { reaction } from 'mobx';
 import { Dimensions } from 'react-native';
 import { observer } from 'mobx-react-lite';

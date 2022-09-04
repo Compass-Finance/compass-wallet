@@ -1,8 +1,11 @@
 import { BigNumber } from 'ethers';
-import { Box, Flex, Text, Spacer } from 'native-base';
-
-import { CombinedTokenDataEntry } from '../../logic/models/int_models';
+import { Box, Flex, Text, Spacer, Pressable } from 'native-base';
 import { TokenBalanceFormatter } from '../../logic/utils';
+import { CombinedTokenDataEntry } from '../../logic/models/int_models';
+import { SwipeListView, SwipeRow } from 'react-native-swipe-list-view';
+import { Dimensions } from 'react-native';
+// import { TokenBalanceFormatter } from '../../logic/utils';
+
 export const AssetChip = ({
   price,
   decimals,
@@ -10,41 +13,58 @@ export const AssetChip = ({
   name,
   icon,
 }: CombinedTokenDataEntry) => {
+  const marginCalculator = () => {
+    const { height } = Dimensions.get('window');
+    const tokenName = name.toUpperCase();
+    if (tokenName === 'WETH' && height < 800) {
+      return 120;
+    } else if (tokenName === 'WETH' && height < 800) {
+      return 15;
+    } else {
+      return 0;
+    }
+  };
+
   const Coin = icon;
   const theBalance = TokenBalanceFormatter(
     BigNumber.from(balance).toString(),
     decimals
   );
 
+  // first you'll want to render the item behind
+
   return (
-    <Box bgColor='#FDABAB' borderRadius={10} margin={15}>
-      <Flex>
-        <Box
-          // bgColor='secondary.100'
-          marginLeft='15'
-          marginTop='15'
-          marginRight='15'
-          marginBottom='3'
-          minWidth='80%'
-        >
-          <Flex flexDir='row'>
-            <Coin height='50px' width='50px' />
-            {/* <Spacer /> */}
-            <Box marginLeft='15'>
-              <Text fontSize='lg' fontWeight='bold'>
-                {name.toUpperCase()}
-              </Text>
-              <Text>@ ${price}</Text>
-            </Box>
-          </Flex>
-        </Box>
-        <Box marginLeft='15'>
-          <Text>
-            {theBalance} {name.toUpperCase()}
-          </Text>
-          <Text fontSize='2xl'>${Number(theBalance) / Number(price)}</Text>
-        </Box>
-      </Flex>
-    </Box>
+    <Pressable onPress={() => {}}>
+      <Box bgColor='white' shadow={'6'} borderRadius={10} margin={15}>
+        <Flex>
+          <Box
+            marginLeft='15'
+            marginTop='15'
+            marginRight='15'
+            marginBottom='3'
+            minWidth='90%'
+          >
+            <Flex flexDir='row'>
+              <Coin height='50px' width='50px' />
+              <Box marginLeft='15'>
+                <Text fontSize='lg' fontWeight='bold'>
+                  {name.toUpperCase()}
+                </Text>
+                <Text>@ ${price}</Text>
+              </Box>
+            </Flex>
+          </Box>
+          <Box marginLeft='15'>
+            <Text>
+              {theBalance} {name.toUpperCase()}
+            </Text>
+            <Text bold={true} fontSize='2xl'>
+              ${(Number(theBalance) * Number(price)).toFixed(2)}
+            </Text>
+          </Box>
+        </Flex>
+      </Box>
+      <Box marginBottom={marginCalculator()} />
+    </Pressable>
   );
 };

@@ -27,17 +27,22 @@ export const TxnChip = ({
     <Box width='100%'>
       <Pressable onPress={() => console.log("I'm Pressed")}>
         <Box
+          backgroundColor='white'
+          shadow={'5'}
+          margin='2'
           width='95%'
           p='5'
           rounded='8'
+          // borderWidth={4}
+          // borderColor='primary.100'
           // marginLeft='5'
           // marginRight='5'
-          borderBottomColor={'black'}
-          borderBottomWidth='1'
+          // borderBottomColor={'black'}
+          // borderBottomWidth='1'
         >
           <Flex flexDirection='row'>
-            <Box marginTop='3'>
-              <AssetIcon width='50px' height='50px' />
+            <Box marginTop='2'>
+              <AssetIcon width='42px' height='42px' />
             </Box>
 
             <Box marginLeft='5'>

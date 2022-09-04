@@ -1,43 +1,54 @@
-import { ScrollView } from 'native-base';
 import { useCallback, useEffect, useState } from 'react';
 import { assetsActions } from '../../logic/actions';
-import { CombinedTokenDataEntry } from '../../logic/models/int_models';
 import { AssetsStore } from '../../logic/stores';
 import { AssetChip } from '../AssetChip';
+import { SwipeListView } from 'react-native-swipe-list-view';
 import { observer } from 'mobx-react-lite';
 import { RefreshControl } from 'react-native';
+import { wait } from '../../logic/utils';
+import { AssetSwipeOptions } from '../AssetsSwipeOptions';
 
 export const AssetChipList = observer(() => {
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = useCallback(() => {
     setRefreshing(true);
-    assetsActions.setTokenDataArr();
+    wait(200).then(() => setRefreshing(false));
   }, []);
 
   useEffect(() => {
     assetsActions.setTokenDataArr();
   }, []);
   const array = AssetsStore.tokenDataArr;
+
+  const AssetChips = (data: any) => {
+    return (
+      <AssetChip
+        key={data.item.contractAddress}
+        price={data.item.price}
+        name={data.item.name}
+        decimals={data.item.decimals}
+        balance={data.item.balance}
+        icon={data.item.icon}
+        contractAddress={data.item.contractAddress}
+      />
+    );
+  };
   return (
-    <ScrollView
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-      }
-    >
-      {array &&
-        array.map((v: CombinedTokenDataEntry) => {
-          return (
-            <AssetChip
-              key={v.contractAddress}
-              price={v.price}
-              name={v.name}
-              decimals={v.decimals}
-              balance={v.balance}
-              icon={v.icon}
-              contractAddress={v.contractAddress}
-            />
-          );
-        })}
-    </ScrollView>
+    <>
+      <SwipeListView
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+        }
+        stopLeftSwipe={110}
+        stopRightSwipe={-110}
+        data={array}
+        renderItem={AssetChips}
+        renderHiddenItem={AssetSwipeOptions}
+        leftOpenValue={95}
+        rightOpenValue={-95}
+        previewRowIndex={-40}
+        previewOpenDelay={3000}
+      />
+    </>
   );
 });

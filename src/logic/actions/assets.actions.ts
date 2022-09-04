@@ -17,9 +17,16 @@ export const setTokenDataArr = async () => {
       alchemyResponse as TokenBalancesResponse
     );
     AssetsStore.setTokenDataArr(combinedData as CombinedTokenDataEntry[]); // <== fix ths
-    // console.log('ASSETS STORE ===>', AssetsStore.tokenDataArr);
+    console.log('ASSETS STORE ===>', AssetsStore.tokenDataArr);
     return combinedData;
   } catch (e) {
     alert(e);
   }
+};
+
+export const setSelectedTokenData = (
+  tokenName: string,
+  sendOrReceive: 'send' | 'receive'
+) => {
+  AssetsStore.setSelectedTokenData(tokenName, sendOrReceive);
 };

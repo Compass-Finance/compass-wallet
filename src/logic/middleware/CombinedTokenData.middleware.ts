@@ -26,6 +26,7 @@ export const CombinedTokenDataCleaner = (
     tempObj[TOKEN_NAMES_LIST[i]].icon = mainTokenSvgArr[i];
     tempObj[TOKEN_NAMES_LIST[i]].price = pricesArr[i].toFixed(2);
     tempObj[TOKEN_NAMES_LIST[i]].name = TOKEN_NAMES_LIST[i];
+    tempObj[TOKEN_NAMES_LIST[i]].key = TOKEN_NAMES_LIST[i];
   }
   // console.log(tempObj, '<===== Combined Temp Obj');
   const tempArr = Object.values(tempObj);

@@ -22,6 +22,6 @@ export const coinGeckoPriceCleaner = (
   for (let i = 0; i < Object.keys(tempObj).length; i++) {
     tempObj[TOKEN_NAMES_LIST[i]].price = Number(pricesArr[i].toFixed(2));
   }
-  console.log(tempObj, 'COIN GECO RESPONSE');
+  // console.log(tempObj, 'COIN GECO RESPONSE');
   return tempObj as CleanedCoinGeckoPrices;
 };
