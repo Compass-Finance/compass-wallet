@@ -9145,6 +9145,11 @@ react-native-keyboard-aware-scroll-view@^0.9.5:
     prop-types "^15.6.2"
     react-native-iphone-x-helper "^1.0.3"
 
+react-native-numpad@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-native-numpad/-/react-native-numpad-0.3.0.tgz#a16ae8325dcfd1ef928c2f9359888bda85f2a1c3"
+  integrity sha512-sXXCfpupfdrJGOD1U5E3ZkyyHD8OLeRLJecjluNA45Z6DAiiqYYGQN/vvNDkjBLJ66ezdPbY9xwcNqAwfOpc3Q==
+
 react-native-quick-base64@^2.0.2, react-native-quick-base64@^2.0.5:
   version "2.0.5"
   resolved "https://registry.npmjs.org/react-native-quick-base64/-/react-native-quick-base64-2.0.5.tgz"

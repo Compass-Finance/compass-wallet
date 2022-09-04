@@ -14,6 +14,7 @@ export const theme = extendTheme({
     primary: {
       100: '#FF8989',
       200: '#FFA1A1',
+      300: '#FFAAAA',
     },
     secondary: {
       100: '#FFCC81',

@@ -14,15 +14,11 @@ type WalletSetupViews = {
   FinishSetup: any;
 };
 
-interface TransactionViewRouteParams {
-  selectedToken: string;
-}
-
 type TransactionViews = {
-  AssetsView: TransactionViewRouteParams;
-  SelectAmountView: TransactionViewRouteParams;
-  SelectAddressView: TransactionViewRouteParams;
-  ConfirmTransactionView: TransactionViewRouteParams;
+  HomeTabRouter: any;
+  SelectAmountView: any;
+  SelectAddressView: any;
+  ConfirmTransactionView: any;
 };
 
 type HomeViews = {
@@ -38,8 +34,5 @@ export interface IHomeNavProps {
 }
 
 export interface IAssetsNavProps {
-  navigation: NativeStackNavigationProp<
-    TransactionViews,
-    keyof TransactionViews
-  >;
+  navigation: NativeStackNavigationProp<TransactionViews, any>;
 }
