@@ -3,11 +3,28 @@ import { AssetChipList } from '../../components/AssetChipList';
 import { IAssetsNavProps } from '../../logic/models/int_models';
 import { useEffect } from 'react';
 import { reaction } from 'mobx';
+import { AssetsStore } from '../../logic/stores';
 
 export const AssetsView = ({ navigation }: IAssetsNavProps) => {
   // What happens now?
   // Well now you'll want to set up a reaction where the bulk of the logic will
-  // be and then you'll wa
+  // be and then you'll want to put it in a useEffect
+
+  const navigationReaction = reaction(
+    () => AssetsStore.selectedTokenData,
+    () => {
+      if (AssetsStore.selectedTokenData.sendOrReceive === 'receive') {
+        // receive navigation action
+        alert('We would navigate now');
+      } else {
+        navigation.navigate('SelectAmountView', {
+          selectedToken: AssetsStore.selectedTokenData.selectedTokenName,
+        });
+      }
+    }
+  );
+
+  useEffect(() => navigationReaction, [AssetsStore.selectedTokenData]);
 
   return (
     <Box safeAreaTop={true} backgroundColor='background.100'>
