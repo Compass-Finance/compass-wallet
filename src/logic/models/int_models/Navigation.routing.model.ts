@@ -19,6 +19,7 @@ type TransactionViews = {
   SelectAmountView: any;
   SelectAddressView: any;
   ConfirmTransactionView: any;
+  TransactionSent: any;
 };
 
 type HomeViews = {

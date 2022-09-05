@@ -1,19 +1,19 @@
-// import { AssetsStackRouter } from './AssetsRouter';
-// ^^ You'll Just want to bring the components in easy
 import { HomeTabRouter } from './HomeTabRouter';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { ConfirmTransaction } from '../views/TransactionViews/ConfirmTransaction';
 import { SelectAddress } from '../views/TransactionViews/SelectAddress';
 import { SelectAmount } from '../views/TransactionViews/SelectAmount';
+import { TransactionSent } from '../views/TransactionViews/TransactionSent';
 
 const HomeStack = createNativeStackNavigator();
 
 export const HomeStackRouter = () => {
   return (
     <HomeStack.Navigator
-      initialRouteName='SelectAmountView'
+      initialRouteName='HomeTabRouter'
       screenOptions={{
         headerShown: false,
+        gestureEnabled: false,
       }}
     >
       <HomeStack.Screen name='HomeTabRouter' component={HomeTabRouter} />
@@ -23,6 +23,7 @@ export const HomeStackRouter = () => {
         name='ConfirmTransactionView'
         component={ConfirmTransaction}
       />
+      <HomeStack.Screen name='TransactionSent' component={TransactionSent} />
     </HomeStack.Navigator>
   );
 };

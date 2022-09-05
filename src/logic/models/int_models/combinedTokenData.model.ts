@@ -3,7 +3,7 @@ import { SvgProps } from 'react-native-svg';
 import { TokenNameListType } from './TokenList.model';
 export interface CombinedTokenDataEntry {
   key: string;
-  price: string;
+  price: string; //
   decimals: number;
   balance: string;
   name: string;

@@ -1,4 +1,4 @@
-import { Box, Center, Text, View } from 'native-base';
+import { Box, Center, Text } from 'native-base';
 import { Dimensions } from 'react-native';
 import { NumberPad } from '../../components/NumberPad';
 import { TxnBackButton } from '../../components/TxnBackButton';

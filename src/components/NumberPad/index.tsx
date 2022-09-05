@@ -28,9 +28,10 @@ export const NumberPad = () => {
   return (
     <Box width='full'>
       {numPadChars &&
-        numPadChars.map((subArray) => {
+        numPadChars.map((subArray, index) => {
           return (
             <Box
+              key={index}
               style={{
                 display: 'flex',
                 // backgroundColor: 'black',
@@ -43,8 +44,8 @@ export const NumberPad = () => {
               marginX='50'
             >
               {subArray &&
-                subArray.map((value) => {
-                  return <Box>{value}</Box>;
+                subArray.map((value, index) => {
+                  return <Box key={index}>{value}</Box>;
                 })}
             </Box>
           );

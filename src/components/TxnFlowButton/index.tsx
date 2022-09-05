@@ -2,19 +2,35 @@ import { Button, Text } from 'native-base';
 
 interface TxnFlowProps {
   payload: () => void;
+  margin?: string;
+  text?: string;
+  fontSize?: string;
+  width?: string;
 }
 
-export const TxnFlowButton = ({ payload }: TxnFlowProps) => {
+export const TxnFlowButton = ({
+  payload,
+  margin = 'auto',
+  text = 'Next',
+  fontSize = '26.35',
+  width = '115',
+}: TxnFlowProps) => {
   return (
-    <Button backgroundColor='primary.300' borderRadius={20} onPress={payload}>
+    <Button
+      maxWidth={width}
+      backgroundColor='primary.300'
+      borderRadius={20}
+      onPress={payload}
+      marginX={margin}
+    >
       <Text
         fontWeight={'semibold'}
-        fontSize='26.36'
+        fontSize={fontSize}
         paddingX='4'
         lineHeight={'30'}
         color='white'
       >
-        Next
+        {text}
       </Text>
     </Button>
   );

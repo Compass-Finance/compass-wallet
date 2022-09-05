@@ -1,4 +1,5 @@
 import * as errors from './Errors.model';
+import { SelectedTokenData } from './NewTxn.models';
 import { selectedToken } from './selectedToken.model';
 import {
   CleanedTokenData,
@@ -22,6 +23,7 @@ import { CleanedAlchemyTokenBalances } from './AlchemyTokenBalances.cleaned.mode
 import { CleanedCoinGeckoPrices } from './CoingeckoPrices.cleaned.model';
 
 export {
+  SelectedTokenData,
   selectedToken,
   IAssetsNavProps,
   CombinedTokenDataEntry,
