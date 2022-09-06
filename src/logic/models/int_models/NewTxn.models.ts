@@ -1,8 +1,9 @@
 export interface SelectedTokenData {
   price: string;
   decimals: number;
-  nativeBalance: string;
-  USDBalance: string;
+  nativeBalanceHex: string;
+  nativeBalanceReadable: number;
+  USDBalance: number;
   contractAddress: string;
   name: string;
 }

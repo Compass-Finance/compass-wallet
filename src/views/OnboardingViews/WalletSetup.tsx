@@ -1,4 +1,4 @@
-import { Box, View, Center, Text, Button, Spinner } from 'native-base';
+import { Box, Text, Flex } from 'native-base';
 import { ILandingNavProps } from '../../logic/models/int_models';
 import { ContainedButton } from '../../components/ContainedButton';
 import { BackButton } from '../../components/BackButton';
@@ -9,9 +9,11 @@ import { LoadingStore } from '../../logic/stores';
 import { reaction } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import { useEffect, useState } from 'react';
+import { Dimensions } from 'react-native';
 
 export const WalletSetup = observer(({ navigation }: ILandingNavProps) => {
   let [loading, setLoading] = useState(false);
+  const { height } = Dimensions.get('window');
 
   const loadingLogic = reaction(
     () => LoadingStore.loading,
@@ -41,40 +43,56 @@ export const WalletSetup = observer(({ navigation }: ILandingNavProps) => {
     navigation.navigate('RecoverWallet');
   };
   return (
-    <Box safeArea bgColor='background.100'>
-      <Center height='full' bgColor='#FFF5DA'>
-        <BackButton
-          // marginTop='0'
-          onPress={backButtonPayload}
-          marginRight='4/6'
-          marginBottom='1/5'
+    <Box safeAreaTop bgColor='background.100'>
+      <BackButton
+        // marginTop='0'
+        onPress={backButtonPayload}
+        marginRight={height < 800 ? '300' : '5/6'}
+        // marginBottom='1/5'
+      />
+      <Flex
+        // backgroundColor='primary.100'
+        height='full'
+        alignItems='center'
+        // style={{ display: 'flex', justifyContent: 'center' }}
+      >
+        {/* <Box backgroundColor='primary.100'> */}
+        <Text
+          marginTop={height < 800 ? 15 : 35}
+          lineHeight={'md'}
+          // color='primary.300'
+          fontSize='3xl'
+          marginBottom={height < 800 ? '200' : '550'}
+          fontWeight='semibold'
+        >
+          Wallet Setup
+        </Text>
+        {/* </Box> */}
+        <OutlinedButton
+          onPress={recoverWalletPayload}
+          text='Recover Your Wallet'
+          marginTop={height < 800 ? '200' : '0'}
+          // marginBottom='10'
         />
+        <ContainedButton
+          onPress={createWalletPayload}
+          marginTop='10'
+          text='Create Your Wallet'
+          disabled={LoadingStore.loading}
+          marginBottom='0'
+        />
+      </Flex>
+      {/* <Center height='full' bgColor='background.100'>
         {loading && (
           <>
             <Spinner />
           </>
         )}
         {!loading && (
-          <>
-            <Text fontSize='3xl' marginBottom='1/4' fontWeight='semibold'>
-              Wallet Setup
-            </Text>
-            <OutlinedButton
-              onPress={recoverWalletPayload}
-              text='Recover Your Wallet'
-              marginTop='4/6'
-              // marginBottom='10'
-            />
-            <ContainedButton
-              onPress={createWalletPayload}
-              marginTop='10'
-              text='Create Your Wallet'
-              disabled={LoadingStore.loading}
-              marginBottom='10'
-            />
-          </>
+          <> */}
+      {/* </>
         )}
-      </Center>
+      </Center> */}
     </Box>
   );
 });

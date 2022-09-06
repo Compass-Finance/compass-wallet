@@ -66,7 +66,7 @@ export const ButtonList = ({ array }: any) => {
                     }
                   }}
                 >
-                  <Text fontWeight='semibold' fontSize='sm'>
+                  <Text fontWeight='semibold' fontSize='xs'>
                     {v.word}
                   </Text>
                 </Button>

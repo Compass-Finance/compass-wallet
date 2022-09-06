@@ -1,8 +1,11 @@
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-get-random-values';
 import '@ethersproject/shims';
+import { useEffect } from 'react';
+import { loadedWalletActions } from './src/logic/actions';
 import { MasterStackRouter } from './src/routers/MasterRouter';
 import { extendTheme, NativeBaseProvider, View } from 'native-base';
+import { getValueFor } from './src/logic/utils';
 
 const config = {
   useSystemColorMode: false,
@@ -32,6 +35,16 @@ declare module 'native-base' {
 }
 
 export default function App() {
+  useEffect(() => {
+    const loadWalletIfNeeded = async () => {
+      const pk = await getValueFor('pk');
+      const realPk = await getValueFor('realPk');
+      if (pk !== '') {
+        await loadedWalletActions.loadWallet('mumbai');
+      }
+    };
+    loadWalletIfNeeded();
+  }, []);
   return (
     <NativeBaseProvider theme={theme}>
       <StatusBar style='dark' />

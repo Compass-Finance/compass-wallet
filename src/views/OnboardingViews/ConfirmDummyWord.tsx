@@ -1,23 +1,26 @@
 import {
-  Center,
-  View,
+  Button,
+  Flex,
   Text,
   TextArea,
   KeyboardAvoidingView,
 } from 'native-base';
 import { walletSetupActions } from '../../logic/actions';
-import { arrayEntry, ILandingNavProps } from '../../logic/models/int_models';
+import { ILandingNavProps } from '../../logic/models/int_models';
+import { Dimensions } from 'react-native';
 import { MnemonicGenStore } from '../../logic/stores';
 import { BackButton } from '../../components/BackButton';
 import { Keyboard, TouchableWithoutFeedback, Platform } from 'react-native';
 import { ButtonList } from '../../components/ButtonList';
 import { useState } from 'react';
 import { ContainedButton } from '../../components/ContainedButton';
-import { getValueFor, save } from '../../logic/utils';
+import { save } from '../../logic/utils';
+import { Wallet } from 'ethers';
+import { HDNode } from 'ethers/lib/utils';
 
 export const ConfirmDummyWord = ({ navigation }: ILandingNavProps) => {
-  const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0;
-
+  const keyboardVerticalOffset = Platform.OS === 'ios' ? 0 : 0;
+  const { height } = Dimensions.get('window');
   const backButtonPayload = () => {
     navigation.navigate('BackupMnemonic');
     walletSetupActions.moveBackwardToThirdWalletCreationStage();
@@ -25,23 +28,38 @@ export const ConfirmDummyWord = ({ navigation }: ILandingNavProps) => {
 
   const finishButtonPayload = async () => {
     navigation.navigate('FinishSetup');
-    save('pk', MnemonicGenStore.prodMnemonic);
-    // alert(`MNEMONIC SAVED =====> ${MnemonicGenStore.prodMnemonic} <=====`);
+    await save('pk', MnemonicGenStore.prodMnemonic);
+    const wallet = HDNode.fromMnemonic(MnemonicGenStore.prodMnemonic);
+    await save('realPk', wallet.privateKey);
   };
   const [isValidMnemonic, setIsValidMnemonic] = useState(false);
 
   return (
-    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss}>
-      <Center height='full' bgColor='background.100'>
+    <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
+      <Flex
+        height='full'
+        bgColor='background.100'
+        safeAreaTop
+        alignItems='center'
+      >
+        {/* <Flex> */}
+        <BackButton onPress={backButtonPayload} />
+        <Text
+          fontWeight='semibold'
+          fontSize='2xl'
+          textAlign='center'
+          marginTop={height < 800 ? '0' : '10'}
+          marginBottom={height < 800 ? '0' : '55'}
+        >
+          Select Your Dummy Word & Verify Your Real Word
+        </Text>
+        <ButtonList array={MnemonicGenStore.presentationDummyMnemonic} />
         <KeyboardAvoidingView
+          width='100%'
           behavior='position'
           keyboardVerticalOffset={keyboardVerticalOffset}
+          marginBottom={height < 800 ? '30' : '100'}
         >
-          <BackButton onPress={backButtonPayload} />
-          <Text fontWeight='bold' fontSize='2xl' textAlign='center'>
-            Select Your Dummy Word & Verify Your Real Word
-          </Text>
-          <ButtonList array={MnemonicGenStore.presentationDummyMnemonic} />
           <TextArea
             marginLeft='50'
             marginRight='50'
@@ -55,15 +73,13 @@ export const ConfirmDummyWord = ({ navigation }: ILandingNavProps) => {
             }}
             autoCapitalize={'none'}
             autoCorrect={true}
-            bgColor='#FFCC81'
-            // maxWidth='4/6'
+            bgColor='primary.300'
+            borderWidth={0}
+            placeholderTextColor='white'
+            // marginBottom
             maxHeight='35'
             totalLines={1}
-            multiline={false}
-            // marginBottom='2/4'
-            marginBottom='1/6'
             marginTop='10'
-            // PROD : 3/4
             placeholder='Put Your Real Word Here'
             autoCompleteType={undefined}
           />
@@ -83,7 +99,7 @@ export const ConfirmDummyWord = ({ navigation }: ILandingNavProps) => {
             />
           </>
         )}
-      </Center>
+      </Flex>
     </TouchableWithoutFeedback>
   );
 };

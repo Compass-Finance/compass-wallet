@@ -4,6 +4,7 @@ import { ConfirmTransaction } from '../views/TransactionViews/ConfirmTransaction
 import { SelectAddress } from '../views/TransactionViews/SelectAddress';
 import { SelectAmount } from '../views/TransactionViews/SelectAmount';
 import { TransactionSent } from '../views/TransactionViews/TransactionSent';
+import { ReceiveTokens } from '../views/TransactionViews/ReceiveTokens';
 
 const HomeStack = createNativeStackNavigator();
 
@@ -17,6 +18,7 @@ export const HomeStackRouter = () => {
       }}
     >
       <HomeStack.Screen name='HomeTabRouter' component={HomeTabRouter} />
+      <HomeStack.Screen name='ReceiveTokens' component={ReceiveTokens} />
       <HomeStack.Screen name='SelectAmountView' component={SelectAmount} />
       <HomeStack.Screen name='SelectAddressView' component={SelectAddress} />
       <HomeStack.Screen

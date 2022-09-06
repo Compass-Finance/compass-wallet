@@ -7,6 +7,7 @@ import { observer } from 'mobx-react-lite';
 import { RefreshControl } from 'react-native';
 import { wait } from '../../logic/utils';
 import { AssetSwipeOptions } from '../AssetsSwipeOptions';
+import { SelectedTokenData } from '../../logic/models/int_models';
 
 export const AssetChipList = observer(() => {
   const [refreshing, setRefreshing] = useState(false);

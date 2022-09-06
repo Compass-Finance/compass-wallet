@@ -38,6 +38,7 @@ export const TransactionSent = ({ navigation }: IAssetsNavProps) => {
       </Text>
       <Box marginY={height < 800 ? 180 : 250} />
       <TxnFlowButton
+        disabled={false}
         text='Go Home'
         fontSize='md'
         width='180'

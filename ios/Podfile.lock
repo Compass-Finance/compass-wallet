@@ -3,9 +3,16 @@ PODS:
   - DoubleConversion (1.1.6)
   - EXApplication (4.0.2):
     - ExpoModulesCore
+  - EXBarCodeScanner (11.2.1):
+    - EXImageLoader
+    - ExpoModulesCore
+    - ZXingObjC/OneD
+    - ZXingObjC/PDF417
   - EXClipboard (2.1.1):
     - ExpoModulesCore
   - EXConstants (13.0.2):
+    - ExpoModulesCore
+  - EXDevice (4.1.1):
     - ExpoModulesCore
   - EXErrorRecovery (3.0.5):
     - ExpoModulesCore
@@ -13,9 +20,14 @@ PODS:
     - ExpoModulesCore
   - EXFont (10.0.5):
     - ExpoModulesCore
+  - EXImageLoader (3.1.1):
+    - ExpoModulesCore
+    - React-Core
   - EXKeepAwake (10.0.2):
     - ExpoModulesCore
   - EXLocalAuthentication (12.1.1):
+    - ExpoModulesCore
+  - EXNotifications (0.14.1):
     - ExpoModulesCore
   - Expo (44.0.6):
     - ExpoModulesCore
@@ -246,8 +258,6 @@ PODS:
     - React-Core
   - react-native-safe-area-context (3.3.2):
     - React-Core
-  - react-native-wasm (0.1.3):
-    - React
   - react-native-webview (11.15.0):
     - React-Core
   - React-perflogger (0.64.3)
@@ -314,6 +324,34 @@ PODS:
     - React-cxxreact (= 0.64.3)
     - React-jsi (= 0.64.3)
     - React-perflogger (= 0.64.3)
+  - RNReanimated (2.3.3):
+    - DoubleConversion
+    - FBLazyVector
+    - FBReactNativeSpec
+    - glog
+    - RCT-Folly
+    - RCTRequired
+    - RCTTypeSafety
+    - React
+    - React-callinvoker
+    - React-Core
+    - React-Core/DevSupport
+    - React-Core/RCTWebSocket
+    - React-CoreModules
+    - React-cxxreact
+    - React-jsi
+    - React-jsiexecutor
+    - React-jsinspector
+    - React-RCTActionSheet
+    - React-RCTAnimation
+    - React-RCTBlob
+    - React-RCTImage
+    - React-RCTLinking
+    - React-RCTNetwork
+    - React-RCTSettings
+    - React-RCTText
+    - ReactCommon/turbomodule/core
+    - Yoga
   - RNScreens (3.10.2):
     - React-Core
     - React-RCTImage
@@ -323,18 +361,29 @@ PODS:
     - ExpoModulesCore
   - UMReactNativeAdapter (6.5.0):
     - ExpoModulesCore
+  - UMTaskManagerInterface (7.1.1):
+    - ExpoModulesCore
   - Yoga (1.14.0)
+  - ZXingObjC/Core (3.6.5)
+  - ZXingObjC/OneD (3.6.5):
+    - ZXingObjC/Core
+  - ZXingObjC/PDF417 (3.6.5):
+    - ZXingObjC/Core
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - EXApplication (from `../node_modules/expo-application/ios`)
+  - EXBarCodeScanner (from `../node_modules/expo-barcode-scanner/ios`)
   - EXClipboard (from `../node_modules/expo-clipboard/ios`)
   - EXConstants (from `../node_modules/expo-constants/ios`)
+  - EXDevice (from `../node_modules/expo-device/ios`)
   - EXErrorRecovery (from `../node_modules/expo-error-recovery/ios`)
   - EXFileSystem (from `../node_modules/expo-file-system/ios`)
   - EXFont (from `../node_modules/expo-font/ios`)
+  - EXImageLoader (from `../node_modules/expo-image-loader/ios`)
   - EXKeepAwake (from `../node_modules/expo-keep-awake/ios`)
   - EXLocalAuthentication (from `../node_modules/expo-local-authentication/ios`)
+  - EXNotifications (from `../node_modules/expo-notifications/ios`)
   - Expo (from `../node_modules/expo/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core/ios`)
   - EXSecureStore (from `../node_modules/expo-secure-store/ios`)
@@ -360,7 +409,6 @@ DEPENDENCIES:
   - react-native-quick-base64 (from `../node_modules/react-native-quick-base64`)
   - react-native-quick-crypto (from `../node_modules/react-native-quick-crypto`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
-  - react-native-wasm (from `../node_modules/react-native-wasm`)
   - react-native-webview (from `../node_modules/react-native-webview`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -374,36 +422,47 @@ DEPENDENCIES:
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - "UMCore (from `../node_modules/@unimodules/core/ios`)"
   - "UMReactNativeAdapter (from `../node_modules/@unimodules/react-native-adapter/ios`)"
+  - UMTaskManagerInterface (from `../node_modules/unimodules-task-manager-interface/ios`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   trunk:
     - boost-for-react-native
     - OpenSSL-Universal
+    - ZXingObjC
 
 EXTERNAL SOURCES:
   DoubleConversion:
     :podspec: "../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec"
   EXApplication:
     :path: "../node_modules/expo-application/ios"
+  EXBarCodeScanner:
+    :path: "../node_modules/expo-barcode-scanner/ios"
   EXClipboard:
     :path: "../node_modules/expo-clipboard/ios"
   EXConstants:
     :path: "../node_modules/expo-constants/ios"
+  EXDevice:
+    :path: "../node_modules/expo-device/ios"
   EXErrorRecovery:
     :path: "../node_modules/expo-error-recovery/ios"
   EXFileSystem:
     :path: "../node_modules/expo-file-system/ios"
   EXFont:
     :path: "../node_modules/expo-font/ios"
+  EXImageLoader:
+    :path: "../node_modules/expo-image-loader/ios"
   EXKeepAwake:
     :path: "../node_modules/expo-keep-awake/ios"
   EXLocalAuthentication:
     :path: "../node_modules/expo-local-authentication/ios"
+  EXNotifications:
+    :path: "../node_modules/expo-notifications/ios"
   Expo:
     :path: "../node_modules/expo/ios"
   ExpoModulesCore:
@@ -450,8 +509,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-quick-crypto"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
-  react-native-wasm:
-    :path: "../node_modules/react-native-wasm"
   react-native-webview:
     :path: "../node_modules/react-native-webview"
   React-perflogger:
@@ -478,6 +535,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/runtimeexecutor"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNReanimated:
+    :path: "../node_modules/react-native-reanimated"
   RNScreens:
     :path: "../node_modules/react-native-screens"
   RNSVG:
@@ -486,6 +545,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@unimodules/core/ios"
   UMReactNativeAdapter:
     :path: "../node_modules/@unimodules/react-native-adapter/ios"
+  UMTaskManagerInterface:
+    :path: "../node_modules/unimodules-task-manager-interface/ios"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -493,13 +554,17 @@ SPEC CHECKSUMS:
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cf9b38bf0b2d048436d9a82ad2abe1404f11e7de
   EXApplication: 54fe5bd6268d697771645e8f1aef8b806a65247a
+  EXBarCodeScanner: e5ca0062d8ad1c4c1d2e386d6a308d5a32213020
   EXClipboard: 8123fcda680538bb0e1f4e6511106553e52d3760
   EXConstants: 88bf79622fbd9b476c96d8ec57fe97ca44fe8e3c
+  EXDevice: aa5e1edbf350481a948c3258b750dd11e6e4579e
   EXErrorRecovery: b0d7582714a2cc896e94a2308a356f94dbf14ef7
   EXFileSystem: 08a3033ac372b6346becf07839e1ccef26fb1058
   EXFont: 2597c10ac85a69d348d44d7873eccf5a7576ef5e
+  EXImageLoader: 347b72c2ec2df65120ccec40ea65a4c4f24317ff
   EXKeepAwake: bf48d7f740a5cd2befed6cf9a49911d385c6c47d
   EXLocalAuthentication: 3c5f368ee954b79c3778158eb8000cbce4e2f8a2
+  EXNotifications: a7d582fa800d77f4a75bd22d52e84e2fbcee26df
   Expo: 534e51e607aba8229293297da5585f4b26f50fa1
   ExpoModulesCore: c9438f6add0fb7b04b7c64eb97a833d2752a7834
   EXSecureStore: b80c74c5ee29d0160c2aace3fd9a24a5edc20015
@@ -524,7 +589,6 @@ SPEC CHECKSUMS:
   react-native-quick-base64: e657e9197e61b60a9dec49807843052b830da254
   react-native-quick-crypto: b4e02e045076ea6bbcb9f3d2d53b427328bbc1cb
   react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
-  react-native-wasm: 6bb5d9915e8d4b9b7d080247d3fbf7354a582695
   react-native-webview: e89bf2dba26a04cda967814df3ed1be99f291233
   React-perflogger: cc76a4254d19640f1d8ad1c66fdee800414b805c
   React-RCTActionSheet: 7448f049318d8d7e8a9a1ebb742ada721757eea8
@@ -538,11 +602,14 @@ SPEC CHECKSUMS:
   React-RCTVibration: c7f845861e79eae13dc1e8217a3cf47a3945b504
   React-runtimeexecutor: 493d9abb8b23c3f84e19ae221eeba92cadcb70dc
   ReactCommon: 8fea6422328e2fc093e25c9fac67adbcf0f04fb4
+  RNReanimated: 0e5ef4a7e4e79f84efbe5b40771c31044c51e7d0
   RNScreens: d6da2b9e29cf523832c2542f47bf1287318b1868
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   UMCore: 2aa664ed1a9c9e31c67450aa307e9db9f83d1eeb
   UMReactNativeAdapter: 25564671c9715a34d9de0fbba4e857d0e88d96be
+  UMTaskManagerInterface: 3184c93ecc290bd422c6e344badc89b601e9c29b
   Yoga: e6ecf3fa25af9d4c87e94ad7d5d292eedef49749
+  ZXingObjC: fdbb269f25dd2032da343e06f10224d62f537bdb
 
 PODFILE CHECKSUM: c4082a92ad7b77410a77664d82ef9a0a0c52c14e
 

@@ -16,6 +16,7 @@ type WalletSetupViews = {
 
 type TransactionViews = {
   HomeTabRouter: any;
+  ReceiveTokens: any;
   SelectAmountView: any;
   SelectAddressView: any;
   ConfirmTransactionView: any;

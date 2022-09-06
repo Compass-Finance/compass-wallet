@@ -8,11 +8,13 @@ import { Ionicons } from '@expo/vector-icons';
 interface mnemonicProps {
   height: string;
   onPress: () => void;
+  YMargin: string;
 }
 
-export const MnemonicCover = ({ height, onPress }: mnemonicProps) => {
+export const MnemonicCover = ({ height, onPress, YMargin }: mnemonicProps) => {
   return (
     <Box
+      marginY={YMargin}
       borderWidth={4}
       borderRadius={10}
       borderColor='primary.100'

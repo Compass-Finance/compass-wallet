@@ -4,22 +4,19 @@ import { IAssetsNavProps } from '../../logic/models/int_models';
 import { useEffect } from 'react';
 import { reaction } from 'mobx';
 import { AssetsStore } from '../../logic/stores';
+import { newTxnActions } from '../../logic/actions';
 
 export const AssetsView = ({ navigation }: IAssetsNavProps) => {
-  // What happens now?
-  // Well now you'll want to set up a reaction where the bulk of the logic will
-  // be and then you'll want to put it in a useEffect
+  // where should
 
   const navigationReaction = reaction(
     () => AssetsStore.selectedTokenData,
     () => {
       if (AssetsStore.selectedTokenData.sendOrReceive === 'receive') {
-        // receive navigation action
-        alert('We would navigate now');
+        navigation.navigate('ReceiveTokens');
       } else {
-        navigation.navigate('SelectAmountView', {
-          selectedToken: AssetsStore.selectedTokenData.selectedTokenName,
-        });
+        newTxnActions.populateSelectedTokenObj();
+        navigation.navigate('SelectAmountView');
       }
     }
   );

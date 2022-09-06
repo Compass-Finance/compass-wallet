@@ -1,4 +1,4 @@
-import { Text, View, Center, Button, Spinner, Box } from 'native-base';
+import { Text, View, Center, Button, Spinner, Box, Flex } from 'native-base';
 import { ILandingNavProps } from '../../logic/models/int_models';
 import { walletSetupActions } from '../../logic/actions';
 import { BackButton } from '../../components/BackButton';
@@ -8,8 +8,10 @@ import { MnemonicGenStore } from '../../logic/stores';
 import { ContainedButton } from '../../components/ContainedButton';
 import { useState, useEffect } from 'react';
 import { reaction } from 'mobx';
+import { Dimensions } from 'react-native';
 
 export const GenerateMnemonic = ({ navigation }: ILandingNavProps) => {
+  const { height } = Dimensions.get('window');
   const backButtonPayload = () => {
     walletSetupActions.moveBackwardToSecondUndecidedStage();
     navigation.navigate('WalletSetup');
@@ -43,10 +45,10 @@ export const GenerateMnemonic = ({ navigation }: ILandingNavProps) => {
 
   return (
     <Box safeArea bgColor='background.100'>
-      <Center height='full' bgColor='#FFF5DA'>
+      <Flex height='full' bgColor='background.100' alignItems='center'>
         <BackButton onPress={backButtonPayload} />
         <Text
-          fontSize='2xl'
+          fontSize={'2xl'}
           fontWeight='semibold'
           marginTop='8'
           // marginBottom='1/6'
@@ -57,7 +59,8 @@ export const GenerateMnemonic = ({ navigation }: ILandingNavProps) => {
         {mnemonicIsVisible && (
           <Text
             textAlign='center'
-            paddingTop='25'
+            paddingTop='15'
+            fontSize={height < 800 ? 'xs' : 'sm'}
             paddingLeft='25'
             paddingRight='25'
             bold={true}
@@ -71,6 +74,7 @@ export const GenerateMnemonic = ({ navigation }: ILandingNavProps) => {
         )}
         {!mnemonicIsVisible && (
           <MnemonicCover
+            YMargin={height < 800 ? '10' : '55'}
             height='2/5'
             onPress={() => {
               setMnemonicIsVisible(true);
@@ -78,12 +82,12 @@ export const GenerateMnemonic = ({ navigation }: ILandingNavProps) => {
           />
         )}
         <ContainedButton
-          marginTop='1/6'
+          marginTop={height < 800 ? '10' : '180'}
           text='Next Step'
           onPress={nextButtonPayload}
           disabled={!wordState}
         />
-      </Center>
+      </Flex>
     </Box>
   );
 };

@@ -1,5 +1,5 @@
 import { arrayEntry, ILandingNavProps } from '../../logic/models/int_models';
-import { Box, Text, View, Center } from 'native-base';
+import { Box, Text, View, Center, Flex } from 'native-base';
 import { walletSetupActions } from '../../logic/actions';
 import { BackButton } from '../../components/BackButton';
 import { MnemonicGenStore } from '../../logic/stores';
@@ -8,8 +8,10 @@ import { ContainedButton } from '../../components/ContainedButton';
 import { reaction } from 'mobx';
 import { useEffect, useState } from 'react';
 import { observer } from 'mobx-react-lite';
+import { Dimensions } from 'react-native';
 
 export const InsertDummyWord = observer(({ navigation }: ILandingNavProps) => {
+  const { height } = Dimensions.get('window');
   const backButtonPayload = () => {
     walletSetupActions.moveBackwardToFirstWalletCreationStage();
     navigation.navigate('GenerateMnemonic');
@@ -17,7 +19,7 @@ export const InsertDummyWord = observer(({ navigation }: ILandingNavProps) => {
     MnemonicGenStore.selectDummyWord('');
   };
 
-  const [replacementWordIsChosen, setReplacementWord] = useState(false);
+  const [_, setReplacementWord] = useState(false);
 
   const replacementWordIsSelected = reaction(
     () => MnemonicGenStore.replacementWordIsSelected,
@@ -40,15 +42,16 @@ export const InsertDummyWord = observer(({ navigation }: ILandingNavProps) => {
     navigation.navigate('BackupMnemonic');
     MnemonicGenStore.generateFakeCompositeMnemonic();
   };
-  // I think there's a lot of wasted space here we could implement a simple check here
-  // so that a person does the memorization
   return (
     <Box safeArea bgColor='background.100'>
-      <Center height='full' bgColor='#FFF5Da'>
+      <Flex alignItems='center' height='full' bgColor='background.100'>
         <BackButton onPress={backButtonPayload} />
         <Text
+          marginTop={height < 800 ? '50' : '100'}
+          marginBottom={height < 800 ? '25' : '50'}
           fontSize='3xl'
-          marginTop='1/5'
+          fontWeight='semibold'
+          // marginTop='1/5'
           paddingBottom='15'
           textAlign='center'
         >
@@ -56,13 +59,13 @@ export const InsertDummyWord = observer(({ navigation }: ILandingNavProps) => {
         </Text>
         <ButtonList array={MnemonicGenStore.replacementMnemonicFragment} />
         <ContainedButton
-          marginTop='3/5'
+          marginTop={height < 800 ? '3/5' : '320'}
           text='Confirm Mnemonic'
           onPress={nextButtonPayload}
           disabled={!MnemonicGenStore.replacementWordIsSelected}
         />
         <Box marginBottom='55' />
-      </Center>
+      </Flex>
     </Box>
   );
 });

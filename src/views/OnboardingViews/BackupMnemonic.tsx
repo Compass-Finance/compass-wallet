@@ -1,29 +1,26 @@
 import {
-  Center,
   Button,
   Text,
   Box,
   Modal,
   Checkbox,
-  KeyboardAvoidingView,
+  useToast,
+  Flex,
 } from 'native-base';
-import { Platform } from 'react-native';
 import { ILandingNavProps, arrayEntry } from '../../logic/models/int_models';
 import { BackButton } from '../../components/BackButton';
 import { MnemonicGenStore } from '../../logic/stores';
 import { useState } from 'react';
 import { ContainedButton } from '../../components/ContainedButton';
-import { OutlinedButton } from '../../components/OutlinedButton';
 import { setString } from 'expo-clipboard';
 import { wait } from '../../logic/utils';
-import Toast from 'react-native-root-toast';
+import { Dimensions } from 'react-native';
 
 export const BackupMnemonic = ({ navigation }: ILandingNavProps) => {
-  const keyboardVerticalOffset = Platform.OS === 'ios' ? 40 : 0;
-
-  const [snackBool, setSnackBool] = useState(false);
+  const { height } = Dimensions.get('window');
   const [showModal, setShowModal] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const toast = useToast();
 
   const forwardButtonPayload = () => {
     navigation.navigate('ConfirmDummyWord');
@@ -47,8 +44,11 @@ export const BackupMnemonic = ({ navigation }: ILandingNavProps) => {
           : `Hint: ${MnemonicGenStore.hint} \n \n`
       } Dummy Mnemonic: \n ${mnemonicStr}`
     );
-    setSnackBool(true);
-    wait(2000).then(() => setSnackBool(false));
+    toast.show({
+      title: 'Mnemonic Copied ✅',
+      placement: 'bottom',
+    });
+    wait(1350).then(() => toast.closeAll());
   };
   const backwardButtonPayload = () => {
     navigation.navigate('InsertDummyWord');
@@ -56,87 +56,67 @@ export const BackupMnemonic = ({ navigation }: ILandingNavProps) => {
 
   return (
     <Box safeArea backgroundColor='background.100'>
-      <Center height='full' bgColor='background.100'>
-        <KeyboardAvoidingView
-          behavior='position'
-          keyboardVerticalOffset={keyboardVerticalOffset}
+      <Flex height='full' bgColor='background.100' alignItems='center'>
+        <BackButton marginTop='25' onPress={backwardButtonPayload} />
+        <Text
+          fontSize='3xl'
+          fontWeight='medium'
+          marginTop='7'
+          textAlign='center'
         >
-          <BackButton marginTop='25' onPress={backwardButtonPayload} />
-          <Text fontSize='3xl' marginTop='7' textAlign='center'>
-            Backup your Mnemonic
+          Backup your Mnemonic
+        </Text>
+        <Box
+          marginTop={height < 800 ? 5 : 79}
+          marginBottom={5}
+          borderColor='secondary.100'
+          borderWidth='7'
+          marginX='1'
+          padding={height < 800 ? '3' : '5'}
+        >
+          <Text>1. Copy your phrase with the button below</Text>
+          <Text>2. Go to your notes app and paste it a new note.</Text>
+          <Text>3. Lock the note.</Text>
+          <Text>
+            4. Think of a ridiculous sentence with your fake and real word.
           </Text>
-          {/* <Text
-            fontSize='xl'
-            bold={true}
-            marginTop='5'
-            marginBottom='3'
-            textAlign='center'
-          >
-            Steps
-          </Text> */}
-          <Box
-            marginTop={5}
-            marginBottom={5}
-            borderColor='secondary.100'
-            borderWidth='7'
-            padding='4'
-          >
-            <Text>1. Copy your phrase with the button below</Text>
-            <Text>2. Go to your notes app and paste it a new note.</Text>
-            <Text>3. Lock the note.</Text>
-            <Text>
-              4. Think of a ridiculous sentence with your fake and real word.
-            </Text>
-            <Text fontSize='sm' textAlign={'center'}>
-              NOTE: If it's not ridiculous you won't remember it.
-            </Text>
-          </Box>
-          <Modal
-            isOpen={showModal}
-            onClose={() => setShowModal(false)}
-            size='lg'
-          >
-            <Modal.Content bgColor='background.100'>
-              <Modal.CloseButton
-                onPress={() => {
-                  setShowModal(false);
-                }}
-              />
-              <Modal.Header
-                bgColor='background.100'
-                borderBottomColor='primary.100'
-                borderBottomWidth='2'
-              >
-                An Example
-              </Modal.Header>
-              <Modal.Body padding='3'>
-                <Text fontSize='md'>{`Fake Word: Deer \n \nReal Word: Defense`}</Text>
-                <Text fontSize='md'>{`\n Sentence: \n \n The Deer talked about defense spending in the Pentagon.`}</Text>
-                {/* <Text fontSize='md'>{`\n Pretty hard to forget, right? Think of something like that.`}</Text> */}
-              </Modal.Body>
-            </Modal.Content>
-          </Modal>
-          <Button
-            maxWidth='2/4'
-            marginLeft='185'
-            marginRight='5'
-            bgColor='primary.100'
-            onPress={() => {
-              setShowModal(true);
-            }}
-          >
-            <Text fontSize='sm' bold={true}>
-              Example Sentence
-            </Text>
-          </Button>
-        </KeyboardAvoidingView>
-        {/* <OutlinedButton
-          marginTop='25'
-          text='Copy Mnemonic'
-          // marginBottom=''
-          onPress={copyButtonPayload}
-        /> */}
-
+          <Text fontSize='sm' textAlign={'center'}>
+            NOTE: If it's not ridiculous you won't remember it.
+          </Text>
+        </Box>
+        <Modal isOpen={showModal} onClose={() => setShowModal(false)} size='lg'>
+          <Modal.Content bgColor='background.100'>
+            <Modal.CloseButton
+              onPress={() => {
+                setShowModal(false);
+              }}
+            />
+            <Modal.Header
+              bgColor='background.100'
+              borderBottomColor='primary.100'
+              borderBottomWidth='2'
+            >
+              An Example
+            </Modal.Header>
+            <Modal.Body padding='3'>
+              <Text fontSize='md'>{`Fake Word: Deer \n \nReal Word: Defense`}</Text>
+              <Text fontSize='md'>{`\n Sentence: \n \n The Deer talked about defense spending in the Pentagon.`}</Text>
+            </Modal.Body>
+          </Modal.Content>
+        </Modal>
+        <Button
+          maxWidth='2/4'
+          marginLeft={height < 800 ? '205' : '240'}
+          // marginRight='5'
+          bgColor='primary.100'
+          onPress={() => {
+            setShowModal(true);
+          }}
+        >
+          <Text fontSize='sm' bold={true}>
+            Example Sentence
+          </Text>
+        </Button>
         <Checkbox
           value={''}
           isChecked={isChecked}
@@ -144,32 +124,29 @@ export const BackupMnemonic = ({ navigation }: ILandingNavProps) => {
           colorScheme='green'
           marginLeft='5'
           marginRight='10'
-          marginTop='35'
+          marginTop={height < 800 ? '75' : '215'}
           // marginBottom='35'
         >
-          <Text bold={true} fontSize='md'>
+          <Text
+            paddingY={height < 800 ? 0 : '5'}
+            paddingX={height < 800 ? 0 : 2}
+            fontWeight={'semibold'}
+            fontSize={height < 800 ? 'sm' : 'sm'}
+            textAlign='center'
+          >
             I have backed up my dummy mnemonic to the cloud and I understand
             that if I don't remember my real word, all funds will be lost.
           </Text>
         </Checkbox>
-        <Toast
-          backgroundColor='black'
-          // opacity={10}
-          // textColor='green'
-          position={630}
-          visible={snackBool}
-        >
-          Mnemonic Copied!
-        </Toast>
         <ContainedButton
-          marginTop='1/5'
+          marginTop={height < 800 ? '55' : ' 17'}
           // marginBottom='55'
           // disabled={!isChecked}
           text={isChecked ? 'Next Step' : 'Copy Mnemonic'}
           onPress={isChecked ? forwardButtonPayload : copyButtonPayload}
         />
         <Box marginBottom='15' />
-      </Center>
+      </Flex>
     </Box>
   );
 };

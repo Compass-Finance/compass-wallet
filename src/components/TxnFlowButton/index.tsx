@@ -1,7 +1,9 @@
 import { Button, Text } from 'native-base';
+import { observer } from 'mobx-react-lite';
 
 interface TxnFlowProps {
   payload: () => void;
+  disabled?: boolean;
   margin?: string;
   text?: string;
   fontSize?: string;
@@ -9,6 +11,7 @@ interface TxnFlowProps {
 }
 
 export const TxnFlowButton = ({
+  disabled = true,
   payload,
   margin = 'auto',
   text = 'Next',
@@ -17,7 +20,9 @@ export const TxnFlowButton = ({
 }: TxnFlowProps) => {
   return (
     <Button
+      disabled={disabled}
       maxWidth={width}
+      opacity={disabled === true ? 50 : 100}
       backgroundColor='primary.300'
       borderRadius={20}
       onPress={payload}

@@ -1,12 +1,47 @@
-import { Box, Center, Text } from 'native-base';
+import { Box, Center, Text, Select } from 'native-base';
 import { Dimensions } from 'react-native';
 import { NumberPad } from '../../components/NumberPad';
+import { TxnAmount } from '../../components/TxnAmount';
 import { TxnBackButton } from '../../components/TxnBackButton';
 import { TxnFlowButton } from '../../components/TxnFlowButton';
 import { IAssetsNavProps } from '../../logic/models/int_models';
-// import NumberPad, { Display, Input } from 'react-native-numpad';
+import { useState } from 'react';
+import { newTxnActions } from '../../logic/actions';
+import { NewTransactionStore } from '../../logic/stores';
+import { reaction } from 'mobx';
+import { toBaseUnit } from '../../logic/utils';
+import { observer } from 'mobx-react-lite';
 
-export const SelectAmount = ({ navigation }: IAssetsNavProps) => {
+export const SelectAmount = observer(({ navigation }: IAssetsNavProps) => {
+  // how we need to make this page reactive
+  //
+
+  const [isValidAmount, setIsValidAmount] = useState(true);
+
+  reaction(
+    // so what do we want to watch?
+    // well we want to watch the string balance
+    () => NewTransactionStore.hrTransferAmount,
+    () => {
+      const humanReadableTransferInput = Number(
+        NewTransactionStore.hrTransferAmount
+      );
+      const wholeTokenBalance =
+        NewTransactionStore.selectedTokenData.nativeBalanceReadable;
+      // for now just check if the balance
+      if (
+        humanReadableTransferInput <= wholeTokenBalance &&
+        humanReadableTransferInput > 0
+      ) {
+        console.log('is a valid amount');
+        setIsValidAmount(false);
+      } else {
+        setIsValidAmount(true);
+        console.log(`isn't a valid amount`);
+      }
+    }
+  );
+
   const { height } = Dimensions.get('window');
   return (
     <Box
@@ -28,34 +63,26 @@ export const SelectAmount = ({ navigation }: IAssetsNavProps) => {
           marginTop={height < 800 ? 10 : 100}
           marginBottom='30'
         >
-          <Text
-            lineHeight={30}
-            opacity={75}
-            fontSize='3xl'
-            color='white'
-            fontWeight='bold'
-          >
-            0 USD
-          </Text>
-          <Text
-            lineHeight={60}
-            padding='0'
-            margin='0'
-            fontSize='6xl'
-            color='white'
-            fontWeight='bold'
-          >
-            0 DAI
-          </Text>
+          <TxnAmount />
         </Box>
         <NumberPad />
         <Box marginTop={47} />
         <TxnFlowButton
+          disabled={isValidAmount}
           payload={() => {
+            const formattedAmount = toBaseUnit(
+              NewTransactionStore.hrTransferAmount,
+              NewTransactionStore.selectedTokenData.decimals
+            );
+            newTxnActions.setTxnReadyTransferAmt(formattedAmount);
+            // console.log(
+            //   NewTransactionStore.txnReadyTransferAmt,
+            //   '<==== Production transfer amount'
+            // );
             navigation.navigate('SelectAddressView', {});
           }}
         />
       </Center>
     </Box>
   );
-};
+});

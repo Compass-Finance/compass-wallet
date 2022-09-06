@@ -1,11 +1,31 @@
-import { Text, View, Box } from 'native-base';
+import { Wallet, providers } from 'ethers';
+import { Text, Box } from 'native-base';
+import { useEffect } from 'react';
 import { Dimensions } from 'react-native';
 import { TxnBackButton } from '../../components/TxnBackButton';
 import { TxnFlowButton } from '../../components/TxnFlowButton';
 import { IAssetsNavProps } from '../../logic/models/int_models';
+import { LoadedWalletStore, NewTransactionStore } from '../../logic/stores';
+import { getValueFor, sendTokens } from '../../logic/utils';
+import { useState } from 'react';
+import { HDNode } from 'ethers/lib/utils';
 
 export const ConfirmTransaction = ({ navigation }: IAssetsNavProps) => {
   const { height } = Dimensions.get('window');
+  const transferInput = NewTransactionStore.hrTransferAmount;
+  const tokenPrice = NewTransactionStore.selectedTokenData.price;
+  const tokenName = NewTransactionStore.selectedTokenData.name;
+  const recipientAddress = NewTransactionStore.txnReadyAddress;
+  const contractAddress = NewTransactionStore.selectedTokenData.contractAddress;
+  const txnReadyAmount = NewTransactionStore.txnReadyTransferAmt;
+  const [wallet, setWallet] = useState('');
+  useEffect(() => {
+    const something = async () => {
+      const pk = await getValueFor('realPk');
+      console.log(pk, '<===== pk top');
+    };
+    something();
+  });
   return (
     <Box safeAreaTop safeAreaBottom backgroundColor='primary.100' height='full'>
       <TxnBackButton
@@ -40,10 +60,15 @@ export const ConfirmTransaction = ({ navigation }: IAssetsNavProps) => {
           color='white'
           fontSize='xl'
         >
-          Amount: 54.32 DAI / 53.24 USD
+          Amount: {transferInput} {tokenName.toUpperCase()} /{' '}
+          {(Number(transferInput) * Number(tokenPrice)).toFixed(2)} USD
         </Text>
         <Text fontWeight='semibold' color='white' fontSize='xl'>
-          To: 0xB...D9C9
+          To:{' '}
+          {`${recipientAddress.substring(0, 5)}...${recipientAddress.substring(
+            38,
+            42
+          )}`}
         </Text>
         <Text
           paddingBottom={25}
@@ -51,14 +76,31 @@ export const ConfirmTransaction = ({ navigation }: IAssetsNavProps) => {
           fontWeight='bold'
           fontSize={height < 800 ? '2xs' : 'xs'}
         >
-          0xB8d382c1696e93f641008Da345991E967922D9C9
+          {NewTransactionStore.txnReadyAddress}
         </Text>
       </Box>
       <Box height={height < 800 ? 220 : 350} />
       <TxnFlowButton
         text='Send Transaction'
-        payload={() => {
-          navigation.navigate('TransactionSent');
+        disabled={false}
+        payload={async () => {
+          try {
+            const pk = await getValueFor('pk');
+            const hdNode = HDNode.fromMnemonic(pk);
+            const jsonRpc = new providers.JsonRpcBatchProvider(
+              LoadedWalletStore.maticRPC
+            );
+            const wallet = new Wallet(hdNode.privateKey).connect(jsonRpc);
+            sendTokens(
+              contractAddress,
+              txnReadyAmount,
+              recipientAddress,
+              wallet
+            );
+            navigation.navigate('TransactionSent');
+          } catch (e) {
+            alert(e);
+          }
         }}
         fontSize='lg'
         width='210'

@@ -1,10 +1,8 @@
 import { BigNumber } from 'ethers';
-import { Box, Flex, Text, Spacer, Pressable } from 'native-base';
+import { Box, Flex, Text, Pressable } from 'native-base';
 import { TokenBalanceFormatter } from '../../logic/utils';
 import { CombinedTokenDataEntry } from '../../logic/models/int_models';
-import { SwipeListView, SwipeRow } from 'react-native-swipe-list-view';
 import { Dimensions } from 'react-native';
-// import { TokenBalanceFormatter } from '../../logic/utils';
 
 export const AssetChip = ({
   price,

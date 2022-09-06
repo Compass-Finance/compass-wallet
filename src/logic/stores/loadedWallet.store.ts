@@ -5,6 +5,8 @@ import Constants from 'expo-constants';
 export class LoadedWalletStore {
   @observable pk: string = '';
 
+  @observable walletHasBeenLoaded: boolean = false;
+
   @observable alchemyConfig: AlchemyConfig = {} as AlchemyConfig;
 
   @observable rpcUrlOrApiKey: string = '';
@@ -22,10 +24,9 @@ export class LoadedWalletStore {
       this.pk = Constants.manifest?.extra?.GANACHE_ACCT_1_PK || '';
       this.rpcUrlOrApiKey = Constants.manifest?.extra?.GANACHE_RPC_URL || '';
     } else if (network === 'mumbai') {
-      this.rpcUrlOrApiKey =
-        Constants.manifest?.extra?.ALCHEMY_API_KEY ||
-        'Y9KqKr26e9qv2Jv54F0zQclK8CDFhn8Y';
+      this.rpcUrlOrApiKey = Constants.manifest?.extra?.ALCHEMY_API_KEY;
     }
+    this.walletHasBeenLoaded = true;
   }
 
   @action setPk(pk: string) {
