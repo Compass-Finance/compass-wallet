@@ -39,10 +39,11 @@ export default function App() {
   useEffect(() => {
     const loadWalletIfNeeded = async () => {
       const pk = await getValueFor('pk');
-      const realPk = await getValueFor('realPk');
+      // const realPk = await getValueFor('realPk');
       if (pk !== '') {
-        await authenticateAsync();
-        await loadedWalletActions.loadWallet('mumbai');
+        await authenticateAsync().then(async () => {
+          await loadedWalletActions.loadWallet('mumbai');
+        });
       }
     };
     loadWalletIfNeeded();
