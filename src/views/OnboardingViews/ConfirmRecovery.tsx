@@ -4,6 +4,7 @@ import {
   View,
   TextArea,
   KeyboardAvoidingView,
+  Input,
 } from 'native-base';
 import { Keyboard, TouchableWithoutFeedback, Platform } from 'react-native';
 import { BackButton } from '../../components/BackButton';
@@ -47,7 +48,8 @@ export const ConfirmRecovery = ({ navigation }: ILandingNavProps) => {
         >
           <BackButton onPress={backButtonPayload} />
           <ButtonList array={RecoverWalletStore.presentationMnemonic} />
-          <TextArea
+          <Input
+            borderWidth={0}
             selectTextOnFocus={true}
             autoCapitalize='none'
             onChangeText={(text: string) => {
@@ -60,7 +62,9 @@ export const ConfirmRecovery = ({ navigation }: ILandingNavProps) => {
                 : setButtonIsDisabled(false);
               // const isValid = '';
             }}
-            bgColor='secondary.100'
+            bgColor='primary.300'
+            placeholder='Your Dummy Word Goes Here...'
+            placeholderTextColor='white'
             marginLeft='50'
             marginRight='50'
             maxHeight='35'
