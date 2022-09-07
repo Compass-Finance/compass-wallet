@@ -20,15 +20,19 @@ export default {
       resizeMode: 'contain',
       backgroundColor: '#ffffff',
     },
+    runtimeVersion: '1.0.0',
     updates: {
-      fallbackToCacheTimeout: 0,
+      // fallbackToCacheTimeout: 0,
+      url: 'https://u.expo.dev/3dd15df4-c2fe-4c5b-b803-f3cd4f2e8f70',
     },
     assetBundlePatterns: ['**/*'],
     ios: {
+      // runtimeVersion: '1.0.0',
       supportsTablet: true,
       bundleIdentifier: 'xyz.compass.fi.compass.wallet.v1',
     },
     android: {
+      // runtimeVersion: '1.0.0',
       adaptiveIcon: {
         foregroundImage: './assets/adaptive-icon.png',
         backgroundColor: '#FFFFFF',
