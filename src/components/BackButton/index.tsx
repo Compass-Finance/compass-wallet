@@ -16,7 +16,7 @@ export const BackButton = ({
       onPress={() => onPress()}
       // marginTop={height < 800 ? 0 : 0}
       // marginBottom={marginBottom}
-      marginRight={height < 800 ? '290 ' : '330'}
+      marginRight={height < 800 ? '290 ' : '300'}
       leftIcon={<Ionicons name='chevron-back' size={30} color='#FF8989' />}
       style={{ backgroundColor: 'transparent' }}
     >

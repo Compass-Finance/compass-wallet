@@ -4,6 +4,7 @@ import {
   Text,
   TextArea,
   KeyboardAvoidingView,
+  Input,
 } from 'native-base';
 import { walletSetupActions } from '../../logic/actions';
 import { ILandingNavProps } from '../../logic/models/int_models';
@@ -43,24 +44,24 @@ export const ConfirmDummyWord = ({ navigation }: ILandingNavProps) => {
         alignItems='center'
       >
         {/* <Flex> */}
-        <BackButton onPress={backButtonPayload} />
-        <Text
-          fontWeight='semibold'
-          fontSize='2xl'
-          textAlign='center'
-          marginTop={height < 800 ? '0' : '10'}
-          marginBottom={height < 800 ? '0' : '55'}
-        >
-          Select Your Dummy Word & Verify Your Real Word
-        </Text>
-        <ButtonList array={MnemonicGenStore.presentationDummyMnemonic} />
         <KeyboardAvoidingView
           width='100%'
           behavior='position'
           keyboardVerticalOffset={keyboardVerticalOffset}
-          marginBottom={height < 800 ? '30' : '100'}
+          marginBottom={height < 800 ? '30' : '50'}
         >
-          <TextArea
+          <BackButton onPress={backButtonPayload} />
+          <Text
+            fontWeight='semibold'
+            fontSize='2xl'
+            textAlign='center'
+            marginTop={height < 800 ? '0' : '10'}
+            marginBottom={height < 800 ? '0' : '55'}
+          >
+            Select Your Dummy Word & Verify Your Real Word
+          </Text>
+          <ButtonList array={MnemonicGenStore.presentationDummyMnemonic} />
+          <Input
             marginLeft='50'
             marginRight='50'
             selectTextOnFocus={true}

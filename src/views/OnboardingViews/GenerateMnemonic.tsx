@@ -82,7 +82,7 @@ export const GenerateMnemonic = ({ navigation }: ILandingNavProps) => {
           />
         )}
         <ContainedButton
-          marginTop={height < 800 ? '10' : '180'}
+          marginTop={height < 800 ? '10' : '100'}
           text='Next Step'
           onPress={nextButtonPayload}
           disabled={!wordState}

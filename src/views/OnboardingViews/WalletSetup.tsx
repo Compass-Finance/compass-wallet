@@ -62,7 +62,7 @@ export const WalletSetup = observer(({ navigation }: ILandingNavProps) => {
           lineHeight={'md'}
           // color='primary.300'
           fontSize='3xl'
-          marginBottom={height < 800 ? '200' : '550'}
+          marginBottom={height < 800 ? '3/6' : '470'}
           fontWeight='semibold'
         >
           Wallet Setup

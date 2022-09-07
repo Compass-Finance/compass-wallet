@@ -106,7 +106,7 @@ export const BackupMnemonic = ({ navigation }: ILandingNavProps) => {
         </Modal>
         <Button
           maxWidth='2/4'
-          marginLeft={height < 800 ? '205' : '240'}
+          marginLeft={height < 800 ? '205' : '220'}
           // marginRight='5'
           bgColor='primary.100'
           onPress={() => {
@@ -124,7 +124,7 @@ export const BackupMnemonic = ({ navigation }: ILandingNavProps) => {
           colorScheme='green'
           marginLeft='5'
           marginRight='10'
-          marginTop={height < 800 ? '75' : '215'}
+          marginTop={height < 800 ? '75' : '135'}
           // marginBottom='35'
         >
           <Text

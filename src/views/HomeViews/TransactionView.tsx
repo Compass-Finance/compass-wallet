@@ -2,7 +2,7 @@ import { Box, Center, Text, ScrollView } from 'native-base';
 import { RefreshControl } from 'react-native';
 import { TxnChipList } from '../../components/TxnChipList';
 import { useEffect, useState, useCallback } from 'react';
-import { txnHistoryActions } from '../../logic/actions';
+import { loadedWalletActions, txnHistoryActions } from '../../logic/actions';
 import { TransactionHistoryStore } from '../../logic/stores';
 import { LoadedWalletStore } from '../../logic/stores';
 import { reaction } from 'mobx';
@@ -40,12 +40,25 @@ export const TransactionView = observer(() => {
     }
   );
   useEffect(() => {
-    txnHistoryActions.setPastTransactionArray(
-      LoadedWalletStore.wallet.address,
-      // '0x5c43B1eD97e52d009611D89b74fA829FE4ac56b1',
-      TxnView as 'deposits' | 'withdrawls'
-    );
-    pastTxnStatusRxn();
+    const something = async () => {
+      if (LoadedWalletStore.walletHasBeenLoaded === false) {
+        await loadedWalletActions.loadWallet('mumbai').then(async () => {
+          await txnHistoryActions.setPastTransactionArray(
+            LoadedWalletStore.wallet.address,
+            // '0x5c43B1eD97e52d009611D89b74fA829FE4ac56b1',
+            TxnView as 'deposits' | 'withdrawls'
+          );
+        });
+        pastTxnStatusRxn();
+      } else if (LoadedWalletStore.walletHasBeenLoaded === true) {
+        await txnHistoryActions.setPastTransactionArray(
+          LoadedWalletStore.wallet.address,
+          // '0x5c43B1eD97e52d009611D89b74fA829FE4ac56b1',
+          TxnView as 'deposits' | 'withdrawls'
+        );
+      }
+    };
+    something();
     console.log(txnHistoryStore.pastTransactionArray, '<===== From the comp');
   }, [TxnView]);
 
