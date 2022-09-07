@@ -30,7 +30,7 @@ export const HomeTabRouter = () => {
         tabBarInactiveTintColor: 'gray',
       })}
     >
-      {/* <HomeTabNav.Screen name='Home' component={HomeView} /> */}
+      <HomeTabNav.Screen name='Home' component={HomeView} />
       <HomeTabNav.Screen name='Transactions' component={TransactionView} />
       <HomeTabNav.Screen name='Assets' component={AssetsView} />
     </HomeTabNav.Navigator>

@@ -26,14 +26,14 @@ export default {
     assetBundlePatterns: ['**/*'],
     ios: {
       supportsTablet: true,
-      bundleIdentifier: 'io.expo.client',
+      bundleIdentifier: 'xyz.compass.fi.compass.wallet.v1',
     },
     android: {
       adaptiveIcon: {
         foregroundImage: './assets/adaptive-icon.png',
         backgroundColor: '#FFFFFF',
       },
-      package: 'io.expo.client',
+      package: 'xyz.compass.fi.compass.wallet.v1',
     },
     web: {
       favicon: './assets/favicon.png',

@@ -6,6 +6,7 @@ import { loadedWalletActions } from './src/logic/actions';
 import { MasterStackRouter } from './src/routers/MasterRouter';
 import { extendTheme, NativeBaseProvider, View } from 'native-base';
 import { getValueFor } from './src/logic/utils';
+import { authenticateAsync } from 'expo-local-authentication';
 
 const config = {
   useSystemColorMode: false,
@@ -40,6 +41,7 @@ export default function App() {
       const pk = await getValueFor('pk');
       const realPk = await getValueFor('realPk');
       if (pk !== '') {
+        await authenticateAsync();
         await loadedWalletActions.loadWallet('mumbai');
       }
     };

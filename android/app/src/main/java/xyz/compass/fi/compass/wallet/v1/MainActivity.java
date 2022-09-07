@@ -1,4 +1,4 @@
-package io.expo.client;
+package xyz.compass.fi.compass.wallet.v1;
 
 import android.os.Build;
 import android.os.Bundle;

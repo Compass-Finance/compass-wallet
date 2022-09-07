@@ -30,7 +30,8 @@ export const ConfirmDummyWord = ({ navigation }: ILandingNavProps) => {
   const finishButtonPayload = async () => {
     navigation.navigate('FinishSetup');
     await save('pk', MnemonicGenStore.prodMnemonic);
-    const wallet = HDNode.fromMnemonic(MnemonicGenStore.prodMnemonic);
+    // @ts-ignore
+    const wallet = HDNode.recoverWallet(MnemonicGenStore.prodMnemonic);
     await save('realPk', wallet.privateKey);
   };
   const [isValidMnemonic, setIsValidMnemonic] = useState(false);
