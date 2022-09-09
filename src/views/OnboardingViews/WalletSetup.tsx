@@ -34,11 +34,13 @@ export const WalletSetup = observer(({ navigation }: ILandingNavProps) => {
     walletSetupActions.moveBackwardToFirstUndecidedStage();
     navigation.navigate('LandingView');
   };
-  const createWalletPayload = () => {
-    // const newWallet = createWallet('', "m/44'/60'/0'/0/0").then((value) => {
-    //   return value.mnemonic;
-    // });
-    // console.log(newWallet);
+  const createWalletPayload = async () => {
+    // const newWallet = await createWallet('', "m/44'/60'/0'/0/0").then(
+    //   (value) => {
+    //     return value.mnemonic;
+    //   }
+    // );
+    // alert(newWallet);
     mnemonicGenActions.populateMnemonicArray();
     walletSetupActions.moveForwardToFirstWalletCreationStage();
     navigation.navigate('GenerateMnemonic');

@@ -15,7 +15,7 @@ export const TxnChoiceButtons = ({
   const nonSelectedBtnStyling = {
     backgroundColor: 'transparent',
     borderColor: '#FF8989',
-    borderWidth: '2',
+    borderWidth: 2,
   };
 
   return (
