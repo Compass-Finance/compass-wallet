@@ -49,7 +49,7 @@ export class WalletSetupStore {
     // else
     if (this.loading === true) return;
     this.loading = true;
-    this.walletSetupStage = LandingFlowStages.WalletCreation.A;
+    // this.walletSetupStage = LandingFlowStages.WalletCreation.A;
     this.loading = false;
   }
 

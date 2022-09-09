@@ -29,9 +29,9 @@ export const TxnChip = ({
         <Box
           backgroundColor='white'
           shadow={'5'}
-          margin='2'
+          margin={2}
           width='95%'
-          p='5'
+          padding='5'
           rounded='8'
           // borderWidth={4}
           // borderColor='primary.100'
@@ -41,12 +41,12 @@ export const TxnChip = ({
           // borderBottomWidth='1'
         >
           <Flex flexDirection='row'>
-            <Box marginTop='2'>
+            <Box marginTop={2}>
               <AssetIcon width='42px' height='42px' />
             </Box>
 
-            <Box marginLeft='5'>
-              <Text fontWeight='bold' marginBottom='3'>
+            <Box marginLeft={5}>
+              <Text fontWeight='bold' marginBottom={3}>
                 {`${withdrawlOrDeposit === 'withdrawls' ? '-' : '+'} ${Number(
                   realTokenAmount
                 ).toFixed(8)} ${tokenName}`}

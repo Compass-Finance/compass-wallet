@@ -18,7 +18,7 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@ethersproject/shims": "^5.6.0",
+    "@ethersproject/shims": "^5.7.0",
     "@expo-google-fonts/archivo": "^0.2.2",
     "@expo-google-fonts/raleway": "^0.2.2",
     "@react-navigation/bottom-tabs": "^6.3.2",
@@ -54,7 +54,7 @@
     "react-dom": "17.0.1",
     "react-native": "0.64.3",
     "react-native-base64": "^0.2.1",
-    "react-native-bignumber": "^0.1.8",
+    "react-native-bignumber": "^0.1.9",
     "react-native-confetti-cannon": "^1.5.2",
     "react-native-custom-qr-codes-expo": "^2.2.0",
     "react-native-get-random-values": "~1.7.0",
@@ -69,6 +69,7 @@
     "react-native-svg": "12.1.1",
     "react-native-swipe-list-view": "^3.2.9",
     "react-native-web": "0.17.1",
+    "react-native-web3-wallet": "github:heroims/react-native-web3-wallet",
     "react-native-webview": "11.15.0"
   },
   "devDependencies": {

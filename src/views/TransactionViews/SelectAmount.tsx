@@ -19,8 +19,6 @@ export const SelectAmount = observer(({ navigation }: IAssetsNavProps) => {
   const [isValidAmount, setIsValidAmount] = useState(true);
 
   reaction(
-    // so what do we want to watch?
-    // well we want to watch the string balance
     () => NewTransactionStore.hrTransferAmount,
     () => {
       const humanReadableTransferInput = Number(
@@ -28,7 +26,6 @@ export const SelectAmount = observer(({ navigation }: IAssetsNavProps) => {
       );
       const wholeTokenBalance =
         NewTransactionStore.selectedTokenData.nativeBalanceReadable;
-      // for now just check if the balance
       if (
         humanReadableTransferInput <= wholeTokenBalance &&
         humanReadableTransferInput > 0

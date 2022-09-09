@@ -12,7 +12,7 @@ export default {
   expo: {
     name: 'compass-fi-v1',
     slug: 'compass-fi-v1',
-    version: '1.0.0',
+    version: '1.0.1',
     orientation: 'portrait',
     icon: './assets/icon.png',
     splash: {
@@ -20,7 +20,7 @@ export default {
       resizeMode: 'contain',
       backgroundColor: '#ffffff',
     },
-    runtimeVersion: '1.0.0',
+    // runtimeVersion: '1.0.0',
     updates: {
       // fallbackToCacheTimeout: 0,
       url: 'https://u.expo.dev/3dd15df4-c2fe-4c5b-b803-f3cd4f2e8f70',
