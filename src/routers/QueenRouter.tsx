@@ -12,6 +12,8 @@ import { ConfirmRecovery } from '../views/OnboardingViews/ConfirmRecovery';
 import { FinishRecovery } from '../views/OnboardingViews/FinishRecovery';
 import { WalletCreationLoading } from '../views/OnboardingViews/WalletCreationLoading';
 import { DummyWordLoading } from '../views/OnboardingViews/DummyWordLoading';
+import { FinishSetupLoading } from '../views/OnboardingViews/FinishSetupLoading';
+import { FinishRecoveryLoading } from '../views/OnboardingViews/FinishRecoveryLoading';
 
 interface StackNavigatorProps {
   route: 'HomeTabView' | 'LandingView' | 'RecoverWallet';
@@ -26,6 +28,14 @@ export const QueenRouter = ({ route }: StackNavigatorProps) => {
         headerShown: false,
       }}
     >
+      <MasterStack.Screen
+        name='FinishSetupLoading'
+        component={FinishSetupLoading}
+      />
+      <MasterStack.Screen
+        name='FinishRecoveryLoading'
+        component={FinishRecoveryLoading}
+      />
       <MasterStack.Screen
         name='WalletCreationLoading'
         component={WalletCreationLoading}

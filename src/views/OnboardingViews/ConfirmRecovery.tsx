@@ -12,7 +12,7 @@ import { ButtonList } from '../../components/ButtonList';
 import { ContainedButton } from '../../components/ContainedButton';
 import { ILandingNavProps } from '../../logic/models/int_models';
 import { RecoverWalletStore } from '../../logic/stores';
-import { HDNode } from 'ethers/lib/utils';
+
 import { utils, Wallet } from 'ethers';
 import { getValueFor, save } from '../../logic/utils';
 import { useState } from 'react';
@@ -28,14 +28,7 @@ export const ConfirmRecovery = ({ navigation }: ILandingNavProps) => {
   };
 
   const loginButtonPayload = () => {
-    save('pk', RecoverWalletStore.realCompositeMnemonic);
-    const wallet = HDNode.fromMnemonic(
-      RecoverWalletStore.realCompositeMnemonic
-    );
-    save('realPk', wallet.privateKey);
-    // console.log(wallet.address, '<=== recovered');
-    recoverWalletStore.wipeTheStore();
-    navigation.navigate('FinishRecovery');
+    navigation.navigate('FinishRecoveryLoading');
     // wipe the store after this
   };
 

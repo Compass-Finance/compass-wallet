@@ -35,6 +35,7 @@
     "expo-barcode-scanner": "~11.2.0",
     "expo-clipboard": "~2.1.0",
     "expo-device": "~4.1.0",
+    "expo-firebase-analytics": "~6.0.0",
     "expo-font": "~10.0.4",
     "expo-local-authentication": "~12.1.0",
     "expo-notifications": "~0.14.0",

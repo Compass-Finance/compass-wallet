@@ -1,11 +1,4 @@
-import {
-  Button,
-  Flex,
-  Text,
-  TextArea,
-  KeyboardAvoidingView,
-  Input,
-} from 'native-base';
+import { Flex, Text, KeyboardAvoidingView, Input } from 'native-base';
 import { walletSetupActions } from '../../logic/actions';
 import { ILandingNavProps } from '../../logic/models/int_models';
 import { Dimensions } from 'react-native';
@@ -16,8 +9,6 @@ import { ButtonList } from '../../components/ButtonList';
 import { useState } from 'react';
 import { ContainedButton } from '../../components/ContainedButton';
 import { save } from '../../logic/utils';
-import { Wallet } from 'ethers';
-import { HDNode } from 'ethers/lib/utils';
 
 export const ConfirmDummyWord = ({ navigation }: ILandingNavProps) => {
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 0 : 0;
@@ -28,11 +19,7 @@ export const ConfirmDummyWord = ({ navigation }: ILandingNavProps) => {
   };
 
   const finishButtonPayload = async () => {
-    navigation.navigate('FinishSetup');
-    await save('pk', MnemonicGenStore.prodMnemonic);
-    // @ts-ignore
-    const wallet = HDNode.recoverWallet(MnemonicGenStore.prodMnemonic);
-    await save('realPk', wallet.privateKey);
+    navigation.navigate('FinishSetupLoading');
   };
   const [isValidMnemonic, setIsValidMnemonic] = useState(false);
 

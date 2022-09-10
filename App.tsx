@@ -6,7 +6,7 @@ import { loadedWalletActions } from './src/logic/actions';
 import { MasterStackRouter } from './src/routers/MasterRouter';
 import { extendTheme, NativeBaseProvider, View } from 'native-base';
 import { getValueFor } from './src/logic/utils';
-import { authenticateAsync } from 'expo-local-authentication';
+import { authenticateAsync, hasHardwareAsync } from 'expo-local-authentication';
 import { Locked } from './src/views/MiscViews/Locked';
 
 const config = {
@@ -37,40 +37,77 @@ declare module 'native-base' {
 }
 
 export default function App() {
+  const [biometricIsSupported, setbiometricIsSupported] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState<null | boolean>(null);
+
+  const onAuthenticate = () => {
+    const auth = authenticateAsync({
+      promptMessage: 'Authenticate',
+      fallbackLabel: 'Enter Passcode',
+    });
+    auth.then(async (result) => {
+      setIsUnlocked(result.success);
+      if (result.success === true) {
+        await loadedWalletActions.loadWallet('mumbai');
+        console.log('success wallet loaded');
+      }
+      console.log(result);
+    });
+  };
 
   useEffect(() => {
     const loadWalletIfNeeded = async () => {
       const pk = await getValueFor('pk');
       // const realPk = await getValueFor('realPk');
       if (pk !== '') {
-        await authenticateAsync().then(async (value) => {
-          setIsUnlocked(false);
-          if (value.success === true) {
-            setIsUnlocked(true);
-            await loadedWalletActions.loadWallet('mumbai');
-          } else {
-            setIsUnlocked(false);
-          }
-        });
+        setIsUnlocked(false);
+        (async () => {
+          const compatible = await hasHardwareAsync();
+          setbiometricIsSupported(compatible);
+        })();
+
+        // await authenticateAsync().then(async (value) => {
+        //   setIsUnlocked(false);
+        //   if (value.success === true) {
+        //     setIsUnlocked(true);
+        //     await loadedWalletActions.loadWallet('mumbai');
+        //   } else {
+        //     setIsUnlocked(false);
+        //   }
+        // });
+      } else {
+        setIsUnlocked(true);
       }
     };
     loadWalletIfNeeded();
   }, []);
 
-  if (isUnlocked === false) {
-    return (
-      <NativeBaseProvider theme={theme}>
-        <StatusBar style='dark' />
-        <Locked />
-      </NativeBaseProvider>
-    );
-  } else {
-    return (
-      <NativeBaseProvider theme={theme}>
-        <StatusBar style='dark' />
+  // useEffect(() => {
+  //   const loadWalletIfNeeded = async () => {
+  //     const pk = await getValueFor('pk');
+  //     // const realPk = await getValueFor('realPk');
+  //     if (pk !== '') {
+  //       await authenticateAsync().then(async (value) => {
+  //         setIsUnlocked(false);
+  //         if (value.success === true) {
+  //           setIsUnlocked(true);
+  //           await loadedWalletActions.loadWallet('mumbai');
+  //         } else {
+  //           setIsUnlocked(false);
+  //         }
+  //       });
+  //     }
+  //   };
+  //   loadWalletIfNeeded();
+  // }, []);
+  return (
+    <NativeBaseProvider theme={theme}>
+      <StatusBar style='dark' />
+      {isUnlocked === true ? (
         <MasterStackRouter />
-      </NativeBaseProvider>
-    );
-  }
+      ) : (
+        <Locked authPayload={onAuthenticate} />
+      )}
+    </NativeBaseProvider>
+  );
 }
