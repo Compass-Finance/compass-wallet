@@ -1,12 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import 'react-native-get-random-values';
 import '@ethersproject/shims';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { loadedWalletActions } from './src/logic/actions';
 import { MasterStackRouter } from './src/routers/MasterRouter';
 import { extendTheme, NativeBaseProvider, View } from 'native-base';
 import { getValueFor } from './src/logic/utils';
 import { authenticateAsync } from 'expo-local-authentication';
+import { Locked } from './src/views/MiscViews/Locked';
 
 const config = {
   useSystemColorMode: false,
@@ -36,22 +37,40 @@ declare module 'native-base' {
 }
 
 export default function App() {
+  const [isUnlocked, setIsUnlocked] = useState<null | boolean>(null);
+
   useEffect(() => {
     const loadWalletIfNeeded = async () => {
       const pk = await getValueFor('pk');
       // const realPk = await getValueFor('realPk');
       if (pk !== '') {
-        await authenticateAsync().then(async () => {
-          await loadedWalletActions.loadWallet('mumbai');
+        await authenticateAsync().then(async (value) => {
+          setIsUnlocked(false);
+          if (value.success === true) {
+            setIsUnlocked(true);
+            await loadedWalletActions.loadWallet('mumbai');
+          } else {
+            setIsUnlocked(false);
+          }
         });
       }
     };
     loadWalletIfNeeded();
   }, []);
-  return (
-    <NativeBaseProvider theme={theme}>
-      <StatusBar style='dark' />
-      <MasterStackRouter />
-    </NativeBaseProvider>
-  );
+
+  if (isUnlocked === false) {
+    return (
+      <NativeBaseProvider theme={theme}>
+        <StatusBar style='dark' />
+        <Locked />
+      </NativeBaseProvider>
+    );
+  } else {
+    return (
+      <NativeBaseProvider theme={theme}>
+        <StatusBar style='dark' />
+        <MasterStackRouter />
+      </NativeBaseProvider>
+    );
+  }
 }

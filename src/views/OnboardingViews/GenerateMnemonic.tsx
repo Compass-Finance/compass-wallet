@@ -37,10 +37,7 @@ export const GenerateMnemonic = ({ navigation }: ILandingNavProps) => {
   useEffect(() => wordIsSelectedLogic, [MnemonicGenStore.wordIsSelected]);
 
   const nextButtonPayload = () => {
-    walletSetupActions.moveForwardToSecondWalletCreationStage();
-    MnemonicGenStore.generateFragment();
-    // ! IMPORTANT ^^ 6 SECONDS AS WELL
-    navigation.navigate('InsertDummyWord');
+    navigation.navigate('DummyWordLoading');
   };
 
   return (

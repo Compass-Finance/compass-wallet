@@ -3,6 +3,7 @@ import { AssetsView } from '../views/HomeViews/AssetsView';
 import { TransactionView } from '../views/HomeViews/TransactionView';
 import { HomeView } from '../views/HomeViews/HomeView';
 import { Ionicons } from '@expo/vector-icons';
+import { Locked } from '../views/MiscViews/Locked';
 
 const HomeTabNav = createBottomTabNavigator();
 
@@ -30,7 +31,7 @@ export const HomeTabRouter = () => {
         tabBarInactiveTintColor: 'gray',
       })}
     >
-      {/* <HomeTabNav.Screen name='Home' component={HomeView} /> */}
+      {/* <HomeTabNav.Screen name='Home' component={Locked} /> */}
       <HomeTabNav.Screen name='Transactions' component={TransactionView} />
       <HomeTabNav.Screen name='Assets' component={AssetsView} />
     </HomeTabNav.Navigator>

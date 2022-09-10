@@ -11,6 +11,8 @@ type WalletSetupViews = {
   ConfirmDummyWord: any;
   FinishRecovery: any;
   UploadToCloudProvider: any;
+  WalletCreationLoading: any;
+  DummyWordLoading: any;
   FinishSetup: any;
 };
 

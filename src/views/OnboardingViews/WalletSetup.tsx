@@ -41,9 +41,9 @@ export const WalletSetup = observer(({ navigation }: ILandingNavProps) => {
     //   }
     // );
     // alert(newWallet);
-    mnemonicGenActions.populateMnemonicArray();
-    walletSetupActions.moveForwardToFirstWalletCreationStage();
-    navigation.navigate('GenerateMnemonic');
+    // mnemonicGenActions.populateMnemonicArray();
+    // walletSetupActions.moveForwardToFirstWalletCreationStage();
+    navigation.navigate('WalletCreationLoading');
   };
 
   const recoverWalletPayload = () => {

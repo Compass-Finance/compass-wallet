@@ -30,10 +30,10 @@ export class MnemonicGenStore {
   @observable validatedDummyMnemonic: string[] = [];
   // ! END
 
-  @action async populateMnemonicArray() {
+  @action populateMnemonicArray() {
     if (this.loading === true) return;
     this.setLoading(true);
-    [this.currentMnemonic, this.prodMnemonic] = await generateNewMnemonic();
+    [this.currentMnemonic, this.prodMnemonic] = generateNewMnemonic();
     this.setLoading(false);
   }
 
@@ -57,9 +57,9 @@ export class MnemonicGenStore {
     this.wordIsSelected = bool;
   }
 
-  @action async generateFragment() {
+  @action generateFragment() {
     if (this.loading === true) return;
-    [this.replacementMnemonicFragment] = await generateMnemonicFragment();
+    [this.replacementMnemonicFragment] = generateMnemonicFragment();
   }
 
   @action selectDummyWord(word: string) {

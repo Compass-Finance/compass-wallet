@@ -1,0 +1,25 @@
+import { Center, Spinner, Text } from 'native-base';
+import { useEffect } from 'react';
+import { ILandingNavProps } from '../../logic/models/int_models';
+import { mnemonicGenActions } from '../../logic/actions';
+import { walletSetupActions } from '../../logic/actions';
+
+export const WalletCreationLoading = ({ navigation }: ILandingNavProps) => {
+  useEffect(() => {
+    mnemonicGenActions.populateMnemonicArray();
+    navigation.navigate('GenerateMnemonic');
+  }, []);
+  return (
+    <Center
+      safeArea
+      alignItems='center'
+      height='full'
+      backgroundColor='background.100'
+    >
+      <Spinner color='primary.100' size='lg' padding={3} />
+      <Text fontSize='md' textAlign='center' padding='5' fontWeight='semibold'>
+        Creating Your Wallet this shouldn't take longer than 10 seconds
+      </Text>
+    </Center>
+  );
+};
