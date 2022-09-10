@@ -1,9 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AssetsView } from '../views/HomeViews/AssetsView';
 import { TransactionView } from '../views/HomeViews/TransactionView';
-import { HomeView } from '../views/HomeViews/HomeView';
 import { Ionicons } from '@expo/vector-icons';
-import { Locked } from '../views/MiscViews/Locked';
 
 const HomeTabNav = createBottomTabNavigator();
 

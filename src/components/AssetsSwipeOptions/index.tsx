@@ -6,10 +6,6 @@ import { assetsActions } from '../../logic/actions';
 interface assetSwipeProps {
   item: CombinedTokenDataEntry;
 }
-// ok so if you want the navigation to work
-// you'll have to pass it down all the way from the
-// top so start in the assets view then pass
-
 export const AssetSwipeOptions = (data: assetSwipeProps, rowMap: any) => {
   const closeRow = (rowMap: any, rowKey: any) => {
     if (rowMap[rowKey]) {
@@ -48,7 +44,6 @@ export const AssetSwipeOptions = (data: assetSwipeProps, rowMap: any) => {
           onPress={() => {
             assetsActions.setSelectedTokenData(data.item.name, 'receive');
             closeRow(rowMap, data.item.key);
-            // console.log(`${data.item.name} <======= Token Name from receive`);
           }}
         >
           <Box paddingLeft='3' paddingTop='8'>
@@ -75,7 +70,6 @@ export const AssetSwipeOptions = (data: assetSwipeProps, rowMap: any) => {
           onPress={() => {
             assetsActions.setSelectedTokenData(data.item.name, 'send');
             closeRow(rowMap, data.item.key);
-            // console.log(`${data.item.name} <======= Token Name from SEND`);
           }}
         >
           <Box paddingRight='3' paddingTop='10'>

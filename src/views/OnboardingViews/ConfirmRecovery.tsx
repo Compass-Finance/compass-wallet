@@ -1,20 +1,11 @@
-import {
-  Text,
-  Center,
-  View,
-  TextArea,
-  KeyboardAvoidingView,
-  Input,
-} from 'native-base';
+import { Text, Center, KeyboardAvoidingView, Input } from 'native-base';
 import { Keyboard, TouchableWithoutFeedback, Platform } from 'react-native';
 import { BackButton } from '../../components/BackButton';
 import { ButtonList } from '../../components/ButtonList';
 import { ContainedButton } from '../../components/ContainedButton';
 import { ILandingNavProps } from '../../logic/models/int_models';
 import { RecoverWalletStore } from '../../logic/stores';
-
-import { utils, Wallet } from 'ethers';
-import { getValueFor, save } from '../../logic/utils';
+import { utils } from 'ethers';
 import { useState } from 'react';
 import recoverWalletStore from '../../logic/stores/recoverWallet.store';
 

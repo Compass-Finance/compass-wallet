@@ -1,9 +1,7 @@
 import { Center, View, Text } from 'native-base';
-import { BackButton } from '../../components/BackButton';
 import { ContainedButton } from '../../components/ContainedButton';
 import { OutlinedButton } from '../../components/OutlinedButton';
 import ConfettiCannon from 'react-native-confetti-cannon';
-import { useEffect, useState } from 'react';
 import { WalletSetupStore } from '../../logic/stores';
 import { IHomeNavProps } from '../../logic/models/int_models';
 
