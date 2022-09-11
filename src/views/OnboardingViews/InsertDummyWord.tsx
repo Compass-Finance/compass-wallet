@@ -60,7 +60,7 @@ export const InsertDummyWord = observer(({ navigation }: ILandingNavProps) => {
         <ButtonList array={MnemonicGenStore.replacementMnemonicFragment} />
         <ContainedButton
           marginTop={height < 800 ? '3/5' : '200'}
-          text='Confirm Mnemonic'
+          text='Backup Mnemonic'
           onPress={nextButtonPayload}
           disabled={!MnemonicGenStore.replacementWordIsSelected}
         />

@@ -8,6 +8,9 @@ import { extendTheme, NativeBaseProvider, View } from 'native-base';
 import { getValueFor } from './src/logic/utils';
 import { authenticateAsync, hasHardwareAsync } from 'expo-local-authentication';
 import { Locked } from './src/views/MiscViews/Locked';
+import PostHog, { PostHogProvider, usePostHog } from 'posthog-react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import Constants from 'expo-constants';
 
 const config = {
   useSystemColorMode: false,
@@ -73,12 +76,27 @@ export default function App() {
 
   return (
     <NativeBaseProvider theme={theme}>
-      <StatusBar style='dark' />
-      {isUnlocked === true ? (
-        <MasterStackRouter />
-      ) : (
-        <Locked authPayload={onAuthenticate} />
-      )}
+      <NavigationContainer>
+        <PostHogProvider
+          apiKey={Constants.manifest?.extra?.POSTHOG_API_KEY}
+          autocapture={{
+            captureTouches: true, // If you don't want to capture touch events set this to false
+            captureLifecycleEvents: true, // If you don't want to capture the Lifecycle Events (e.g. Application Opened) set this to false
+            captureScreens: true, // If you don't want to capture screen events set this to false
+            customLabelProp: 'ph-label',
+            noCaptureProp: 'ph-no-capture',
+          }}
+        >
+          <StatusBar style='dark' />
+          {isUnlocked === true ? (
+            <MasterStackRouter />
+          ) : (
+            <Locked authPayload={onAuthenticate} />
+          )}
+        </PostHogProvider>
+      </NavigationContainer>
     </NativeBaseProvider>
   );
 }
+// so pretty much all of these things are captured already, it's about labeling them as actions on postHog
+// we'll also want to identify the user as well here with their address

@@ -23,9 +23,11 @@ export const MasterStackRouter = () => {
   }, []);
 
   return (
-    <NavigationContainer>
+    <>
+      {/* <NavigationContainer> */}
       {arbBool === true && <QueenRouter route='HomeTabView' />}
       {arbBool === false && <QueenRouter route='LandingView' />}
-    </NavigationContainer>
+      {/* </NavigationContainer> */}
+    </>
   );
 };

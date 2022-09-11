@@ -4,13 +4,18 @@ import { ILandingNavProps } from '../../logic/models/int_models';
 import { save } from '../../logic/utils';
 import { MnemonicGenStore } from '../../logic/stores';
 import { HDNode } from 'ethers/lib/utils';
+import { usePostHog } from 'posthog-react-native';
 
 export const FinishSetupLoading = ({ navigation }: ILandingNavProps) => {
+  const postHog = usePostHog();
   useEffect(() => {
     (async () => {
       await save('pk', MnemonicGenStore.prodMnemonic);
       // @ts-ignore
-      const wallet = HDNode.recoverWallet(MnemonicGenStore.prodMnemonic);
+      const wallet: HDNode = HDNode.recoverWallet(
+        MnemonicGenStore.prodMnemonic
+      );
+      postHog?.identify(wallet.address);
       await save('realPk', wallet.privateKey);
       navigation.navigate('FinishSetup');
     })();

@@ -345,7 +345,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.compass.fi.compass.wallet.v1;
-				PRODUCT_NAME = "compassfiv1";
+				PRODUCT_NAME = compassfiv1;
 				SWIFT_OBJC_BRIDGING_HEADER = "walletv6/walletv6-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -373,7 +373,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.compass.fi.compass.wallet.v1;
-				PRODUCT_NAME = "compassfiv1";
+				PRODUCT_NAME = compassfiv1;
 				SWIFT_OBJC_BRIDGING_HEADER = "walletv6/walletv6-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

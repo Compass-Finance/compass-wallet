@@ -4,10 +4,12 @@ import { recoverWalletActions } from '../../logic/actions';
 import { MnemonicGenStore, RecoverWalletStore } from '../../logic/stores';
 import { arrayEntry } from '../../logic/models/int_models';
 import { useRoute } from '@react-navigation/native';
+import { Dimensions } from 'react-native';
 
 export const ButtonList = ({ array }: any) => {
   // const array: arrayEntry[] = MnemonicGenStore.currentMnemonic;
   // an easy thing we can do is the following make a component that is a similar shape is shown based
+  const { height } = Dimensions.get('window');
   const route = useRoute();
   let [selectedButton, setSelectedButton] = useState('');
 
@@ -66,7 +68,10 @@ export const ButtonList = ({ array }: any) => {
                     }
                   }}
                 >
-                  <Text fontWeight='semibold' fontSize='xs'>
+                  <Text
+                    fontWeight='semibold'
+                    fontSize={height < 800 ? 'xs' : 'sm'}
+                  >
                     {v.word}
                   </Text>
                 </Button>

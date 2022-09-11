@@ -82,7 +82,7 @@ export const ConfirmDummyWord = ({ navigation }: ILandingNavProps) => {
           <>
             <Text marginBottom='3'>Unverified Mnemonic ❌</Text>
             <ContainedButton
-              text='Next Step'
+              text='Finish Setup'
               disabled={true}
               onPress={() => {}}
             />

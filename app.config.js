@@ -7,6 +7,7 @@ const GANACHE_RPC_URL = process.env.GANACHE_RPC_URL;
 const GANACHE_ACCT_1_PK = process.env.GANACHE_ACCT_1_PK;
 const GANACHE_ACCT_2_PK = process.env.GANACHE_ACCT_2_PK;
 const ETH_DEV_PK = process.env.ETH_DEV_PK;
+const POSTHOG_API_KEY = process.env.POSTHOG_API_KEY;
 
 export default {
   expo: {
@@ -50,6 +51,7 @@ export default {
       GANACHE_ACCT_1_PK: GANACHE_ACCT_1_PK,
       GANACHE_ACCT_2_PK: GANACHE_ACCT_2_PK,
       ETH_DEV_PK: ETH_DEV_PK,
+      POSTHOG_API_KEY: POSTHOG_API_KEY,
       eas: {
         projectId: '3dd15df4-c2fe-4c5b-b803-f3cd4f2e8f70',
       },

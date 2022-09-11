@@ -41,6 +41,8 @@ PODS:
     - ExpoModulesCore
   - Expo (44.0.6):
     - ExpoModulesCore
+  - ExpoLocalization (12.0.1):
+    - ExpoModulesCore
   - ExpoModulesCore (0.6.5):
     - React-Core
     - ReactCommon/turbomodule/core
@@ -123,12 +125,6 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.7.0):
     - GoogleUtilities/Logger
-  - Mixpanel-swift (4.0.1):
-    - Mixpanel-swift/Complete (= 4.0.1)
-  - Mixpanel-swift/Complete (4.0.1)
-  - MixpanelReactNative (2.0.0):
-    - Mixpanel-swift (= 4.0.1)
-    - React
   - nanopb (2.30907.0):
     - nanopb/decode (= 2.30907.0)
     - nanopb/encode (= 2.30907.0)
@@ -473,6 +469,7 @@ DEPENDENCIES:
   - EXManifests (from `../node_modules/expo-manifests/ios`)
   - EXNotifications (from `../node_modules/expo-notifications/ios`)
   - Expo (from `../node_modules/expo/ios`)
+  - ExpoLocalization (from `../node_modules/expo-localization/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core/ios`)
   - EXSecureStore (from `../node_modules/expo-secure-store/ios`)
   - EXSplashScreen (from `../node_modules/expo-splash-screen/ios`)
@@ -482,7 +479,6 @@ DEPENDENCIES:
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
-  - MixpanelReactNative (from `../node_modules/mixpanel-react-native`)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
@@ -531,7 +527,6 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
-    - Mixpanel-swift
     - nanopb
     - OpenSSL-Universal
     - PromisesObjC
@@ -574,6 +569,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-notifications/ios"
   Expo:
     :path: "../node_modules/expo/ios"
+  ExpoLocalization:
+    :path: "../node_modules/expo-localization/ios"
   ExpoModulesCore:
     :path: "../node_modules/expo-modules-core/ios"
   EXSecureStore:
@@ -592,8 +589,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/React/FBReactNativeSpec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
-  MixpanelReactNative:
-    :path: "../node_modules/mixpanel-react-native"
   RCT-Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
   RCTRequired:
@@ -683,6 +678,7 @@ SPEC CHECKSUMS:
   EXManifests: d3464cd2278f4a19cd80c1aa673231570b534c11
   EXNotifications: a7d582fa800d77f4a75bd22d52e84e2fbcee26df
   Expo: 534e51e607aba8229293297da5585f4b26f50fa1
+  ExpoLocalization: 72b4524c167da6c4e2a0bbe09176ff8b2c4eddbe
   ExpoModulesCore: 32c0ccb47f477d330ee93db72505380adf0de09a
   EXSecureStore: b80c74c5ee29d0160c2aace3fd9a24a5edc20015
   EXSplashScreen: 21669e598804ee810547dbb6692c8deb5dd8dbf3
@@ -700,8 +696,6 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 0c3b134b2c0a90c4c24833873894bfe0e42a0384
   GoogleDataTransport: 8b0e733ea77c9218778e5a9e34ba9508b8328939
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
-  Mixpanel-swift: 6e970d16daf10283cd30a3e6e1a08f4410b25183
-  MixpanelReactNative: e09c44c19a8f28c120bf40f272a5549561a9d4d1
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   OpenSSL-Universal: ee0a7a25f2042782e2df405e66db3e429198e392
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97

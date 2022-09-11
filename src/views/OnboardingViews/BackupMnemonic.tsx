@@ -142,7 +142,7 @@ export const BackupMnemonic = ({ navigation }: ILandingNavProps) => {
           marginTop={height < 800 ? '55' : ' 17'}
           // marginBottom='55'
           // disabled={!isChecked}
-          text={isChecked ? 'Next Step' : 'Copy Mnemonic'}
+          text={isChecked ? 'Confirm Mnemonic' : 'Copy Mnemonic'}
           onPress={isChecked ? forwardButtonPayload : copyButtonPayload}
         />
         <Box marginBottom='15' />
