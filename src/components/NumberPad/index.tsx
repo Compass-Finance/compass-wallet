@@ -5,7 +5,12 @@ import { useState } from 'react';
 import { wait } from '../../logic/utils';
 import { setHRTransferAmount } from '../../logic/actions/newTxn.actions';
 
-const NumPadText = ({ text, key }: any) => {
+interface numPadProps {
+  text: string;
+  key: string;
+}
+
+const NumPadText = ({ text, key }: numPadProps) => {
   return (
     <Text
       key={key}
@@ -43,7 +48,7 @@ export const NumberPad = () => {
     [
       <NumPadText text=' . ' key='.' />,
       <Box key='0'>
-        <NumPadText text='0' />
+        <NumPadText key='0' text='0' />
       </Box>,
       <Box width='4' height='4' marginRight='3' key='<'>
         <BackChevron />

@@ -17,13 +17,13 @@ export const LandingView = ({ navigation }: ILandingNavProps) => {
     <Box safeArea rounded='xl' bgColor='background.100'>
       <Center height='full' bgColor='background.100'>
         <Text
-          fontSize={height < 800 ? '2xl' : '3xl'}
+          fontSize={'2xl'}
           padding='3'
           textAlign='center'
           fontWeight='bold'
-          marginTop={height < 800 ? '0' : '0'}
+          marginTop={'0'}
         >
-          Time to take your Banking in the right Direction
+          Time To Take Your Banking In The Right Direction
         </Text>
         <Image
           // marginTop='1'

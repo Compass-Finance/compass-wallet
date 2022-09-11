@@ -36,13 +36,23 @@ export const setHRTransferAmount = (charInput: string) => {
   const tokenData = NewTransactionStore.selectedTokenData;
   const tokenBalance = NewTransactionStore.hrTransferAmount;
   const newTxnStore = NewTransactionStore;
+  // alert(`New TXN STORE LENGTH ${newTxnStore.hrTransferAmount.length}`);
 
   if (tokenBalance.includes('.') && charInput.includes('.')) {
     return;
   } else if (charInput.includes('<')) {
+    console.log(
+      `IN THA DELETE BRANCH, length before the delete ${
+        newTxnStore.hrTransferAmount.length
+      } ${typeof newTxnStore.hrTransferAmount.length}`
+    );
     if (NewTransactionStore.hrTransferAmount === '0') {
       return;
+    } else if (NewTransactionStore.hrTransferAmount.length === 1) {
+      newTxnStore.setHRTransferAmount('0');
+      return;
     }
+
     newTxnStore.setHRTransferAmount(newTxnStore.hrTransferAmount.slice(0, -1));
   } else if (newTxnStore.hrTransferAmount.length > tokenData.decimals) {
     return;
@@ -53,7 +63,12 @@ export const setHRTransferAmount = (charInput: string) => {
     charInput !== '0'
   ) {
     newTxnStore.setHRTransferAmount(charInput);
-  } else if (newTxnStore.hrTransferAmount === '0' && charInput === '<') {
+  }
+
+  // else if (newTxnStore.hrTransferAmount.length === 1 && charInput === '<') {
+  //   newTxnStore.setHRTransferAmount('0');
+  // }
+  else if (newTxnStore.hrTransferAmount === '0' && charInput === '<') {
     return;
   } else {
     newTxnStore.setHRTransferAmount(newTxnStore.hrTransferAmount + charInput);

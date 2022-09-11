@@ -123,6 +123,12 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.7.0):
     - GoogleUtilities/Logger
+  - Mixpanel-swift (4.0.1):
+    - Mixpanel-swift/Complete (= 4.0.1)
+  - Mixpanel-swift/Complete (4.0.1)
+  - MixpanelReactNative (2.0.0):
+    - Mixpanel-swift (= 4.0.1)
+    - React
   - nanopb (2.30907.0):
     - nanopb/decode (= 2.30907.0)
     - nanopb/encode (= 2.30907.0)
@@ -476,6 +482,7 @@ DEPENDENCIES:
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - MixpanelReactNative (from `../node_modules/mixpanel-react-native`)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
   - RCTTypeSafety (from `../node_modules/react-native/Libraries/TypeSafety`)
@@ -524,6 +531,7 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleDataTransport
     - GoogleUtilities
+    - Mixpanel-swift
     - nanopb
     - OpenSSL-Universal
     - PromisesObjC
@@ -584,6 +592,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/React/FBReactNativeSpec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  MixpanelReactNative:
+    :path: "../node_modules/mixpanel-react-native"
   RCT-Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
   RCTRequired:
@@ -690,6 +700,8 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 0c3b134b2c0a90c4c24833873894bfe0e42a0384
   GoogleDataTransport: 8b0e733ea77c9218778e5a9e34ba9508b8328939
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
+  Mixpanel-swift: 6e970d16daf10283cd30a3e6e1a08f4410b25183
+  MixpanelReactNative: e09c44c19a8f28c120bf40f272a5549561a9d4d1
   nanopb: 59221d7f958fb711001e6a449489542d92ae113e
   OpenSSL-Universal: ee0a7a25f2042782e2df405e66db3e429198e392
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97

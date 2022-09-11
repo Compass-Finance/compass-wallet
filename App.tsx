@@ -25,7 +25,7 @@ export const theme = extendTheme({
       100: '#FFCC81',
     },
     background: {
-      100: '#FFFCF5', // OG VAL #FFF5DA, PAST VAL #FEFAED
+      100: '#FFFCF5',
     },
   },
   config,
@@ -58,23 +58,12 @@ export default function App() {
   useEffect(() => {
     const loadWalletIfNeeded = async () => {
       const pk = await getValueFor('pk');
-      // const realPk = await getValueFor('realPk');
       if (pk !== '') {
         setIsUnlocked(false);
         (async () => {
           const compatible = await hasHardwareAsync();
           setbiometricIsSupported(compatible);
         })();
-
-        // await authenticateAsync().then(async (value) => {
-        //   setIsUnlocked(false);
-        //   if (value.success === true) {
-        //     setIsUnlocked(true);
-        //     await loadedWalletActions.loadWallet('mumbai');
-        //   } else {
-        //     setIsUnlocked(false);
-        //   }
-        // });
       } else {
         setIsUnlocked(true);
       }
@@ -82,24 +71,6 @@ export default function App() {
     loadWalletIfNeeded();
   }, []);
 
-  // useEffect(() => {
-  //   const loadWalletIfNeeded = async () => {
-  //     const pk = await getValueFor('pk');
-  //     // const realPk = await getValueFor('realPk');
-  //     if (pk !== '') {
-  //       await authenticateAsync().then(async (value) => {
-  //         setIsUnlocked(false);
-  //         if (value.success === true) {
-  //           setIsUnlocked(true);
-  //           await loadedWalletActions.loadWallet('mumbai');
-  //         } else {
-  //           setIsUnlocked(false);
-  //         }
-  //       });
-  //     }
-  //   };
-  //   loadWalletIfNeeded();
-  // }, []);
   return (
     <NativeBaseProvider theme={theme}>
       <StatusBar style='dark' />
