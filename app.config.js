@@ -36,7 +36,7 @@ export default {
       // runtimeVersion: '1.0.0',
       adaptiveIcon: {
         foregroundImage: './assets/adaptive-icon.png',
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#FFFCF5',
       },
       package: 'xyz.compass.fi.compass.wallet.v1',
     },
