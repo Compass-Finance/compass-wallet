@@ -35,7 +35,7 @@ export default {
     android: {
       // runtimeVersion: '1.0.0',
       adaptiveIcon: {
-        foregroundImage: './assets/icon.png',
+        foregroundImage: './assets/adaptive-icon.png',
         backgroundColor: '#FFFFFF',
       },
       package: 'xyz.compass.fi.compass.wallet.v1',
