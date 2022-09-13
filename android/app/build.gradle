@@ -2,6 +2,19 @@ apply plugin: "com.android.application"
 
 import com.android.build.OutputFile
 
+def getPassword(String currentUser, String keyChain) {
+    def stdout = new ByteArrayOutputStream()
+    def stderr = new ByteArrayOutputStream()
+    exec {
+        commandLine 'security', '-q', 'find-generic-password', '-a', currentUser, '-s', keyChain, '-w'
+        standardOutput = stdout
+        errorOutput = stderr
+        ignoreExitValue true
+    }
+    // noinspection GroovyAssignabilityCheck
+    stdout.toString().trim();
+}
+
 /**
  * The react.gradle file registers a task for each build variant (e.g. bundleDebugJsAndAssets
  * and bundleReleaseJsAndAssets).
@@ -123,7 +136,22 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  */
 def enableHermes = project.ext.react.get("enableHermes", false);
 
+def pass = getPassword("Sonny Vesali", "android_keystore")
+
 android {
+
+
+    packagingOptions { 
+        pickFirst 'lib/x86/libssl.so' 
+        pickFirst 'lib/x86_64/libssl.so' 
+        pickFirst 'lib/armeabi-v7a/libssl.so'
+        pickFirst 'lib/arm64-v8a/libssl.so'
+        pickFirst 'lib/x86/libcrypto.so'
+        pickFirst 'lib/x86_64/libcrypto.so'
+        pickFirst 'lib/armeabi-v7a/libcrypto.so'
+        pickFirst 'lib/arm64-v8a/libcrypto.so'
+    }
+
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     compileOptions {
@@ -133,6 +161,8 @@ android {
 
     defaultConfig {
         applicationId 'xyz.compass.fi.compass.wallet.v1'
+        minSdkVersion 21
+        multiDexEnabled true
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
@@ -153,6 +183,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            storeFile file(MYAPP_UPLOAD_STORE_FILE)
+            storePassword pass
+            keyAlias MYAPP_UPLOAD_KEY_ALIAS
+            keyPassword pass
+        }
     }
     buildTypes {
         debug {
@@ -161,7 +197,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }
@@ -184,6 +220,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.android.support:multidex:2.0.1'
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
@@ -236,7 +273,7 @@ dependencies {
 // Run this once to be able to run the application with BUCK
 // puts all compile dependencies into folder libs for BUCK to use
 task copyDownloadableDepsToLibs(type: Copy) {
-    from configurations.compile
+    from configurations.implementation
     into 'libs'
 }
 
