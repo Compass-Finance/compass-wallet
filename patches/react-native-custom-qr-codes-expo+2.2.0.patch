@@ -1,0 +1,33 @@
+diff --git a/node_modules/react-native-custom-qr-codes-expo/lib/QRCode.js b/node_modules/react-native-custom-qr-codes-expo/lib/QRCode.js
+index c8f2004..23f4f57 100644
+--- a/node_modules/react-native-custom-qr-codes-expo/lib/QRCode.js
++++ b/node_modules/react-native-custom-qr-codes-expo/lib/QRCode.js
+@@ -32,8 +32,8 @@ export default class QRCode extends PureComponent {
+     innerEyeStyle: PropTypes.oneOf(['square', 'circle', 'diamond']),
+     outerEyeStyle: PropTypes.oneOf(['square', 'circle', 'diamond']),
+     codeStyle: PropTypes.oneOf(['square', 'circle', 'diamond', 'dot', 'ninja', 'sharp']),
+-    logo: Image.propTypes.source,
+-    backgroundImage: Image.propTypes.source,
++    // logo: Image.propTypes.source,
++    // backgroundImage: Image.propTypes.source,
+     logoSize: PropTypes.number,
+     ecl: PropTypes.oneOf(['L', 'M', 'Q', 'H'])
+   };
+@@ -134,7 +134,7 @@ export default class QRCode extends PureComponent {
+                 <Stop offset="1" stopColor={this.props.linearGradient[1]} stopOpacity="1"/>
+               </LinearGradient>
+             </Defs>
+-            <Rect clipPath="url(#clip)" fill='white' x={0} y={0} height='100%' width='100%' fill='url(#grad)'/>
++            <Rect clipPath="url(#clip)" fill='white'  x={0} y={0} height='100%' width='100%'/>
+           </Svg>
+           {this.displayLogo()}
+         </View>
+@@ -149,7 +149,7 @@ export default class QRCode extends PureComponent {
+                 {pieces}
+               </ClipPath>
+             </Defs>
+-            <Rect clipPath="url(#clip)" fill='white' x={0} y={0} height='100%' width='100%' fill={this.props.color}/>
++            <Rect clipPath="url(#clip)" fill='white' x={0} y={0} height='100%' width='100%'/>
+           </Svg>
+           {this.displayLogo()}
+         </View>
