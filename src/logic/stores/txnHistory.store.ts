@@ -9,7 +9,13 @@ export class TransactionHistoryStore {
   @observable pastTransactionArray: CleanedAlchemyERC20TransferHistoryEntry[] =
     [];
 
+  @observable depositOrWithdrawl: 'deposits' | 'withdrawls' | null = null;
+
   @observable pastTransactionStatus: 'empty' | 'error' | 'success' | '' = '';
+
+  @action setDepositOrWithdrawl(input: 'deposits' | 'withdrawls') {
+    this.depositOrWithdrawl = input;
+  }
 
   @action setPastTransactionArray(
     txnList: CleanedAlchemyERC20TransferHistoryEntry[]

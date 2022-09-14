@@ -1,1 +1,1 @@
-export type TokenNameListType = 'dai' | 'renbtc' | 'weth' | 'usdc';
+export type TokenNameListType = 'dai' | 'renbtc' | 'weth' | 'usdc' | 'matic';

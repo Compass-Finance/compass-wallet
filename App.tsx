@@ -4,11 +4,11 @@ import '@ethersproject/shims';
 import { useEffect, useState } from 'react';
 import { loadedWalletActions } from './src/logic/actions';
 import { MasterStackRouter } from './src/routers/MasterRouter';
-import { extendTheme, NativeBaseProvider, View } from 'native-base';
+import { extendTheme, NativeBaseProvider } from 'native-base';
 import { getValueFor } from './src/logic/utils';
 import { authenticateAsync, hasHardwareAsync } from 'expo-local-authentication';
 import { Locked } from './src/views/MiscViews/Locked';
-import PostHog, { PostHogProvider, usePostHog } from 'posthog-react-native';
+import { PostHogProvider } from 'posthog-react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Constants from 'expo-constants';
 
@@ -40,7 +40,7 @@ declare module 'native-base' {
 }
 
 export default function App() {
-  const [biometricIsSupported, setbiometricIsSupported] = useState(false);
+  const [_, setbiometricIsSupported] = useState(false);
   const [isUnlocked, setIsUnlocked] = useState<null | boolean>(null);
 
   const onAuthenticate = () => {
@@ -98,5 +98,3 @@ export default function App() {
     </NativeBaseProvider>
   );
 }
-// so pretty much all of these things are captured already, it's about labeling them as actions on postHog
-// we'll also want to identify the user as well here with their address

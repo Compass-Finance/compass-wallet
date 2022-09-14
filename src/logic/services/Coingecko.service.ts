@@ -12,6 +12,3 @@ export const CoinGeckoPriceGetter = async () => {
     alert(e);
   }
 };
-// alright works well now what?
-
-// well move on to middle ware

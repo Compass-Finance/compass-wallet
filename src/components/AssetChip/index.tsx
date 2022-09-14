@@ -16,8 +16,8 @@ export const AssetChip = ({
     const tokenName = name.toUpperCase();
     if (tokenName === 'WETH' && height < 800) {
       return 120;
-    } else if (tokenName === 'WETH' && height < 800) {
-      return 15;
+    } else if (tokenName === 'WETH' && height > 800) {
+      return 120;
     } else {
       return 0;
     }

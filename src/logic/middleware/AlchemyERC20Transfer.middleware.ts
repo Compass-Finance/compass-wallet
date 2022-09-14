@@ -7,6 +7,7 @@ export const txnCleaner = (
 ): CleanedAlchemyERC20TransferHistoryEntry[] => {
   // alert(`THE NODE ENV ==> ${process.env.NODE_ENV}`);
   const transfersArr: any = alchemyAPIResponse;
+  console.log(`INPUT TRANSFERS ARR ======> ${transfersArr}`);
   let tempArr: CleanedAlchemyERC20TransferHistoryEntry[] = [];
   transfersArr.map((x: transferEntry) => {
     tempArr.push({

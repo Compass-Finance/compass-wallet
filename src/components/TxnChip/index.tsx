@@ -33,12 +33,6 @@ export const TxnChip = ({
           width='95%'
           padding='5'
           rounded='8'
-          // borderWidth={4}
-          // borderColor='primary.100'
-          // marginLeft='5'
-          // marginRight='5'
-          // borderBottomColor={'black'}
-          // borderBottomWidth='1'
         >
           <Flex flexDirection='row'>
             <Box marginTop={2}>

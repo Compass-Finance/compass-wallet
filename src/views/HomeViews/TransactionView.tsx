@@ -14,7 +14,7 @@ import { TxnChoiceButtons } from '../../components/TxnChoiceButtons';
 
 export const TransactionView = observer(() => {
   const { height } = Dimensions.get('window');
-  const [TxnView, setTxnView] = useState('withdrawls');
+  const [TxnView, setTxnView] = useState('deposits');
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = useCallback(() => {
@@ -102,9 +102,11 @@ export const TransactionView = observer(() => {
         </ScrollView>
         <TxnChoiceButtons
           depositPayload={() => {
+            TransactionHistoryStore.setPastTransactionArray([]);
             setTxnView('deposits');
           }}
           withdrawlsPayload={() => {
+            TransactionHistoryStore.setPastTransactionArray([]);
             setTxnView('withdrawls');
           }}
           viewState={TxnView as 'withdrawls' | 'deposits'}

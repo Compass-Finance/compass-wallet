@@ -1,6 +1,7 @@
-import { Usdc, Renbtc, Weth, Dai } from '../../../assets/token_icons';
+import { Usdc, Renbtc, Weth, Dai, Matic } from '../../../assets/token_icons';
 import {
   Usdc_deposit,
+  Matic_deposit,
   Renbtc_deposit,
   Weth_deposit,
   Dai_deposit,
@@ -8,17 +9,19 @@ import {
 } from '../../../assets/token_icons/deposit_icons';
 import {
   Usdc_withdrawl,
+  Matic_withdrawl,
   Renbtc_withdrawl,
   Weth_withdrawl,
   Dai_withdrawl,
   Unknown_withdrawl,
 } from '../../../assets/token_icons/withdrawl_icons';
 
-export const mainTokenSvgArr = [Dai, Renbtc, Usdc, Weth];
+export const mainTokenSvgArr = [Dai, Matic, Renbtc, Usdc, Weth];
 
 export const depositsAndWithdrawlsTokenSvgObj = {
   deposits: {
     dai: Dai_deposit,
+    matic: Matic_deposit,
     renbtc: Renbtc_deposit,
     unknown: Unknown_deposit,
     usdc: Usdc_deposit,
@@ -26,6 +29,7 @@ export const depositsAndWithdrawlsTokenSvgObj = {
   },
   withdrawls: {
     dai: Dai_withdrawl,
+    matic: Matic_withdrawl,
     renbtc: Renbtc_withdrawl,
     unknown: Unknown_withdrawl,
     usdc: Usdc_withdrawl,
