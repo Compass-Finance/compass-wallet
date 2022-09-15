@@ -1,9 +1,3 @@
-# NativeBase TypeScript Expo Template
+# Compass-Fi Wallet Version 1
 
-The official NativeBase TypeScript template for [Expo](https://docs.expo.io/)
-
-## Usage
-
-```sh
-expo init my-app --template @native-base/expo-template-typescript
-```
+Not much to say here
