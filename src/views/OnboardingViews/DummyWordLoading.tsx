@@ -2,11 +2,15 @@ import { Center, Spinner, Text } from 'native-base';
 import { useEffect } from 'react';
 import { MnemonicGenStore } from '../../logic/stores';
 import { ILandingNavProps } from '../../logic/models/int_models';
+import { wait } from '../../logic/utils';
+// import {} from 'react-native-quick-crypto';
 
 export const DummyWordLoading = ({ navigation }: ILandingNavProps) => {
   useEffect(() => {
-    MnemonicGenStore.generateFragment();
-    navigation.navigate('InsertDummyWord');
+    wait(0).then(() => {
+      MnemonicGenStore.generateFragment();
+      navigation.navigate('InsertDummyWord');
+    });
   }, []);
   return (
     <Center

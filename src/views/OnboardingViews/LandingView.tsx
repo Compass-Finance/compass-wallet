@@ -4,13 +4,11 @@ import { walletSetupActions } from '../../logic/actions';
 import { ILandingNavProps } from '../../logic/models/int_models';
 import { ContainedButton } from '../../components/ContainedButton';
 import { useEffect } from 'react';
-import { getValueFor } from '../../logic/utils';
 import { Dimensions } from 'react-native';
 
 export const LandingView = ({ navigation }: ILandingNavProps) => {
   const { height } = Dimensions.get('window');
   const getStartedPayload = () => {
-    walletSetupActions.moveForwardToSecondUndecidedStage();
     navigation.navigate('WalletSetup');
   };
   return (

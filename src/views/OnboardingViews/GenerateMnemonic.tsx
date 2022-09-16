@@ -1,6 +1,5 @@
-import { Text, View, Center, Button, Spinner, Box, Flex } from 'native-base';
+import { Text, Box, Flex } from 'native-base';
 import { ILandingNavProps } from '../../logic/models/int_models';
-import { walletSetupActions } from '../../logic/actions';
 import { BackButton } from '../../components/BackButton';
 import { ButtonList } from '../../components/ButtonList';
 import { MnemonicCover } from '../../components/MnemonicCover';
@@ -13,7 +12,6 @@ import { Dimensions } from 'react-native';
 export const GenerateMnemonic = ({ navigation }: ILandingNavProps) => {
   const { height } = Dimensions.get('window');
   const backButtonPayload = () => {
-    walletSetupActions.moveBackwardToSecondUndecidedStage();
     navigation.navigate('WalletSetup');
     MnemonicGenStore.setWordIsSelected(false);
     MnemonicGenStore.selectWord('');

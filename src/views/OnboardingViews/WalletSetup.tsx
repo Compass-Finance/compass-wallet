@@ -3,9 +3,7 @@ import { ILandingNavProps } from '../../logic/models/int_models';
 import { ContainedButton } from '../../components/ContainedButton';
 import { BackButton } from '../../components/BackButton';
 import { OutlinedButton } from '../../components/OutlinedButton';
-import { walletSetupActions } from '../../logic/actions';
-import { mnemonicGenActions } from '../../logic/actions';
-import { LoadingStore, MnemonicGenStore } from '../../logic/stores';
+import { LoadingStore } from '../../logic/stores';
 import { reaction } from 'mobx';
 import { observer } from 'mobx-react-lite';
 import { createWallet } from 'react-native-web3-wallet';
@@ -17,37 +15,16 @@ export const WalletSetup = observer(({ navigation }: ILandingNavProps) => {
   const [loading, setLoading] = useState(false);
   const { height } = Dimensions.get('window');
 
-  // const loadingLogic = reaction(
-  //   () => MnemonicGenStore.loading,
-  //   () => {
-  //     if (MnemonicGenStore.loading === true) {
-  //       setLoading(true);
-  //     } else {
-  //       setLoading(false);
-  //     }
-  //   }
-  // );
-
-  // useEffect(() => loadingLogic, [LoadingStore.loading]);
-
   const backButtonPayload = () => {
-    walletSetupActions.moveBackwardToFirstUndecidedStage();
+    // walletSetupActions.moveBackwardToFirstUndecidedStage();
     navigation.navigate('LandingView');
   };
-  const createWalletPayload = async () => {
-    // const newWallet = await createWallet('', "m/44'/60'/0'/0/0").then(
-    //   (value) => {
-    //     return value.mnemonic;
-    //   }
-    // );
-    // alert(newWallet);
-    // mnemonicGenActions.populateMnemonicArray();
-    // walletSetupActions.moveForwardToFirstWalletCreationStage();
+  const createWalletPayload = () => {
     navigation.navigate('WalletCreationLoading');
   };
 
   const recoverWalletPayload = () => {
-    walletSetupActions.moveForwardToFirstRecoveryStage();
+    // walletSetupActions.moveForwardToFirstRecoveryStage();
     navigation.navigate('RecoverWallet');
   };
 

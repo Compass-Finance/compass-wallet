@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { loadedWalletActions } from './src/logic/actions';
 import { MasterStackRouter } from './src/routers/MasterRouter';
 import { extendTheme, NativeBaseProvider } from 'native-base';
-import { getValueFor } from './src/logic/utils';
+import { getValueFor, wait } from './src/logic/utils';
 import { authenticateAsync, hasHardwareAsync } from 'expo-local-authentication';
 import { Locked } from './src/views/MiscViews/Locked';
 import { PostHogProvider } from 'posthog-react-native';
