@@ -1,6 +1,6 @@
 import { arrayEntry, ILandingNavProps } from '../../logic/models/int_models';
 import { Box, Text, View, Center, Flex } from 'native-base';
-import { walletSetupActions } from '../../logic/actions';
+// import { walletSetupActions } from '../../logic/actions';
 import { BackButton } from '../../components/BackButton';
 import { MnemonicGenStore } from '../../logic/stores';
 import { ButtonList } from '../../components/ButtonList';
@@ -13,7 +13,7 @@ import { Dimensions } from 'react-native';
 export const InsertDummyWord = observer(({ navigation }: ILandingNavProps) => {
   const { height } = Dimensions.get('window');
   const backButtonPayload = () => {
-    walletSetupActions.moveBackwardToFirstWalletCreationStage();
+    // walletSetupActions.moveBackwardToFirstWalletCreationStage();
     navigation.navigate('GenerateMnemonic');
     MnemonicGenStore.setReplacementWordBool(false);
     MnemonicGenStore.selectDummyWord('');
@@ -38,7 +38,7 @@ export const InsertDummyWord = observer(({ navigation }: ILandingNavProps) => {
   );
 
   const nextButtonPayload = () => {
-    walletSetupActions.moveForwardToThirdWalletCreationStage();
+    // walletSetupActions.moveForwardToThirdWalletCreationStage();
     navigation.navigate('BackupMnemonic');
     MnemonicGenStore.generateFakeCompositeMnemonic();
   };

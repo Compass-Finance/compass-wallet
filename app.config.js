@@ -3,11 +3,9 @@ import 'dotenv/config';
 const ALCHEMY_API_KEY = process.env.ALCHEMY_API_KEY;
 const MUMBAI_RPC_URL = process.env.MUMBAI_RPC_URL;
 const MATIC_RPC_URL = process.env.MATIC_RPC_URL;
-const GANACHE_RPC_URL = process.env.GANACHE_RPC_URL;
-const GANACHE_ACCT_1_PK = process.env.GANACHE_ACCT_1_PK;
-const GANACHE_ACCT_2_PK = process.env.GANACHE_ACCT_2_PK;
-const ETH_DEV_PK = process.env.ETH_DEV_PK;
 const POSTHOG_API_KEY = process.env.POSTHOG_API_KEY;
+const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
+const SUPABASE_URL = process.env.SUPABASE_URL;
 
 export default {
   expo: {
@@ -44,14 +42,12 @@ export default {
       favicon: './assets/favicon.png',
     },
     extra: {
-      MUMBAI_RPC_URL: MUMBAI_RPC_URL,
-      MATIC_RPC_URL: MATIC_RPC_URL,
       ALCHEMY_API_KEY: ALCHEMY_API_KEY,
-      GANACHE_RPC_URL: GANACHE_RPC_URL,
-      GANACHE_ACCT_1_PK: GANACHE_ACCT_1_PK,
-      GANACHE_ACCT_2_PK: GANACHE_ACCT_2_PK,
-      ETH_DEV_PK: ETH_DEV_PK,
+      MATIC_RPC_URL: MATIC_RPC_URL,
+      MUMBAI_RPC_URL: MUMBAI_RPC_URL,
       POSTHOG_API_KEY: POSTHOG_API_KEY,
+      SUPABASE_ANON_KEY: SUPABASE_ANON_KEY,
+      SUPABASE_URL: SUPABASE_URL,
       eas: {
         projectId: '3dd15df4-c2fe-4c5b-b803-f3cd4f2e8f70',
       },

@@ -6,13 +6,13 @@ import { useEffect, useState } from 'react';
 import * as Notifications from 'expo-notifications';
 import { isDevice } from 'expo-device';
 import { Dimensions, Platform } from 'react-native';
-import { WalletSetupStore } from '../../logic/stores';
+// import { WalletSetupStore } from '../../logic/stores';
 import { IHomeNavProps } from '../../logic/models/int_models';
 
 export const FinishSetup = ({ navigation }: IHomeNavProps) => {
   const [expoToken, setExpoToken] = useState({ expoPushToken: '' });
   const doneButtonPayload = () => {
-    WalletSetupStore.setFinished(true);
+    // WalletSetupStore.setFinished(true);
     navigation.navigate('HomeTabView');
   };
   // const setDailyReminderPayload = () => {};

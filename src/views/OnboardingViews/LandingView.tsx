@@ -1,6 +1,6 @@
 import { Text, View, Center, Image, Box } from 'native-base';
 import { images } from '../../../assets';
-import { walletSetupActions } from '../../logic/actions';
+// import { walletSetupActions } from '../../logic/actions';
 import { ILandingNavProps } from '../../logic/models/int_models';
 import { ContainedButton } from '../../components/ContainedButton';
 import { useEffect } from 'react';
