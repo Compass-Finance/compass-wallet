@@ -1,22 +1,18 @@
-import { Box, Text, Flex, Button, Spinner, Center } from 'native-base';
+import { Box, Text, Flex, Spinner, Center } from 'native-base';
 import { ILandingNavProps } from '../../logic/models/int_models';
 import { ContainedButton } from '../../components/ContainedButton';
 import { BackButton } from '../../components/BackButton';
 import { OutlinedButton } from '../../components/OutlinedButton';
 import { LoadingStore } from '../../logic/stores';
-import { reaction } from 'mobx';
 import { observer } from 'mobx-react-lite';
-import { createWallet } from 'react-native-web3-wallet';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Dimensions } from 'react-native';
-import { wait } from '../../logic/utils';
 
 export const WalletSetup = observer(({ navigation }: ILandingNavProps) => {
   const [loading, setLoading] = useState(false);
   const { height } = Dimensions.get('window');
 
   const backButtonPayload = () => {
-    // walletSetupActions.moveBackwardToFirstUndecidedStage();
     navigation.navigate('LandingView');
   };
   const createWalletPayload = () => {
@@ -24,7 +20,6 @@ export const WalletSetup = observer(({ navigation }: ILandingNavProps) => {
   };
 
   const recoverWalletPayload = () => {
-    // walletSetupActions.moveForwardToFirstRecoveryStage();
     navigation.navigate('RecoverWallet');
   };
 

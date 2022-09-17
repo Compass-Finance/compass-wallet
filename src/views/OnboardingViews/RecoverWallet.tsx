@@ -5,7 +5,7 @@ import {
   TextArea,
   View,
 } from 'native-base';
-import { recoverWalletActions, walletSetupActions } from '../../logic/actions';
+import { recoverWalletActions } from '../../logic/actions';
 import { RecoverWalletStore } from '../../logic/stores';
 import { useState } from 'react';
 import { ContainedButton } from '../../components/ContainedButton';
@@ -18,7 +18,6 @@ export const RecoverWallet = ({ navigation }: ILandingNavProps) => {
 
   const backButtonPayload = () => {
     RecoverWalletStore.setInputMnemonic('');
-    walletSetupActions.moveBackwardToSecondUndecidedStage();
     navigation.navigate('WalletSetup');
   };
   const nextButtonPayload = () => {

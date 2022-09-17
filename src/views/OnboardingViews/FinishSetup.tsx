@@ -1,23 +1,16 @@
-import { Center, View, Text, Flex } from 'native-base';
+import { View, Text, Flex } from 'native-base';
 import { ContainedButton } from '../../components/ContainedButton';
-import { OutlinedButton } from '../../components/OutlinedButton';
 import ConfettiCannon from 'react-native-confetti-cannon';
-import { useEffect, useState } from 'react';
-import * as Notifications from 'expo-notifications';
-import { isDevice } from 'expo-device';
-import { Dimensions, Platform } from 'react-native';
-// import { WalletSetupStore } from '../../logic/stores';
+import { useState } from 'react';
+import { Dimensions } from 'react-native';
 import { IHomeNavProps } from '../../logic/models/int_models';
 
 export const FinishSetup = ({ navigation }: IHomeNavProps) => {
   const [expoToken, setExpoToken] = useState({ expoPushToken: '' });
   const doneButtonPayload = () => {
-    // WalletSetupStore.setFinished(true);
     navigation.navigate('HomeTabView');
   };
-  // const setDailyReminderPayload = () => {};
 
-  // const learnMorePayload = () => {};
   const { height } = Dimensions.get('window');
   return (
     <View>
@@ -36,14 +29,12 @@ export const FinishSetup = ({ navigation }: IHomeNavProps) => {
         <Text fontSize='6xl' textAlign='center' marginY='10'>
           🎉
         </Text>
-        {/* <Text>{WalletSetupStore.finished}</Text> */}
         <Text fontSize='3xl' marginBottom={height < 800 ? '2' : '15'}>
           Congratulations
         </Text>
         <Text
           fontSize={height < 800 ? 'lg' : 'xl'}
           padding='3'
-          // fontWeight={'medium'}
           textAlign='center'
         >
           You've successfully backed up & protected your wallet. Don’t forget
