@@ -2,7 +2,6 @@ import { Center, Spinner, Text } from 'native-base';
 import { useEffect } from 'react';
 import { ILandingNavProps } from '../../logic/models/int_models';
 import { mnemonicGenActions } from '../../logic/actions';
-import { walletSetupActions } from '../../logic/actions';
 import { wait } from '../../logic/utils';
 
 export const WalletCreationLoading = ({ navigation }: ILandingNavProps) => {
