@@ -1,6 +1,5 @@
-import { Text, View, Center, Image, Box } from 'native-base';
+import { Text, Center, Image, Box } from 'native-base';
 import { images } from '../../../assets';
-import { walletSetupActions } from '../../logic/actions';
 import { ILandingNavProps } from '../../logic/models/int_models';
 import { ContainedButton } from '../../components/ContainedButton';
 import { useEffect } from 'react';
@@ -24,7 +23,6 @@ export const LandingView = ({ navigation }: ILandingNavProps) => {
           Time To Take Your Banking In The Right Direction
         </Text>
         <Image
-          // marginTop='1'
           source={images['beige_landing_icon'] as any}
           alt='Compass Finance Logo'
           size={height < 800 ? '350' : '400'}
@@ -38,7 +36,6 @@ export const LandingView = ({ navigation }: ILandingNavProps) => {
         </Text>
         <ContainedButton
           onPress={getStartedPayload}
-          // marginTop='1/4'
           text='Get Started'
           marginBottom='1/4'
         />

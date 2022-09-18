@@ -1,22 +1,16 @@
-import { Box, Text, Flex, Button, Spinner, Center } from 'native-base';
+import { Box, Text, Flex } from 'native-base';
 import { ILandingNavProps } from '../../logic/models/int_models';
 import { ContainedButton } from '../../components/ContainedButton';
 import { BackButton } from '../../components/BackButton';
 import { OutlinedButton } from '../../components/OutlinedButton';
 import { LoadingStore } from '../../logic/stores';
-import { reaction } from 'mobx';
 import { observer } from 'mobx-react-lite';
-import { createWallet } from 'react-native-web3-wallet';
-import { useEffect, useState } from 'react';
 import { Dimensions } from 'react-native';
-import { wait } from '../../logic/utils';
 
 export const WalletSetup = observer(({ navigation }: ILandingNavProps) => {
-  const [loading, setLoading] = useState(false);
   const { height } = Dimensions.get('window');
 
   const backButtonPayload = () => {
-    // walletSetupActions.moveBackwardToFirstUndecidedStage();
     navigation.navigate('LandingView');
   };
   const createWalletPayload = () => {
@@ -24,60 +18,38 @@ export const WalletSetup = observer(({ navigation }: ILandingNavProps) => {
   };
 
   const recoverWalletPayload = () => {
-    // walletSetupActions.moveForwardToFirstRecoveryStage();
     navigation.navigate('RecoverWallet');
   };
 
-  if (loading === true) {
-    return (
-      <Center
-        safeAreaTop
-        justifyContent='center'
-        alignItems={'center'}
-        height='full'
-      >
-        <Spinner size='lg' color='primary.100' />
+  return (
+    <Box safeAreaTop bgColor='background.100'>
+      <BackButton
+        onPress={backButtonPayload}
+        marginRight={height < 800 ? '300' : '5/6'}
+      />
+      <Flex height='full' alignItems='center'>
         <Text
-          fontSize='xl'
+          marginTop={height < 800 ? 15 : 35}
+          lineHeight={'md'}
+          fontSize='3xl'
+          marginBottom={height < 800 ? '3/6' : '470'}
           fontWeight='semibold'
-          textAlign='center'
-          padding='3'
         >
-          Generating your wallet. This will take 6-10 seconds
+          Wallet Setup
         </Text>
-      </Center>
-    );
-  } else {
-    return (
-      <Box safeAreaTop bgColor='background.100'>
-        <BackButton
-          onPress={backButtonPayload}
-          marginRight={height < 800 ? '300' : '5/6'}
+        <OutlinedButton
+          onPress={recoverWalletPayload}
+          text='Recover Your Wallet'
+          marginTop={height < 800 ? '200' : '0'}
         />
-        <Flex height='full' alignItems='center'>
-          <Text
-            marginTop={height < 800 ? 15 : 35}
-            lineHeight={'md'}
-            fontSize='3xl'
-            marginBottom={height < 800 ? '3/6' : '470'}
-            fontWeight='semibold'
-          >
-            Wallet Setup
-          </Text>
-          <OutlinedButton
-            onPress={recoverWalletPayload}
-            text='Recover Your Wallet'
-            marginTop={height < 800 ? '200' : '0'}
-          />
-          <ContainedButton
-            onPress={createWalletPayload}
-            marginTop='10'
-            text='Create Your Wallet'
-            disabled={LoadingStore.loading}
-            marginBottom='0'
-          />
-        </Flex>
-      </Box>
-    );
-  }
+        <ContainedButton
+          onPress={createWalletPayload}
+          marginTop='10'
+          text='Create Your Wallet'
+          disabled={LoadingStore.loading}
+          marginBottom='0'
+        />
+      </Flex>
+    </Box>
+  );
 });

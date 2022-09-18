@@ -1,4 +1,3 @@
-import WalletSetupStore from './walletSetup.store';
 import NewTransactionStore from './newTxn.store';
 import MnemonicGenStore from './mnemonicGen.store';
 import AssetsStore from './assets.store';
@@ -11,7 +10,6 @@ export {
   NewTransactionStore,
   AssetsStore,
   TransactionHistoryStore,
-  WalletSetupStore,
   MnemonicGenStore,
   LoadingStore,
   RecoverWalletStore,

@@ -1,5 +1,4 @@
 import { Flex, Text, KeyboardAvoidingView, Input } from 'native-base';
-import { walletSetupActions } from '../../logic/actions';
 import { ILandingNavProps } from '../../logic/models/int_models';
 import { Dimensions } from 'react-native';
 import { MnemonicGenStore } from '../../logic/stores';
@@ -15,7 +14,6 @@ export const ConfirmDummyWord = ({ navigation }: ILandingNavProps) => {
   const { height } = Dimensions.get('window');
   const backButtonPayload = () => {
     navigation.navigate('BackupMnemonic');
-    walletSetupActions.moveBackwardToThirdWalletCreationStage();
   };
 
   const finishButtonPayload = async () => {

@@ -12,7 +12,6 @@ import {
   IHomeNavProps,
   IAssetsNavProps,
 } from './Navigation.routing.model';
-import * as SetupEnum from './Setup.model';
 import { ButtonProps } from './ButtonProps.model';
 import { arrayEntry } from './MnemonicEntry.model';
 import {
@@ -38,7 +37,6 @@ export {
   CleanedAlchemyERC20TransferHistoryEntry,
   errors,
   ILandingNavProps,
-  SetupEnum,
   ButtonProps,
   arrayEntry,
   IHomeNavProps,
