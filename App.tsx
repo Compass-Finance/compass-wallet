@@ -62,6 +62,10 @@ export default function App() {
     const loadWalletIfNeeded = async () => {
       const pk = await getValueFor('pk');
       if (pk !== '') {
+        if (process.env.NODE_ENV === 'development') {
+          setIsUnlocked(true);
+          return;
+        }
         setIsUnlocked(false);
         (async () => {
           const compatible = await hasHardwareAsync();

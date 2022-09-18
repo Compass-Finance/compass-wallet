@@ -10,7 +10,7 @@ module.exports = function (api) {
             crypto: 'react-native-quick-crypto',
             stream: 'stream-browserify',
             buffer: '@craftzdog/react-native-buffer',
-            // 'bn.js': 'react-native-bignumber',
+            'bn.js': 'react-native-bignumber',
           },
         },
       ],
@@ -18,3 +18,4 @@ module.exports = function (api) {
     ],
   };
 };
+// 0xc19B2C8f77948104798AC71FC3F85117d94d2Bd6
