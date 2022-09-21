@@ -16,7 +16,7 @@
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
                BuildableName = "v1.app"
-               BlueprintName = "compassfiv1"
+               BlueprintName = "CompassFiV1"
                ReferencedContainer = "container:compassfiv1.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -56,7 +56,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "v1.app"
-            BlueprintName = "compassfiv1"
+            BlueprintName = "v1"
             ReferencedContainer = "container:compassfiv1.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -73,7 +73,7 @@
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
             BuildableName = "v1.app"
-            BlueprintName = "compassfiv1"
+            BlueprintName = "v1"
             ReferencedContainer = "container:compassfiv1.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
