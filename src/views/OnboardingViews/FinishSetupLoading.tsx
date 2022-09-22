@@ -5,6 +5,7 @@ import { save } from '../../logic/utils';
 import { MnemonicGenStore } from '../../logic/stores';
 import { HDNode } from 'ethers/lib/utils';
 import { usePostHog } from 'posthog-react-native';
+import { supabase } from '../../logic/services';
 
 export const FinishSetupLoading = ({ navigation }: ILandingNavProps) => {
   const postHog = usePostHog();
@@ -15,6 +16,9 @@ export const FinishSetupLoading = ({ navigation }: ILandingNavProps) => {
       const wallet: HDNode = HDNode.recoverWallet(
         MnemonicGenStore.prodMnemonic
       );
+      supabase.functions.invoke('register-user', {
+        body: JSON.stringify({ address: wallet.address }),
+      });
       postHog?.identify(wallet.address);
       await save('realPk', wallet.privateKey);
       navigation.navigate('FinishSetup');
