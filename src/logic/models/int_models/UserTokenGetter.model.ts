@@ -3,6 +3,7 @@ import { TokenNameListType } from './TokenList.model';
 import { FC } from 'react';
 
 export interface UserTokenDataResEntry {
+  id: number;
   name: TokenNameListType;
   price: number;
   key: TokenNameListType;

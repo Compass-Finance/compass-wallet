@@ -3,9 +3,11 @@ import { Box, Flex, Text, Pressable } from 'native-base';
 import { TokenBalanceFormatter } from '../../logic/utils';
 import { Dimensions } from 'react-native';
 import { UserTokenDataResEntry } from '../../logic/models/int_models';
+import { AssetsStore } from '../../logic/stores';
 
 export const AssetChip = ({
   price,
+  id,
   // decimals,
   HRNativeBalance,
   HRUSDBalance,
@@ -13,11 +15,7 @@ export const AssetChip = ({
   svg,
 }: UserTokenDataResEntry) => {
   const marginCalculator = () => {
-    const { height } = Dimensions.get('window');
-    const tokenName = name.toUpperCase();
-    if (tokenName === 'MATIC' && height < 800) {
-      return 120;
-    } else if (tokenName === 'MATIC' && height > 800) {
+    if (id === AssetsStore.tokenDataArr.length - 1) {
       return 120;
     } else {
       return 0;
