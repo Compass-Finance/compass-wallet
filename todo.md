@@ -1,3 +1,13 @@
 # What's Next
 
-Well now you need to flesh out the refresh functions
+## TODO
+
+======================
+
+1. Transaction AWS Migration
+
+## DONE
+
+=====================
+
+1. Refresh Functions

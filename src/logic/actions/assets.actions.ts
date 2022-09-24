@@ -1,7 +1,7 @@
 import { LoadedWalletStore, AssetsStore } from '../stores';
 import { UserTokenDataResEntry } from '../models/int_models';
 import { UserTokenDataGetter } from '../services';
-import { UserTokenDataCleaner } from '../middleware/UserTokenData.middleware';
+import { UserTokenDataCleaner } from '../middleware';
 
 export const setTokenDataArr = async () => {
   try {

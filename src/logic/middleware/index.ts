@@ -1,4 +1,4 @@
 import { txnCleaner } from './AlchemyERC20Transfer.middleware';
-import { CombinedTokenDataCleaner } from './CombinedTokenData.middleware';
+import { UserTokenDataCleaner } from './UserTokenData.middleware';
 
-export { txnCleaner, CombinedTokenDataCleaner };
+export { txnCleaner, UserTokenDataCleaner };
