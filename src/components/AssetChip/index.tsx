@@ -1,33 +1,30 @@
 import { BigNumber } from 'ethers';
 import { Box, Flex, Text, Pressable } from 'native-base';
 import { TokenBalanceFormatter } from '../../logic/utils';
-import { CombinedTokenDataEntry } from '../../logic/models/int_models';
 import { Dimensions } from 'react-native';
+import { UserTokenDataResEntry } from '../../logic/models/int_models';
 
 export const AssetChip = ({
   price,
-  decimals,
-  balance,
+  // decimals,
+  HRNativeBalance,
+  HRUSDBalance,
   name,
-  icon,
-}: CombinedTokenDataEntry) => {
+  svg,
+}: UserTokenDataResEntry) => {
   const marginCalculator = () => {
     const { height } = Dimensions.get('window');
     const tokenName = name.toUpperCase();
-    if (tokenName === 'WETH' && height < 800) {
+    if (tokenName === 'MATIC' && height < 800) {
       return 120;
-    } else if (tokenName === 'WETH' && height > 800) {
+    } else if (tokenName === 'MATIC' && height > 800) {
       return 120;
     } else {
       return 0;
     }
   };
 
-  const Coin = icon;
-  const theBalance = TokenBalanceFormatter(
-    BigNumber.from(balance).toString(),
-    decimals
-  );
+  const Coin = svg;
 
   // first you'll want to render the item behind
 
@@ -48,16 +45,16 @@ export const AssetChip = ({
                 <Text fontSize='lg' fontWeight='bold'>
                   {name.toUpperCase()}
                 </Text>
-                <Text>@ ${price}</Text>
+                <Text>@ ${price.toFixed(2)}</Text>
               </Box>
             </Flex>
           </Box>
           <Box marginLeft='15'>
             <Text>
-              {theBalance} {name.toUpperCase()}
+              {HRNativeBalance} {name.toUpperCase()}
             </Text>
             <Text bold={true} fontSize='2xl'>
-              ${(Number(theBalance) * Number(price)).toFixed(2)}
+              ${Number(HRUSDBalance).toFixed(2)}
             </Text>
           </Box>
         </Flex>

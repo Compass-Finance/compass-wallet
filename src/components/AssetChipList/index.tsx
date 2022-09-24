@@ -27,9 +27,11 @@ export const AssetChipList = observer(() => {
         price={data.item.price}
         name={data.item.name}
         decimals={data.item.decimals}
-        balance={data.item.balance}
-        icon={data.item.icon}
+        HRNativeBalance={data.item.HRNativeBalance}
+        HRUSDBalance={data.item.HRUSDBalance}
+        svg={data.item.svg}
         contractAddress={data.item.contractAddress}
+        hexNativeBalance={''}
       />
     );
   };

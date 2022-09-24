@@ -59,7 +59,7 @@ export const TransactionView = observer(() => {
       }
     };
     something();
-    console.log(txnHistoryStore.pastTransactionArray, '<===== From the comp');
+    // console.log(txnHistoryStore.pastTransactionArray, '<===== From the comp');
   }, [TxnView]);
 
   return (

@@ -3,12 +3,12 @@ import { AssetChipList } from '../../components/AssetChipList';
 import { IAssetsNavProps } from '../../logic/models/int_models';
 import { useEffect } from 'react';
 import { reaction } from 'mobx';
-import { AssetsStore } from '../../logic/stores';
+import { AssetsStore, LoadedWalletStore } from '../../logic/stores';
 import { newTxnActions } from '../../logic/actions';
+import { supabase } from '../../logic/services';
 
 export const AssetsView = ({ navigation }: IAssetsNavProps) => {
   // where should
-
   const navigationReaction = reaction(
     () => AssetsStore.selectedTokenData,
     () => {

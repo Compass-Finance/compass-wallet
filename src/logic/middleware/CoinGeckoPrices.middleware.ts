@@ -14,12 +14,12 @@ export const coinGeckoPriceCleaner = (
   const sortedCoinGeckoCoinNames = Object.keys(
     coinGeckoResponse
   ).sort() as TokenNameListType[];
-  console.log(sortedCoinGeckoCoinNames, '<====== sorted coin names');
+  // console.log(sortedCoinGeckoCoinNames, '<====== sorted coin names');
 
   for (let i = 0; i < Object.keys(tempObj).length; i++) {
     pricesArr.push(coinGeckoResponse[sortedCoinGeckoCoinNames[i]].usd);
   }
-  console.log(`The prices arr ====> ${pricesArr}`);
+  // console.log(`The prices arr ====> ${pricesArr}`);
 
   for (let i = 0; i < Object.keys(tempObj).length; i++) {
     // console.log(pricesArr[i].toFixed(2), '<===== math thing');

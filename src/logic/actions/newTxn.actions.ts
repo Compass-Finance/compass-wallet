@@ -9,27 +9,24 @@ export const setSelectedTokenData = (tokenDataObj: SelectedTokenData) => {
 };
 
 export const populateSelectedTokenObj = () => {
+  console.log(
+    `uhhh work plz ? ===> ${JSON.stringify(AssetsStore.selectedTokenData)}`
+  );
   const tokenDataObj = AssetsStore.tokenDataArr.filter((value) => {
     if (value.name === AssetsStore.selectedTokenData.selectedTokenName) {
       return value;
     }
   });
-  const humanReadableBalance = TokenBalanceFormatter(
-    BigNumber.from(tokenDataObj[0].balance).toString(),
-    tokenDataObj[0].decimals
-  ) as number;
-  const balance = humanReadableBalance * Number(tokenDataObj[0].price);
-
+  console.log(tokenDataObj[0].price, '<--- something that works?');
   setSelectedTokenData({
     price: tokenDataObj[0].price,
     decimals: tokenDataObj[0].decimals,
-    nativeBalanceHex: tokenDataObj[0].balance,
-    nativeBalanceReadable: humanReadableBalance,
-    USDBalance: balance,
+    nativeBalanceHex: tokenDataObj[0].hexNativeBalance,
+    nativeBalanceReadable: Number(tokenDataObj[0].HRNativeBalance),
+    USDBalance: Number(tokenDataObj[0].HRUSDBalance),
     contractAddress: tokenDataObj[0].contractAddress,
     name: tokenDataObj[0].name,
   });
-  console.log('something ===>', NewTransactionStore.selectedTokenData);
 };
 
 export const setHRTransferAmount = (charInput: string) => {
