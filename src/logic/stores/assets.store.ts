@@ -1,19 +1,19 @@
 import { action, observable, makeAutoObservable } from 'mobx';
-import { CombinedTokenDataEntry } from '../models/int_models';
 import { selectedToken } from '../models/int_models';
+import { UserTokenDataResEntry } from '../models/int_models';
 
 export class AssetsStore {
   constructor() {
     makeAutoObservable(this);
   }
-  @observable tokenDataArr: CombinedTokenDataEntry[] = [];
+  @observable tokenDataArr: UserTokenDataResEntry[] = [];
 
   @observable selectedTokenData: selectedToken = {
     selectedTokenName: '',
     sendOrReceive: '',
   };
 
-  @action setTokenDataArr(input: CombinedTokenDataEntry[]) {
+  @action setTokenDataArr(input: UserTokenDataResEntry[]) {
     this.tokenDataArr = input;
   }
 

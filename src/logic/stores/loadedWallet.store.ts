@@ -9,7 +9,8 @@ export class LoadedWalletStore {
 
   @observable alchemyConfig: AlchemyConfig = {} as AlchemyConfig;
 
-  @observable rpcUrlOrApiKey: string = '';
+  @observable rpcUrlOrApiKey: string =
+    Constants?.manifest?.extra?.ALCHEMY_API_KEY;
 
   @observable mumbaiRPC: string = Constants?.manifest?.extra?.MUMBAI_RPC_URL;
 
@@ -24,6 +25,10 @@ export class LoadedWalletStore {
       this.pk = Constants.manifest?.extra?.GANACHE_ACCT_1_PK || '';
       this.rpcUrlOrApiKey = Constants.manifest?.extra?.GANACHE_RPC_URL || '';
     } else if (network === 'mumbai') {
+      console.log(
+        Constants.manifest?.extra?.ALCHEMY_API_KEY,
+        '<=== THE CONSTANTS'
+      );
       this.rpcUrlOrApiKey = Constants.manifest?.extra?.ALCHEMY_API_KEY;
     }
     this.walletHasBeenLoaded = true;

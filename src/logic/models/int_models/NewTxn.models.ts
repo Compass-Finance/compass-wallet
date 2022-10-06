@@ -1,5 +1,5 @@
 export interface SelectedTokenData {
-  price: string;
+  price: number;
   decimals: number;
   nativeBalanceHex: string;
   nativeBalanceReadable: number;

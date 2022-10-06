@@ -36,3 +36,11 @@ export const HomeTabRouter = () => {
     </HomeTabNav.Navigator>
   );
 };
+/* 
+* Alright man what has to be done here?
+  * 1. We're going to have to figure out how to read the fields of a binary JSON object array.
+  * 2. Implement the price services in 
+
+
+
+*/

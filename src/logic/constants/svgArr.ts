@@ -16,7 +16,13 @@ import {
   Unknown_withdrawl,
 } from '../../../assets/token_icons/withdrawl_icons';
 
-export const mainTokenSvgArr = [Dai, Matic, Renbtc, Usdc, Weth];
+export const mainTokenSvgArr = [
+  { name: 'dai', svg: Dai },
+  { name: 'matic', svg: Matic },
+  { name: 'renbtc', svg: Renbtc },
+  { name: 'usdc', svg: Usdc },
+  { name: 'weth', svg: Weth },
+];
 
 export const depositsAndWithdrawlsTokenSvgObj = {
   deposits: {

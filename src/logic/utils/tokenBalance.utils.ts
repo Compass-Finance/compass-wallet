@@ -1,12 +1,12 @@
 import { BigNumber } from 'ethers';
 
 export const TokenBalanceFormatter = (balance: string, decimal: number) => {
-  console.log(balance.length, decimal);
+  // console.log(balance.length, decimal);
   let formattedValue;
   if (balance.length < decimal) {
     const difference = decimal - balance.length;
     const leadingZeros = '0'.repeat(difference);
-    console.log(leadingZeros);
+    // console.log(leadingZeros);
     formattedValue = '.' + balance;
     formattedValue = Number(formattedValue) / (10 ** difference + 1);
   } else {
@@ -55,6 +55,6 @@ export function toBaseUnit(value: string, decimals: number) {
   whole = BigNumber.from(whole);
   fraction = BigNumber.from(fraction);
   let wei = whole.mul(base).add(fraction);
-  console.log(BigNumber.from(wei.toString()).toString());
+  // console.log(BigNumber.from(wei.toString()).toString());
   return BigNumber.from(wei.toString()).toString();
 }

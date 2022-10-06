@@ -9,27 +9,24 @@ export const setSelectedTokenData = (tokenDataObj: SelectedTokenData) => {
 };
 
 export const populateSelectedTokenObj = () => {
+  console.log(
+    `uhhh work plz ? ===> ${JSON.stringify(AssetsStore.selectedTokenData)}`
+  );
   const tokenDataObj = AssetsStore.tokenDataArr.filter((value) => {
     if (value.name === AssetsStore.selectedTokenData.selectedTokenName) {
       return value;
     }
   });
-  const humanReadableBalance = TokenBalanceFormatter(
-    BigNumber.from(tokenDataObj[0].balance).toString(),
-    tokenDataObj[0].decimals
-  ) as number;
-  const balance = humanReadableBalance * Number(tokenDataObj[0].price);
-
+  console.log(tokenDataObj[0].price, '<--- something that works?');
   setSelectedTokenData({
     price: tokenDataObj[0].price,
     decimals: tokenDataObj[0].decimals,
-    nativeBalanceHex: tokenDataObj[0].balance,
-    nativeBalanceReadable: humanReadableBalance,
-    USDBalance: balance,
+    nativeBalanceHex: tokenDataObj[0].hexNativeBalance,
+    nativeBalanceReadable: Number(tokenDataObj[0].HRNativeBalance),
+    USDBalance: Number(tokenDataObj[0].HRUSDBalance),
     contractAddress: tokenDataObj[0].contractAddress,
     name: tokenDataObj[0].name,
   });
-  console.log('something ===>', NewTransactionStore.selectedTokenData);
 };
 
 export const setHRTransferAmount = (charInput: string) => {
@@ -41,11 +38,11 @@ export const setHRTransferAmount = (charInput: string) => {
   if (tokenBalance.includes('.') && charInput.includes('.')) {
     return;
   } else if (charInput.includes('<')) {
-    console.log(
-      `IN THA DELETE BRANCH, length before the delete ${
-        newTxnStore.hrTransferAmount.length
-      } ${typeof newTxnStore.hrTransferAmount.length}`
-    );
+    // console.log(
+    //   `IN THA DELETE BRANCH, length before the delete ${
+    //     newTxnStore.hrTransferAmount.length
+    //   } ${typeof newTxnStore.hrTransferAmount.length}`
+    // );
     if (NewTransactionStore.hrTransferAmount === '0') {
       return;
     } else if (NewTransactionStore.hrTransferAmount.length === 1) {
@@ -63,12 +60,7 @@ export const setHRTransferAmount = (charInput: string) => {
     charInput !== '0'
   ) {
     newTxnStore.setHRTransferAmount(charInput);
-  }
-
-  // else if (newTxnStore.hrTransferAmount.length === 1 && charInput === '<') {
-  //   newTxnStore.setHRTransferAmount('0');
-  // }
-  else if (newTxnStore.hrTransferAmount === '0' && charInput === '<') {
+  } else if (newTxnStore.hrTransferAmount === '0' && charInput === '<') {
     return;
   } else {
     newTxnStore.setHRTransferAmount(newTxnStore.hrTransferAmount + charInput);

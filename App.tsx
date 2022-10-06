@@ -1,4 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
+import 'react-native-url-polyfill/auto';
 import 'react-native-get-random-values';
 import '@ethersproject/shims';
 import { useEffect, useState } from 'react';
@@ -11,6 +12,7 @@ import { Locked } from './src/views/MiscViews/Locked';
 import { PostHogProvider } from 'posthog-react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Constants from 'expo-constants';
+import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 
 const config = {
   useSystemColorMode: false,
@@ -79,26 +81,28 @@ export default function App() {
   }, []);
 
   return (
-    <NativeBaseProvider theme={theme}>
-      <NavigationContainer>
-        <PostHogProvider
-          apiKey={Constants.manifest?.extra?.POSTHOG_API_KEY}
-          autocapture={{
-            captureTouches: true, // If you don't want to capture touch events set this to false
-            captureLifecycleEvents: true, // If you don't want to capture the Lifecycle Events (e.g. Application Opened) set this to false
-            captureScreens: true, // If you don't want to capture screen events set this to false
-            customLabelProp: 'ph-label',
-            noCaptureProp: 'ph-no-capture',
-          }}
-        >
-          <StatusBar style='dark' />
-          {isUnlocked === true ? (
-            <MasterStackRouter />
-          ) : (
-            <Locked authPayload={onAuthenticate} />
-          )}
-        </PostHogProvider>
-      </NavigationContainer>
-    </NativeBaseProvider>
+    <SafeAreaProvider>
+      <NativeBaseProvider theme={theme}>
+        <NavigationContainer>
+          <PostHogProvider
+            apiKey={Constants.manifest?.extra?.POSTHOG_API_KEY}
+            autocapture={{
+              captureTouches: true, // If you don't want to capture touch events set this to false
+              captureLifecycleEvents: true, // If you don't want to capture the Lifecycle Events (e.g. Application Opened) set this to false
+              captureScreens: true, // If you don't want to capture screen events set this to false
+              customLabelProp: 'ph-label',
+              noCaptureProp: 'ph-no-capture',
+            }}
+          >
+            <StatusBar style='dark' />
+            {isUnlocked === true ? (
+              <MasterStackRouter />
+            ) : (
+              <Locked authPayload={onAuthenticate} />
+            )}
+          </PostHogProvider>
+        </NavigationContainer>
+      </NativeBaseProvider>
+    </SafeAreaProvider>
   );
 }

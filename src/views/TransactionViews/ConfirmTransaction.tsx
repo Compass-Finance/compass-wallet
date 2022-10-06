@@ -79,7 +79,7 @@ export const ConfirmTransaction = ({ navigation }: IAssetsNavProps) => {
           {NewTransactionStore.txnReadyAddress}
         </Text>
       </Box>
-      <Box height={height < 800 ? 220 : 350} />
+      <Box height={height < 800 ? 220 : 300} />
       <TxnFlowButton
         text='Send Transaction'
         disabled={false}

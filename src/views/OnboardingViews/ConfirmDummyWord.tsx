@@ -7,7 +7,6 @@ import { Keyboard, TouchableWithoutFeedback, Platform } from 'react-native';
 import { ButtonList } from '../../components/ButtonList';
 import { useState } from 'react';
 import { ContainedButton } from '../../components/ContainedButton';
-import { save } from '../../logic/utils';
 
 export const ConfirmDummyWord = ({ navigation }: ILandingNavProps) => {
   const keyboardVerticalOffset = Platform.OS === 'ios' ? 0 : 0;
@@ -19,6 +18,7 @@ export const ConfirmDummyWord = ({ navigation }: ILandingNavProps) => {
   const finishButtonPayload = async () => {
     navigation.navigate('FinishSetupLoading');
   };
+
   const [isValidMnemonic, setIsValidMnemonic] = useState(false);
 
   return (
@@ -89,12 +89,4 @@ export const ConfirmDummyWord = ({ navigation }: ILandingNavProps) => {
       </Flex>
     </TouchableWithoutFeedback>
   );
-};
-
-const finishTheJob = () => {
-  // @ts-ignore
-  // conversion logic to a regular string with spaces like this:
-  // 'word1, word2, ... word12'
-  save('mnemonic', mnemonicGen);
-  // ^^ That's it right? =====> Yeah I think so
 };

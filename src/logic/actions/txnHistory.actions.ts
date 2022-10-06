@@ -14,7 +14,7 @@ export const setPastTransactionArray = async (
       addressToQuery,
       withdrawlsOrDeposits
     ).then((value) => {
-      // console.log(`VALUE =======> ${JSON.parse(JSON.stringify(value))}!!!!!!`);
+      console.log(`VALUE =======> ${JSON.parse(JSON.stringify(value))}!!!!!!`);
       if (TransactionHistoryStore.pastTransactionStatus === 'success') {
         const valueCopy = JSON.parse(JSON.stringify(value)) as typeof value;
         const cleanedTxnResponse: CleanedAlchemyERC20TransferHistoryEntry[] =

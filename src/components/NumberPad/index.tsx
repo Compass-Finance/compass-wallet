@@ -99,7 +99,7 @@ export const NumberPad = () => {
                         onPress={() => {
                           setSelectedValue(value.key as string);
                           setHRTransferAmount(value.key as string);
-                          console.log(`${value.key} was just pressed`);
+                          // console.log(`${value.key} was just pressed`);
                           Animated.timing(animatedValue, {
                             toValue: 150,
                             duration: 100,

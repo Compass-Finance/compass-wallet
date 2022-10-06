@@ -1,10 +1,11 @@
-import { CombinedTokenDataEntry } from '../../logic/models/int_models';
+import { UserTokenDataResEntry } from '../../logic/models/int_models';
 import { Box, Pressable, Text } from 'native-base';
 import { ReceiveTokens, SendTokens } from '../../../assets/icons';
 import { assetsActions } from '../../logic/actions';
+import { AssetsStore } from '../../logic/stores';
 
 interface assetSwipeProps {
-  item: CombinedTokenDataEntry;
+  item: UserTokenDataResEntry;
 }
 export const AssetSwipeOptions = (data: assetSwipeProps, rowMap: any) => {
   const closeRow = (rowMap: any, rowKey: any) => {
@@ -43,6 +44,10 @@ export const AssetSwipeOptions = (data: assetSwipeProps, rowMap: any) => {
         <Pressable
           onPress={() => {
             assetsActions.setSelectedTokenData(data.item.name, 'receive');
+            console.log(
+              AssetsStore.selectedTokenData.selectedTokenName,
+              '<====== console test'
+            );
             closeRow(rowMap, data.item.key);
           }}
         >

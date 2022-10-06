@@ -1,6 +1,6 @@
 import { Alchemy } from 'alchemy-sdk';
-import { LoadedWalletStore } from '../stores';
-import { TOKEN_CONTRACT_ADDRESSES_LIST } from '../constants';
+import { LoadedWalletStore } from '../../stores';
+import { TOKEN_CONTRACT_ADDRESSES_LIST } from '../../constants';
 
 export const alchemyTokenBalanceGetter = async () => {
   try {

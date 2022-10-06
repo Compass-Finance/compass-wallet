@@ -1,4 +1,5 @@
 import { Flex, Button, Text } from 'native-base';
+import { Dimensions } from 'react-native';
 
 interface TxnChoiceButtonProps {
   depositPayload: () => void;
@@ -11,6 +12,8 @@ export const TxnChoiceButtons = ({
   withdrawlsPayload,
   viewState,
 }: TxnChoiceButtonProps) => {
+  // alert(height)
+  const { height } = Dimensions.get('window');
   const selectedBtnStyling = { backgroundColor: '#FF8989' };
   const nonSelectedBtnStyling = {
     backgroundColor: 'transparent',

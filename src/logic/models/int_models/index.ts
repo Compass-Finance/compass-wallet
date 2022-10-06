@@ -21,8 +21,16 @@ import {
 import { CleanedAlchemyTokenBalances } from './AlchemyTokenBalances.cleaned.model';
 import { CleanedCoinGeckoPrices } from './CoingeckoPrices.cleaned.model';
 import { TokenNameListType } from './TokenList.model';
+import {
+  UserTokenDataResArr,
+  UserTokenDataResEntry,
+} from './UserTokenGetter.model';
+import { stylingObject } from './stylingObject.model';
 
 export {
+  stylingObject,
+  UserTokenDataResArr,
+  UserTokenDataResEntry,
   TokenNameListType,
   SelectedTokenData,
   selectedToken,

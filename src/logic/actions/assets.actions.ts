@@ -1,24 +1,21 @@
-import { AssetsStore } from '../stores';
-import { CombinedTokenDataCleaner } from '../middleware';
-import { CoinGeckoPriceGetter } from '../services';
-import { alchemyTokenBalanceGetter } from '../services';
-import { TokenBalancesResponse } from 'alchemy-sdk';
-import {
-  CombinedTokenData,
-  CombinedTokenDataEntry,
-} from '../models/int_models';
+import { LoadedWalletStore, AssetsStore } from '../stores';
+import { UserTokenDataResEntry } from '../models/int_models';
+import { UserTokenDataGetter } from '../services';
+import { UserTokenDataCleaner } from '../middleware';
 
 export const setTokenDataArr = async () => {
   try {
-    const alchemyResponse = await alchemyTokenBalanceGetter();
-    const coinGeckoResponse = await CoinGeckoPriceGetter();
-    const combinedData = CombinedTokenDataCleaner(
-      coinGeckoResponse,
-      alchemyResponse as TokenBalancesResponse
+    console.log(`This is `);
+    // 1. Call the User Token data getter
+    const userTokenDataRes = await UserTokenDataGetter(
+      LoadedWalletStore.wallet.address
     );
-    AssetsStore.setTokenDataArr(combinedData as CombinedTokenDataEntry[]); // <== fix ths
-    console.log('ASSETS STORE ===>', AssetsStore.tokenDataArr);
-    return combinedData;
+    // 2. Clean the Data w/ middleware
+    const cleanedUserTokenData = UserTokenDataCleaner(
+      userTokenDataRes as UserTokenDataResEntry[]
+    );
+    // 3. put it in the Assets Token Info
+    AssetsStore.setTokenDataArr(cleanedUserTokenData);
   } catch (e) {
     alert(e);
   }

@@ -6,6 +6,7 @@ const MATIC_RPC_URL = process.env.MATIC_RPC_URL;
 const POSTHOG_API_KEY = process.env.POSTHOG_API_KEY;
 const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY;
 const SUPABASE_URL = process.env.SUPABASE_URL;
+const SUPABASE_PROJECT_ID = process.env.SUPABASE_PROJECT_ID;
 
 export default {
   expo: {
@@ -48,6 +49,7 @@ export default {
       POSTHOG_API_KEY: POSTHOG_API_KEY,
       SUPABASE_ANON_KEY: SUPABASE_ANON_KEY,
       SUPABASE_URL: SUPABASE_URL,
+      SUPABASE_PROJECT_ID: SUPABASE_PROJECT_ID,
       eas: {
         projectId: '3dd15df4-c2fe-4c5b-b803-f3cd4f2e8f70',
       },

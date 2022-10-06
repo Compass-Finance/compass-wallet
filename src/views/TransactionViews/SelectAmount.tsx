@@ -30,11 +30,11 @@ export const SelectAmount = observer(({ navigation }: IAssetsNavProps) => {
         humanReadableTransferInput <= wholeTokenBalance &&
         humanReadableTransferInput > 0
       ) {
-        console.log('is a valid amount');
+        // console.log('is a valid amount');
         setIsValidAmount(false);
       } else {
         setIsValidAmount(true);
-        console.log(`isn't a valid amount`);
+        // console.log(`isn't a valid amount`);
       }
     }
   );
@@ -51,6 +51,7 @@ export const SelectAmount = observer(({ navigation }: IAssetsNavProps) => {
       <TxnBackButton
         payload={() => {
           navigation.navigate('HomeTabRouter');
+          NewTransactionStore.setHRTransferAmount('0');
         }}
       />
       <Center>

@@ -1,18 +1,30 @@
 import { useCallback, useEffect, useState } from 'react';
 import { assetsActions } from '../../logic/actions';
-import { AssetsStore } from '../../logic/stores';
+import { AssetsStore, LoadedWalletStore } from '../../logic/stores';
 import { AssetChip } from '../AssetChip';
 import { SwipeListView } from 'react-native-swipe-list-view';
 import { observer } from 'mobx-react-lite';
 import { RefreshControl } from 'react-native';
 import { wait } from '../../logic/utils';
 import { AssetSwipeOptions } from '../AssetsSwipeOptions';
+import { invokeEdgeFunction } from '../../logic/services';
 
 export const AssetChipList = observer(() => {
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = useCallback(() => {
     setRefreshing(true);
-    wait(200).then(() => setRefreshing(false));
+    wait(0).then(async () => {
+      console.log(
+        `Loaded Wallet Addy ====> ${LoadedWalletStore.wallet.address}`
+      );
+      await invokeEdgeFunction('price-getter', {});
+      await invokeEdgeFunction('balances-updater', {
+        addressToQuery: LoadedWalletStore.wallet.address,
+      });
+
+      await assetsActions.setTokenDataArr();
+      setRefreshing(false);
+    });
   }, []);
 
   useEffect(() => {
@@ -23,13 +35,16 @@ export const AssetChipList = observer(() => {
   const AssetChips = (data: any) => {
     return (
       <AssetChip
+        id={data.item.id}
         key={data.item.contractAddress}
         price={data.item.price}
         name={data.item.name}
         decimals={data.item.decimals}
-        balance={data.item.balance}
-        icon={data.item.icon}
+        HRNativeBalance={data.item.HRNativeBalance}
+        HRUSDBalance={data.item.HRUSDBalance}
+        svg={data.item.svg}
         contractAddress={data.item.contractAddress}
+        hexNativeBalance={''}
       />
     );
   };
