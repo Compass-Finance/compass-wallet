@@ -8,12 +8,13 @@ import { LoadedWalletStore } from '../../logic/stores';
 import { reaction } from 'mobx';
 import { Dimensions } from 'react-native';
 import { observer } from 'mobx-react-lite';
-import txnHistoryStore from '../../logic/stores/txnHistory.store';
 import { wait } from '../../logic/utils';
 import { TxnChoiceButtons } from '../../components/TxnChoiceButtons';
+import { stylingCalculator } from '../../logic/utils';
 
 export const TransactionView = observer(() => {
   const { height } = Dimensions.get('window');
+  // alert(height);
   const [TxnView, setTxnView] = useState('deposits');
   const [refreshing, setRefreshing] = useState(false);
 
@@ -61,6 +62,8 @@ export const TransactionView = observer(() => {
     something();
     // console.log(txnHistoryStore.pastTransactionArray, '<===== From the comp');
   }, [TxnView]);
+  // const insets = useSafeAreaInsets();
+  // insets.bottom = 100;
 
   return (
     <Box
@@ -111,7 +114,18 @@ export const TransactionView = observer(() => {
           }}
           viewState={TxnView as 'withdrawls' | 'deposits'}
         />
-        <Box height={height > 800 ? '86' : '120'} />
+        <Box
+          backgroundColor={'secondary.100'}
+          marginBottom={stylingCalculator(height, {
+            xs: 120,
+            sm: 120,
+            md: 120,
+            lg: 125,
+            xl: 86,
+          })}
+          // Ok let's see if the styling is accurate, let's build this for android && ios & ship them and see
+          // How they play with eachother
+        ></Box>
       </Center>
     </Box>
   );

@@ -7,19 +7,21 @@ import { observer } from 'mobx-react-lite';
 import { RefreshControl } from 'react-native';
 import { wait } from '../../logic/utils';
 import { AssetSwipeOptions } from '../AssetsSwipeOptions';
-import { supabase } from '../../logic/services';
+import { invokeEdgeFunction } from '../../logic/services';
 
 export const AssetChipList = observer(() => {
   const [refreshing, setRefreshing] = useState(false);
   const onRefresh = useCallback(() => {
     setRefreshing(true);
     wait(0).then(async () => {
-      await supabase.functions.invoke('price-getter');
-      await supabase.functions.invoke('balances-updater', {
-        body: JSON.stringify({
-          addressToQuery: LoadedWalletStore.wallet.address,
-        }),
+      console.log(
+        `Loaded Wallet Addy ====> ${LoadedWalletStore.wallet.address}`
+      );
+      await invokeEdgeFunction('price-getter', {});
+      await invokeEdgeFunction('balances-updater', {
+        addressToQuery: LoadedWalletStore.wallet.address,
       });
+
       await assetsActions.setTokenDataArr();
       setRefreshing(false);
     });

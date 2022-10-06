@@ -3,7 +3,7 @@ import { Alchemy, Network, Wallet } from 'alchemy-sdk'; //AlchemyProvider
 import { JsonRpcBatchProvider } from '@ethersproject/providers';
 import { HDNode } from 'ethers/lib/utils';
 import { getValueFor } from '../utils';
-
+import Constants from 'expo-constants';
 export const loadWallet = async (network: 'local' | 'mumbai') => {
   try {
     if (network === 'local') {
@@ -15,6 +15,7 @@ export const loadWallet = async (network: 'local' | 'mumbai') => {
         // Todo change ^^ later
         apiKey: LoadedWalletStore.rpcUrlOrApiKey,
       });
+      // alert(LoadedWalletStore.rpcUrlOrApiKey);
       LoadedWalletStore.setAlchemyProvider(
         new Alchemy(LoadedWalletStore.alchemyConfig)
       );

@@ -25,8 +25,10 @@ import {
   UserTokenDataResArr,
   UserTokenDataResEntry,
 } from './UserTokenGetter.model';
+import { stylingObject } from './stylingObject.model';
 
 export {
+  stylingObject,
   UserTokenDataResArr,
   UserTokenDataResEntry,
   TokenNameListType,

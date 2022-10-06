@@ -10,6 +10,7 @@ export const AlchemyERC20TransferHistoryCaller = async (
 ) => {
   try {
     const alchemy = new Alchemy(LoadedWalletStore.alchemyConfig);
+    // alert(alchemy.config.apiKey);
     let response: any;
     if (withdrawlsOrDeposits === 'deposits') {
       response = await alchemy.core

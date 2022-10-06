@@ -5,6 +5,7 @@ import { UserTokenDataCleaner } from '../middleware';
 
 export const setTokenDataArr = async () => {
   try {
+    console.log(`This is `);
     // 1. Call the User Token data getter
     const userTokenDataRes = await UserTokenDataGetter(
       LoadedWalletStore.wallet.address

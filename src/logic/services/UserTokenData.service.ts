@@ -6,6 +6,7 @@ export const UserTokenDataGetter = async (addressToQuery: string) => {
     const tokenDataRes = await supabase.rpc('fetch_user_token_data', {
       address: addressToQuery,
     });
+    console.log(`THIS IS THE DATA !!! =======> ${tokenDataRes.data}`);
     // @ts-ignore
     return tokenDataRes.data.data as UserTokenDataResArr;
   } catch (e) {
