@@ -20,7 +20,7 @@ export const WalletCreationLoading = ({ navigation }: ILandingNavProps) => {
     >
       <Spinner color='primary.100' size='lg' padding={3} />
       <Text fontSize='md' textAlign='center' padding='5' fontWeight='semibold'>
-        Creating Your Wallet, this shouldn't take longer than 10 seconds
+        Creating Your Wallet
       </Text>
     </Center>
   );
