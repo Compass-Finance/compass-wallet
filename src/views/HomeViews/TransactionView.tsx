@@ -14,7 +14,6 @@ import { stylingCalculator } from '../../logic/utils';
 
 export const TransactionView = observer(() => {
   const { height } = Dimensions.get('window');
-  // alert(height);
   const [TxnView, setTxnView] = useState('deposits');
   const [refreshing, setRefreshing] = useState(false);
 
@@ -46,7 +45,6 @@ export const TransactionView = observer(() => {
         await loadedWalletActions.loadWallet('mumbai').then(async () => {
           await txnHistoryActions.setPastTransactionArray(
             LoadedWalletStore.wallet.address,
-            // '0x5c43B1eD97e52d009611D89b74fA829FE4ac56b1',
             TxnView as 'deposits' | 'withdrawls'
           );
         });
@@ -54,17 +52,12 @@ export const TransactionView = observer(() => {
       } else if (LoadedWalletStore.walletHasBeenLoaded === true) {
         await txnHistoryActions.setPastTransactionArray(
           LoadedWalletStore.wallet.address,
-          // '0x5c43B1eD97e52d009611D89b74fA829FE4ac56b1',
           TxnView as 'deposits' | 'withdrawls'
         );
       }
     };
     something();
-    // console.log(txnHistoryStore.pastTransactionArray, '<===== From the comp');
   }, [TxnView]);
-  // const insets = useSafeAreaInsets();
-  // insets.bottom = 100;
-
   return (
     <Box
       style={{
@@ -75,7 +68,6 @@ export const TransactionView = observer(() => {
       backgroundColor='background.100'
     >
       <Text
-        // fontFamily={''}
         fontWeight='bold'
         marginLeft='7'
         marginTop='15'
@@ -123,9 +115,7 @@ export const TransactionView = observer(() => {
             lg: 125,
             xl: 86,
           })}
-          // Ok let's see if the styling is accurate, let's build this for android && ios & ship them and see
-          // How they play with eachother
-        ></Box>
+        />
       </Center>
     </Box>
   );
