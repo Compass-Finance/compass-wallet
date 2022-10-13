@@ -13,6 +13,7 @@ import { PostHogProvider } from 'posthog-react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Constants from 'expo-constants';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
+//hi
 
 const config = {
   useSystemColorMode: false,
