@@ -20,6 +20,7 @@ export const AssetChipList = observer(() => {
       await invokeEdgeFunction('price-getter', {});
       await invokeEdgeFunction('balances-updater', {
         addressToQuery: LoadedWalletStore.wallet.address,
+        network: 'polygon',
       });
 
       await assetsActions.setTokenDataArr();
