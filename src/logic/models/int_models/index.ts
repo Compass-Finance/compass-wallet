@@ -8,6 +8,7 @@ import {
 } from './TokenData.cleaned.model';
 import { CleanedAlchemyERC20TransferHistoryEntry } from './AlchemyERC20Transfer.cleaned.model';
 import {
+  IHomeViewProps,
   ILandingNavProps,
   IHomeNavProps,
   IAssetsNavProps,
@@ -28,6 +29,7 @@ import {
 import { stylingObject } from './stylingObject.model';
 
 export {
+  IHomeViewProps,
   stylingObject,
   UserTokenDataResArr,
   UserTokenDataResEntry,

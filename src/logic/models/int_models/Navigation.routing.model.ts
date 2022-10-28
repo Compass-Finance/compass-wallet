@@ -31,6 +31,15 @@ type HomeViews = {
   HomeTabView: any;
 };
 
+type HomeViewViews = {
+  HomeView: any;
+  HomeTools: any;
+};
+
+export interface IHomeViewProps {
+  navigation: NativeStackNavigationProp<HomeViewViews, any>;
+}
+
 export interface ILandingNavProps {
   navigation: NativeStackNavigationProp<WalletSetupViews, any>;
 }

@@ -1,8 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AssetsView } from '../views/HomeViews/AssetsView';
-import { HomeView } from '../views/HomeViews/HomeView';
+// import { HomeView } from '../views/HomeViews/HomeView';
 import { TransactionView } from '../views/HomeViews/TransactionView';
 import { Ionicons } from '@expo/vector-icons';
+import { HomeViewRouter } from './HomeViewRouter';
 
 const HomeTabNav = createBottomTabNavigator();
 
@@ -30,7 +31,7 @@ export const HomeTabRouter = () => {
         tabBarInactiveTintColor: 'gray',
       })}
     >
-      {/* <HomeTabNav.Screen name='Home' component={HomeView} /> */}
+      {/* <HomeTabNav.Screen name='Home' component={HomeViewRouter} /> */}
       <HomeTabNav.Screen name='Transactions' component={TransactionView} />
       <HomeTabNav.Screen name='Assets' component={AssetsView} />
     </HomeTabNav.Navigator>

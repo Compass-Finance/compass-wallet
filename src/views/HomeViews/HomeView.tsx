@@ -1,17 +1,14 @@
-import { Center, View, Text, Button } from 'native-base';
+import { Center, View, Text, Button, Box, Pressable } from 'native-base';
 import { useEffect } from 'react';
-import { deleteItemAsync } from 'expo-secure-store';
 import { loadedWalletActions } from '../../logic/actions';
-import { setString } from 'expo-clipboard';
 import { LoadedWalletStore } from '../../logic/stores';
-import { supabase } from '../../logic/services';
-// import { CoinGeckoPriceGetter } from '../../logic/services/deprecated/Coingecko.service';
-import { alchemyTokenBalanceGetter } from '../../logic/services/deprecated/AlchemyTokenBalance.service';
-import { Dimensions } from 'react-native';
-// import { androidEdgeFunctionGetter } from '../../logic/services';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { IHomeViewProps } from '../../logic/models/int_models';
 
-export const HomeView = () => {
-  const { height } = Dimensions.get('window');
+// now we're going to want to
+
+export const HomeView = ({ navigation }: IHomeViewProps) => {
+  // const { height } = Dimensions.get('window');
   useEffect(() => {
     const something = async () => {
       if (LoadedWalletStore.walletHasBeenLoaded === false) {
@@ -25,8 +22,21 @@ export const HomeView = () => {
   return (
     <View>
       <Center height='full' bgColor='background.100'>
-        <Text></Text>
-        <Button
+        <Box backgroundColor='primary.100' borderRadius={10}>
+          <Pressable
+            onPress={() => {
+              navigation.navigate('HomeTools');
+              console.log('Hi I was pressed');
+            }}
+          >
+            <MaterialCommunityIcons
+              name='hammer-wrench'
+              size={170}
+              color='black'
+            />
+          </Pressable>
+        </Box>
+        {/* <Button
           onPress={async () => {
             alert(height);
           }}
@@ -39,7 +49,7 @@ export const HomeView = () => {
           }}
         >
           Delete PK
-        </Button>
+        </Button> */}
       </Center>
     </View>
   );
